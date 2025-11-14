@@ -1,3 +1,34 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Assets (large files, can be downloaded separately)
+assets/
+
+# Imported assets
+*.import
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Build files
+export_presets.cfg
+
+# VS Code
+.vscode/
+
+# Windows
+desktop.ini
+
+# Logs
+*.log
