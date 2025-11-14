@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4d85uw275wdj"]
+
+[ext_resource type="Script" uid="uid://dvsic1w57mdjb" path="res://scenes/utils/components/hurtbox/hurtbox.gd" id="1_3x1cd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x1cd"]
+
+[node name="Hurtbox" type="Area2D"]
+script = ExtResource("1_3x1cd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3x1cd")

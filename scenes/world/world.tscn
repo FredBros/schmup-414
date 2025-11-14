@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3qh0ec0wac3w"]
+
+[ext_resource type="PackedScene" uid="uid://brub1ybttnsq7" path="res://scenes/background/background.tscn" id="1_v5dby"]
+[ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="2_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://cini5g6wfanq4" path="res://scenes/UI/hud.tscn" id="3_bq33v"]
+[ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="4_j2gmx"]
+[ext_resource type="PackedScene" uid="uid://dftlnpxuoduli" path="res://scenes/utils/enemy_spawner/enemy_spawner.tscn" id="5_1yooq"]
+
+[sub_resource type="GDScript" id="GDScript_bullets"]
+script/source = "extends Node2D
+
+func _ready():
+	add_to_group(\"BulletsContainer\")
+"
+
+[node name="World" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("3_bq33v")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_1yooq")]
+
+[node name="Background" parent="." instance=ExtResource("1_v5dby")]
+visible = false
+
+[node name="Bullets" type="Node2D" parent="."]
+script = SubResource("GDScript_bullets")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="." instance=ExtResource("4_j2gmx")]
+position = Vector2(470, 36)
+
+[node name="Player" parent="." instance=ExtResource("2_t5ptc")]
+position = Vector2(281, 671)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

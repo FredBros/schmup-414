@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://datdkhwy2g2sa"]
+
+[ext_resource type="PackedScene" uid="uid://d2bhyujl0edx2" path="res://scenes/main UI/left HUD/lifebar/life_bar.tscn" id="1_c56l7"]
+
+[node name="LeftHUD" type="Panel"]
+custom_minimum_size = Vector2(240, 0)
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LifeBar" parent="VBoxContainer" instance=ExtResource("1_c56l7")]
+layout_mode = 2
+
+[node name="Energy" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Energy"
+
+[node name="Shield" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Shield"

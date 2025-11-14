@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://brub1ybttnsq7"]
+
+[ext_resource type="Shader" uid="uid://d2yrgfxo5ykvr" path="res://scenes/background/background.gdshader" id="1_ewwm8"]
+[ext_resource type="Texture2D" uid="uid://7kusb6jjy1q1" path="res://scenes/background/Purple Nebula.png" id="2_jjv1t"]
+[ext_resource type="Texture2D" uid="uid://bpn61usqvxgvu" path="res://scenes/background/Starfield Near.png" id="3_03sym"]
+[ext_resource type="Texture2D" uid="uid://dkxpbwywi535" path="res://scenes/background/Starfield Mid.png" id="4_tp5tj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvnxx"]
+shader = ExtResource("1_ewwm8")
+shader_parameter/speed_y = 0.02
+shader_parameter/tiling_y = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evef5"]
+shader = ExtResource("1_ewwm8")
+shader_parameter/speed_y = 0.04
+shader_parameter/tiling_y = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iptv4"]
+shader = ExtResource("1_ewwm8")
+shader_parameter/speed_y = 0.1
+shader_parameter/tiling_y = 1.0
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="ParallaxLayerFar" type="ParallaxLayer" parent="."]
+position = Vector2(258, 368)
+scale = Vector2(0.44134584, 0.55952984)
+
+[node name="TextureFar" type="Sprite2D" parent="ParallaxLayerFar"]
+material = SubResource("ShaderMaterial_yvnxx")
+position = Vector2(11.328985, -16.084953)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_jjv1t")
+
+[node name="ParallaxLayerMid" type="ParallaxLayer" parent="."]
+position = Vector2(257.99994, 368)
+scale = Vector2(0.44892475, 0.5308075)
+
+[node name="TextureMid" type="Sprite2D" parent="ParallaxLayerMid"]
+material = SubResource("ShaderMaterial_evef5")
+position = Vector2(0.00015449524, 2.861023e-05)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_tp5tj")
+
+[node name="ParallaxLayerNear" type="ParallaxLayer" parent="."]
+position = Vector2(643, 402)
+scale = Vector2(0.58039576, 0.7468786)
+
+[node name="TextureNear" type="Sprite2D" parent="ParallaxLayerNear"]
+material = SubResource("ShaderMaterial_iptv4")
+position = Vector2(-661.61755, -41.506077)
+texture = ExtResource("3_03sym")
