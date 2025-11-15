@@ -92,8 +92,9 @@ func _update_state() -> void:
 		return
 	if not _playback:
 		return
-	var speed := _velocity.length()
-	if speed <= DEADZONE:
+	# Idle is based only on horizontal velocity (x), vertical doesn't matter
+	var h_speed: float = abs(float(_velocity.x))
+	if h_speed <= DEADZONE:
 		travel("Idle")
 		return
 
@@ -101,8 +102,6 @@ func _update_state() -> void:
 		travel("To_Left")
 	elif _velocity.x > DEADZONE:
 		travel("To_Right")
-	else:
-		travel("Idle")
 
 	if _boost_active:
 		if _anim_tree and _anim_tree.has_parameter("parameters/Boost/Strength"):
