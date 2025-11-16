@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://vh3invo6orv5" path="res://scenes/utils/components/animation manager/animation_manager.gd" id="1_ar2tj"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uqqyr"]
-graph_offset = Vector2(-2.9559653, 0)
-
 [sub_resource type="Animation" id="Animation_w7fmj"]
 resource_name = "Idle"
 length = 0.5
