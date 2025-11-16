@@ -15,6 +15,13 @@ signal player_hurt()
 @export var snap_to_zero_on_release := true
 @export var snap_threshold := 10.0 # if horizontal speed under this when releasing, snap to 0
 
+@export var acceleration := 2000.0 # how fast velocity accelerates towards target (pixels/sec^2)
+@export var friction := 1500.0 # deceleration when no input (pixels/sec^2)
+
+# Focus mode reduces speed and acceleration when held (use action 'focus_mode')
+@export var focus_speed_multiplier := 0.6
+@export var focus_accel_multiplier := 0.6
+
 var _can_shoot := true
 var _half_width := 0.0
 var _half_height := 0.0
@@ -22,6 +29,9 @@ var _is_boosting := false
 @onready var _sprite: Sprite2D = $Sprite2D
 var _flash_running: bool = false
 @export var flash_intensity := 0.5 # 0 = no flash, 1 = full flash (white)
+@export var tilt_max_deg := 10.0 # max sprite tilt in degrees when moving at full speed
+@export var tilt_lerp := 0.15 # interpolation factor for tilt smoothing (0-1)
+var _tilt_current := 0.0
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -62,12 +72,27 @@ func _handle_movement() -> void:
 	
 	# Compute the target velocity from input
 	var target := Vector2.ZERO
+	var focus_active := Input.is_action_pressed("focus_mode")
+
+	var cur_speed := speed * (focus_speed_multiplier if focus_active else 1.0)
 	if dir.length() > 0:
 		dir = dir.normalized()
-		target = dir * speed
+		target = dir * cur_speed
+
+	# If acceleration is set, use physics-style acceleration + friction
+	if acceleration > 0.0:
+		var delta := get_physics_process_delta_time()
+		var cur_accel := acceleration * (focus_accel_multiplier if focus_active else 1.0)
+
+		if target != Vector2.ZERO:
+			# Accelerate toward the target velocity
+			velocity = velocity.move_toward(target, cur_accel * delta)
+		else:
+			# No input: apply friction to slow down
+			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	# Smooth velocity to avoid rapid toggles around the DEADZONE
-	if enable_velocity_smoothing and vel_smoothing > 0.0:
+	elif enable_velocity_smoothing and vel_smoothing > 0.0:
 		# lerp factor scaled by delta, clamped to [0,1]. This approximates
 		# an exponential low-pass filter with tuning via vel_smoothing.
 		var delta := get_physics_process_delta_time()
@@ -103,6 +128,20 @@ func _handle_movement() -> void:
 	# Limiter la position dans la zone de jeu (512x720)
 	position.x = clamp(position.x, _half_width, 512 - _half_width)
 	position.y = clamp(position.y, _half_height, 720 - _half_height)
+
+	# Sprite tilt for feel (tilt is based on normalized horizontal speed)
+	if _sprite:
+		var target_tilt = 0.0
+		# Use current speed (focus modifier) when computing target tilt so the
+		# tilt scales correctly in Focus mode.
+		# reuse focus_active and cur_speed computed earlier in this function
+		if cur_speed > 0:
+			target_tilt = velocity.x / cur_speed * tilt_max_deg
+		# Smooth toward the target tilt
+		_tilt_current = lerp(_tilt_current, target_tilt, tilt_lerp)
+		# Clamp final tilt to defined bounds to avoid extreme rotations
+		_tilt_current = clamp(_tilt_current, -tilt_max_deg, tilt_max_deg)
+		_sprite.rotation_degrees = _tilt_current
 
 func _shoot() -> void:
 	emit_signal("shoot_pressed")
