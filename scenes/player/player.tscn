@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://vh3invo6orv5" path="res://scenes/utils/components/animation manager/animation_manager.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bbch7st8lu0kd" path="res://scenes/utils/components/lives/lives.gd" id="6_lives"]
-[ext_resource type="Shader" uid="uid://flashshader" path="res://scenes/player/shaders/white_flash.shader" id="7_flash"]
+[ext_resource type="Shader" uid="uid://flashshader" path="res://scenes/player/shaders/white_flash.gdshader" id="7_flash"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 size = Vector2(26, 40)
