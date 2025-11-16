@@ -139,6 +139,10 @@ _data = {
 &"To_Right": SubResource("Animation_5gtgg")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+shader = ExtResource("7_flash")
+shader_parameter/flash = 0.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_dovo2")
@@ -197,6 +201,3 @@ script = ExtResource("6_lives")
 
 [editable path="Hurtbox"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
-shader = ExtResource("7_flash")
-shader_parameter/flash = 0.0
