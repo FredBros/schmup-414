@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform float flash : hint_range(0.0, 2.0) = 0.0;
-uniform vec3 flash_color : hint_color = vec3(1.0, 1.0, 1.0);
+uniform float flash = 0.0;
+uniform vec3 flash_color = vec3(1.0, 1.0, 1.0);
 
 void fragment() {
     vec4 tex_color = texture(TEXTURE, UV) * COLOR;

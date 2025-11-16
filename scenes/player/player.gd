@@ -21,6 +21,7 @@ var _half_height := 0.0
 var _is_boosting := false
 @onready var _sprite: Sprite2D = $Sprite2D
 var _flash_running: bool = false
+@export var flash_intensity := 0.5 # 0 = no flash, 1 = full flash (white)
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -117,14 +118,14 @@ func _on_damaged(_damage: int, _source: Node) -> void:
 	# Optional: start a minor camera shake or particle burst here
 	pass
 
-func _on_invulnerability_started(_source: Node) -> void:
+func _on_invulnerability_started() -> void:
 	# Start shader flash loop
 	if _flash_running:
 		return
 	_flash_running = true
 	_start_flash_loop()
 
-func _on_invulnerability_ended(_source: Node) -> void:
+func _on_invulnerability_ended() -> void:
 	# Stop flashing
 	_flash_running = false
 	if _sprite and _sprite.material and _sprite.material is ShaderMaterial:
@@ -136,7 +137,7 @@ func _start_flash_loop() -> void:
 	var mat := _sprite.material as ShaderMaterial
 	# Repeated short flashes while invulnerable. Tune timings as needed.
 	while _flash_running:
-		mat.set_shader_parameter("flash", 1.0)
+		mat.set_shader_parameter("flash", flash_intensity)
 		await get_tree().create_timer(0.08).timeout
 		mat.set_shader_parameter("flash", 0.0)
 		await get_tree().create_timer(0.08).timeout

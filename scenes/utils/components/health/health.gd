@@ -5,8 +5,8 @@ class_name Health
 signal damaged(damage: int, source: Node)
 signal died(source: Node)
 signal about_to_die(source: Node)
-signal invulnerability_started(source: Node)
-signal invulnerability_ended(source: Node)
+signal invulnerability_started()
+signal invulnerability_ended()
 
 @export var max_health: int = 3
 var current_health: int = 0
@@ -41,10 +41,10 @@ func take_damage(damage: int, source: Node) -> void:
 	# Start invulnerability frame if configured.
 	if invulnerability_duration > 0.0 and not invulnerable:
 		invulnerable = true
-		emit_signal("invulnerability_started", source)
+		emit_signal("invulnerability_started")
 		await get_tree().create_timer(invulnerability_duration).timeout
 		invulnerable = false
-		emit_signal("invulnerability_ended", source)
+		emit_signal("invulnerability_ended")
 
 func die() -> void:
 	# Par défaut: demander à la scène de nettoyer l'entité
