@@ -4,6 +4,7 @@ class_name Health
 
 signal damaged(damage: int, source: Node)
 signal died(source: Node)
+signal about_to_die(source: Node)
 
 @export var max_health: int = 3
 var current_health: int = 0
@@ -21,12 +22,24 @@ func take_damage(damage: int, source: Node) -> void:
 	SignalManager.emit_signal("health_changed", get_parent(), current_health, max_health)
 	
 	if current_health <= 0:
-		emit_signal("died", source)
-		die()
+		# Allow other systems (lives manager) to react and possibly prevent the death
+		# by setting the prevent_death flag on this Health instance.
+		emit_signal("about_to_die", source)
+
+		if not self.prevent_death:
+			emit_signal("died", source)
+			die()
 
 func die() -> void:
 	# Par défaut: demander à la scène de nettoyer l'entité
 	get_parent().call_deferred("queue_free")
+
+var prevent_death: bool = false
+
+func clear_prevent_death() -> void:
+	# Helper used by systems like Lives that want to temporarily prevent death
+	# but ensure the flag is cleared after the death-check completes.
+	prevent_death = false
 
 func get_health() -> int:
 	return current_health

@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://2af5c4g7ruox"]
+[gd_scene load_steps=19 format=3 uid="uid://2af5c4g7ruox"]
 
 [ext_resource type="Script" uid="uid://ce6wk6urq05yp" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://disstr41ugd8f" path="res://scenes/player/assets/spritesheet_player.png" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://vh3invo6orv5" path="res://scenes/utils/components/animation manager/animation_manager.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://bbch7st8lu0kd" path="res://scenes/utils/components/lives/lives.gd" id="6_lives"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 size = Vector2(26, 40)
@@ -159,7 +160,7 @@ hframes = 3
 vframes = 5
 
 [node name="Health" parent="." instance=ExtResource("4_lvxji")]
-max_health = 10
+max_health = 5
 
 [node name="DustTop" type="CPUParticles2D" parent="."]
 position = Vector2(0, 18.5)
@@ -188,5 +189,8 @@ root_node = NodePath(".")
 libraries = {
 &"": SubResource("AnimationLibrary_qek5x")
 }
+
+[node name="Lives" type="Node" parent="."]
+script = ExtResource("6_lives")
 
 [editable path="Hurtbox"]
