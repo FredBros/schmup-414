@@ -34,10 +34,15 @@ func _update_lives_display(remaining_lives: int) -> void:
 	for child in lives_container.get_children():
 		child.queue_free()
 
+	# If there are no lives, don't add icons — the `Lives` container has a
+	# `custom_minimum_size` reserved so the HUD doesn't shift upward.
+	if remaining_lives <= 0:
+		return
+
+	# Otherwise add one icon per remaining life
 	for i in range(remaining_lives):
 		var icon = TextureRect.new()
 		icon.texture = life_icon_texture
-		# TextureRect doesn't expose `expand`; default behavior is fine.
-		# If you want a fixed size or expansion, set `rect_min_size` or `size_flags_horizontal`.
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.custom_minimum_size = Vector2(18, 18)
 		lives_container.add_child(icon)
