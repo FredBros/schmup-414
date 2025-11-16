@@ -11,6 +11,7 @@ signal state_changed(state_name: String)
 # Variables internes
 # AnimationTree removed — no longer used
 var _velocity: Vector2 = Vector2.ZERO
+var _last_input_dir: Vector2 = Vector2.ZERO
 var _boost_active: bool = false
 var _boost_strength: float = 1.0
 var _dust_top: CPUParticles2D = null
@@ -86,7 +87,9 @@ func _get_state_name(s: int) -> String:
 
 func _request_state(target: int) -> void:
 	# Small frame-based cooldown to avoid flapping
-	if _debug_frame_counter - _last_state_change_frame < state_change_cooldown_frames:
+	# Only debounce if the requested state is the same as the current state
+	# (this avoids blocking real state changes when the player switches direction quickly).
+	if target == _state and _debug_frame_counter - _last_state_change_frame < state_change_cooldown_frames:
 		if debug:
 			print("AnimationManager: request_state('%s') debounced" % _get_state_name(target))
 		return
@@ -226,15 +229,45 @@ func _update_state() -> void:
 	# We don't require AnimationTree playback for our code-driven state machine.
 	# Idle is based only on horizontal velocity (x), vertical doesn't matter
 	var h_speed: float = abs(float(_velocity.x))
+	# Always increment the frame counter so the debounce mechanism works
+	# irrespective of debug mode. Only print logs when debug is enabled.
+	_debug_frame_counter += 1
 	if debug:
 		# Debug helper: log the velocity and current playback state to trace unexpected transitions
 		var current_state: String = _get_state_name(_state)
 		# Print occasionally (approx every 60 frames)
-		_debug_frame_counter += 1
 		if _debug_frame_counter % 60 == 0:
 			print("AnimationManager: debug state=%s velocity=%s h_speed=%f" % [current_state, _velocity, h_speed])
 	if h_speed <= DEADZONE:
+		# If horizontal velocity is small, still check raw horizontal input
+		# because diagonal movement (up+right / up+left) may reduce h_speed
+		# but the player still intends to move horizontally; read actions
+		var raw_h := Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		# Also consider player's raw input direction (intent) to avoid missing diagonals
+		if _last_input_dir.x > DEADZONE:
+			_request_state(State.RIGHT)
+			return
+		elif _last_input_dir.x < -DEADZONE:
+			_request_state(State.LEFT)
+			return
+		if raw_h > DEADZONE:
+			_request_state(State.RIGHT)
+			return
+		elif raw_h < -DEADZONE:
+			_request_state(State.LEFT)
+			return
+
+		# No horizontal input -> Idle
 		_request_state(State.IDLE)
+		return
+
+	# Prefer raw input intent if present: this helps with quick diagonal
+	# changes where the horizontal velocity may lag or be reduced.
+	if abs(_last_input_dir.x) > DEADZONE:
+		if _last_input_dir.x < 0:
+			_request_state(State.LEFT)
+		else:
+			_request_state(State.RIGHT)
 		return
 
 	if _velocity.x < -DEADZONE:
@@ -279,7 +312,8 @@ func _on_animation_finished(anim_name: String) -> void:
 			_do_state_change(State.IDLE)
 			return
 
-func _on_parent_movement(velocity: Vector2) -> void:
+func _on_parent_movement(velocity: Vector2, input_dir: Vector2) -> void:
+	_last_input_dir = input_dir
 	set_velocity(velocity)
 
 func _on_parent_boost(active: bool, strength: float) -> void:

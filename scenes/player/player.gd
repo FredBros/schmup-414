@@ -1,6 +1,6 @@
 extends "res://scenes/utils/entity/entity.gd"
 
-signal movement_updated(velocity: Vector2)
+signal movement_updated(velocity: Vector2, input_dir: Vector2)
 signal boost_changed(active: bool, strength: float)
 signal shoot_pressed()
 signal player_hurt()
@@ -32,6 +32,7 @@ var _flash_running: bool = false
 @export var tilt_max_deg := 10.0 # max sprite tilt in degrees when moving at full speed
 @export var tilt_lerp := 0.15 # interpolation factor for tilt smoothing (0-1)
 var _tilt_current := 0.0
+var _last_input_dir: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -57,8 +58,8 @@ func _physics_process(_delta: float) -> void:
 		_is_boosting = boost_now
 
 
-	# Notifier la vélocité à l'AnimationManager
-	emit_signal("movement_updated", velocity)
+	# Notifier la vélocité et l'intention de mouvement à l'AnimationManager
+	emit_signal("movement_updated", velocity, _last_input_dir)
 	if Input.is_action_pressed("shoot") and _can_shoot:
 		_shoot()
 		_can_shoot = false
@@ -76,8 +77,11 @@ func _handle_movement() -> void:
 
 	var cur_speed := speed * (focus_speed_multiplier if focus_active else 1.0)
 	if dir.length() > 0:
+		_last_input_dir = dir
 		dir = dir.normalized()
 		target = dir * cur_speed
+	else:
+		_last_input_dir = Vector2.ZERO
 
 	# If acceleration is set, use physics-style acceleration + friction
 	if acceleration > 0.0:
