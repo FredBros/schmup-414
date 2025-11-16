@@ -199,4 +199,4 @@ script = ExtResource("6_lives")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
 shader = ExtResource("7_flash")
- shader_parameter/flash = 0.0
+shader_parameter/flash = 0.0
