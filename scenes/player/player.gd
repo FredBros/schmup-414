@@ -3,19 +3,22 @@ extends "res://scenes/utils/entity/entity.gd"
 signal movement_updated(velocity: Vector2)
 signal boost_changed(active: bool, strength: float)
 signal shoot_pressed()
-signal raw_state(state_name: String)
 signal player_hurt()
 
 @export var speed := 350.0
 @export var shoot_cooldown := 0.25
 @export var bullet_scene: PackedScene = preload("res://scenes/bullet/Bullet.tscn")
 @export var boost_strength := 1.0
+@export var vel_smoothing := 5.0 # larger -> faster smoothing; 0 disables
+@export var enable_velocity_smoothing := true
+@export var smooth_x_only := true
+@export var snap_to_zero_on_release := true
+@export var snap_threshold := 10.0 # if horizontal speed under this when releasing, snap to 0
 
 var _can_shoot := true
 var _half_width := 0.0
 var _half_height := 0.0
 var _is_boosting := false
-var _override_idle := false
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -35,14 +38,6 @@ func _physics_process(_delta: float) -> void:
 		emit_signal("boost_changed", boost_now, boost_strength)
 		_is_boosting = boost_now
 
-	# Si on appuie sur move_down, on force l'animation en Idle
-	var down_now := Input.is_action_pressed("move_down")
-	if down_now != _override_idle:
-		if down_now:
-			emit_signal("raw_state", "Idle")
-		else:
-			emit_signal("raw_state", "")
-		_override_idle = down_now
 
 	# Notifier la vélocité à l'AnimationManager
 	emit_signal("movement_updated", velocity)
@@ -57,10 +52,45 @@ func _handle_movement() -> void:
 	dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
+	# Compute the target velocity from input
+	var target := Vector2.ZERO
 	if dir.length() > 0:
 		dir = dir.normalized()
-		velocity = dir * speed
-		move_and_slide()
+		target = dir * speed
+
+	# Smooth velocity to avoid rapid toggles around the DEADZONE
+	if enable_velocity_smoothing and vel_smoothing > 0.0:
+		# lerp factor scaled by delta, clamped to [0,1]. This approximates
+		# an exponential low-pass filter with tuning via vel_smoothing.
+		var delta := get_physics_process_delta_time()
+		var t: float = clamp(vel_smoothing * delta, 0.0, 1.0)
+
+		# Optional: smoothing only on horizontal axis (recommended for side-scrolling
+		# or shmup left/right controls). Vertical component remains instantaneous.
+		if smooth_x_only:
+			# Quick path for release: snap to zero if almost stopped to avoid long delay
+			if target == Vector2.ZERO and snap_to_zero_on_release and abs(velocity.x) < snap_threshold:
+				velocity.x = 0.0
+			else:
+				# If the difference is large, accept target immediately (no float),
+				# otherwise perform smoothing to reduce micro-bounces.
+				if abs(target.x - velocity.x) > snap_threshold:
+					velocity.x = target.x
+				else:
+					velocity.x = lerp(velocity.x, target.x, t)
+			# No smoothing on Y
+			velocity.y = target.y
+		else:
+			# Two-axis smoothing
+			if target == Vector2.ZERO and snap_to_zero_on_release and velocity.length() < snap_threshold:
+				velocity = Vector2.ZERO
+			else:
+				velocity = velocity.lerp(target, t)
+	else:
+		velocity = target
+
+	# Apply velocity in physics
+	move_and_slide()
 	
 	# Limiter la position dans la zone de jeu (512x720)
 	position.x = clamp(position.x, _half_width, 512 - _half_width)
