@@ -19,11 +19,18 @@ var _can_shoot := true
 var _half_width := 0.0
 var _half_height := 0.0
 var _is_boosting := false
+@onready var _sprite: Sprite2D = $Sprite2D
+var _flash_running: bool = false
 
 func _ready() -> void:
 	add_to_group("Player")
 	
 	# Calculer les dimensions du collider une fois pour toutes
+	# Connect to Health invulnerability signals for visual feedback
+	var _health_node = $Health
+	if _health_node:
+		_health_node.connect("invulnerability_started", Callable(self, "_on_invulnerability_started"))
+		_health_node.connect("invulnerability_ended", Callable(self, "_on_invulnerability_ended"))
 	var collision_shape = $CollisionShape2D
 	if collision_shape and collision_shape.shape:
 		_half_width = collision_shape.shape.extents.x if collision_shape.shape is RectangleShape2D else collision_shape.shape.radius
@@ -107,7 +114,32 @@ func _shoot() -> void:
 func _on_damaged(_damage: int, _source: Node) -> void:
 	# Mettre à jour UI ou effets visuels
 	emit_signal("player_hurt")
+	# Optional: start a minor camera shake or particle burst here
 	pass
+
+func _on_invulnerability_started(_source: Node) -> void:
+	# Start shader flash loop
+	if _flash_running:
+		return
+	_flash_running = true
+	_start_flash_loop()
+
+func _on_invulnerability_ended(_source: Node) -> void:
+	# Stop flashing
+	_flash_running = false
+	if _sprite and _sprite.material and _sprite.material is ShaderMaterial:
+		_sprite.material.set_shader_parameter("flash", 0.0)
+
+func _start_flash_loop() -> void:
+	if not _sprite or not _sprite.material or not (_sprite.material is ShaderMaterial):
+		return
+	var mat := _sprite.material as ShaderMaterial
+	# Repeated short flashes while invulnerable. Tune timings as needed.
+	while _flash_running:
+		mat.set_shader_parameter("flash", 1.0)
+		await get_tree().create_timer(0.08).timeout
+		mat.set_shader_parameter("flash", 0.0)
+		await get_tree().create_timer(0.08).timeout
 
 func _on_die(_source: Node) -> void:
 	# Game over logique
