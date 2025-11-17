@@ -1,9 +1,14 @@
 extends Node2D
 
 @export var bullet_scene: PackedScene = preload("res://scenes/bullet/bullet.tscn")
+@export var auto_fire_enabled: bool = false
+@export var auto_fire_rate: float = 1.0 # shots per second
+@export var default_bullet_data: Resource
+@export var default_bullet_direction := Vector2.DOWN
+
 
 # Optional parent container that holds all bullets (great for pooling later)
-@export var bullets_container_path: NodePath = NodePath("/root/World/Bullets")
+@export var bullets_container_path: NodePath
 
 func _ready() -> void:
 	if not bullet_scene:
@@ -16,10 +21,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-@export var auto_fire_enabled: bool = false
-@export var auto_fire_rate: float = 1.0 # shots per second
-@export var default_bullet_data: Resource
-@export var default_bullet_direction := Vector2.DOWN
 
 func start_auto_fire(bullet_data: Resource = null, direction: Vector2 = Vector2.ZERO) -> void:
 	if bullet_data:
@@ -80,6 +81,10 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 		if sprite_node:
 			bullet_data.apply_to_sprite(sprite_node)
 
+		# Apply collision from resource (prefab/shape/preset)
+		if bullet_data.has_method("apply_collision"):
+			bullet_data.apply_collision(b)
+
 	if b.has_method("set"):
 		# set fields if they exist
 		if b.has_variable("damage"):
@@ -103,11 +108,11 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 				BulletData.Pattern.STRAIGHT:
 					_pattern_straight(b, bullet_data, direction, options)
 				BulletData.Pattern.AIMED:
-					_pattern_aimed(b, bullet_data, owner, options)
+					_pattern_aimed(b, bullet_data, _spawner, options)
 				BulletData.Pattern.SPREAD:
 					_pattern_spread(b, bullet_data, direction, options)
 				BulletData.Pattern.HOMING:
-					_pattern_homing(b, bullet_data, owner, options)
+					_pattern_homing(b, bullet_data, _spawner, options)
 				BulletData.Pattern.CURVED:
 					_pattern_curved(b, bullet_data, direction, options)
 		_:
