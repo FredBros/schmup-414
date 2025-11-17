@@ -26,6 +26,11 @@ func _process(_delta: float) -> void:
 func start_auto_fire(bullet_data: Resource = null, direction: Vector2 = Vector2.ZERO) -> void:
 	if bullet_data:
 		default_bullet_data = bullet_data
+		# If the bullet data resource defines a fire_rate, prefer it for auto_fire
+		if _object_has_property(default_bullet_data, "fire_rate"):
+			var fr = float(default_bullet_data.fire_rate)
+			if fr > 0.0:
+				auto_fire_rate = fr
 	if direction != Vector2.ZERO:
 		default_bullet_direction = direction
 	if not has_node("AutoFireTimer"):

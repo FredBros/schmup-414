@@ -17,8 +17,15 @@ func _ready() -> void:
 		# Configure the manager default bullet data and fire rate from enemy settings
 		if bullet_data_resource:
 			bm.default_bullet_data = bullet_data_resource
+			# Prefer the BulletData-specified fire_rate if present
+			if bullet_data_resource.fire_rate > 0.0:
+				bm.auto_fire_rate = bullet_data_resource.fire_rate
+			else:
+				bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
+		else:
+			# No bullet resource: fall back to enemy shoot_cooldown
+			bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
 		bm.default_bullet_direction = Vector2(0, 1)
-		bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
 		if bm.debug_logs:
 			print("Enemy._ready: shoot_cooldown=", shoot_cooldown, ", bm.auto_fire_rate=", bm.auto_fire_rate)
 		bm.start_auto_fire()
