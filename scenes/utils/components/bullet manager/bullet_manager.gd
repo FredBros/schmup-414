@@ -35,6 +35,8 @@ func start_auto_fire(bullet_data: Resource = null, direction: Vector2 = Vector2.
 		add_child(t)
 		t.connect("timeout", Callable(self, "_on_auto_fire_timeout"))
 	$AutoFireTimer.wait_time = 1.0 / max(0.0001, auto_fire_rate)
+	if debug_logs:
+		print("BulletManager.start_auto_fire: auto_fire_rate=", auto_fire_rate, " wait_time=", $AutoFireTimer.wait_time)
 	$AutoFireTimer.start()
 
 func stop_auto_fire() -> void:
@@ -44,6 +46,8 @@ func stop_auto_fire() -> void:
 func _on_auto_fire_timeout() -> void:
 	if not default_bullet_data:
 		return
+	if debug_logs:
+		print("BulletManager._on_auto_fire_timeout: spawning bullet at", global_position, "dir=", default_bullet_direction)
 	spawn_bullet(self, default_bullet_data, global_position, default_bullet_direction)
 
 func _get_bullets_container() -> Node:

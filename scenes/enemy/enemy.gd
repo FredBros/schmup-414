@@ -19,6 +19,8 @@ func _ready() -> void:
 			bm.default_bullet_data = bullet_data_resource
 		bm.default_bullet_direction = Vector2(0, 1)
 		bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
+		if bm.debug_logs:
+			print("Enemy._ready: shoot_cooldown=", shoot_cooldown, ", bm.auto_fire_rate=", bm.auto_fire_rate)
 		bm.start_auto_fire()
 	elif not use_bullet_manager_auto_fire:
 		# Fallback to legacy shooting behavior (local timer loop)
