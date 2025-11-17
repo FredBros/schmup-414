@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2af5c4g7ruox"]
+[gd_scene load_steps=21 format=3 uid="uid://2af5c4g7ruox"]
 
 [ext_resource type="Script" uid="uid://ce6wk6urq05yp" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="2_lvxji"]
@@ -6,13 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://vh3invo6orv5" path="res://scenes/utils/components/animation manager/animation_manager.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://bbch7st8lu0kd" path="res://scenes/utils/components/lives/lives.gd" id="6_lives"]
-[ext_resource type="Shader" uid="uid://flashshader" path="res://scenes/player/shaders/white_flash.gdshader" id="7_flash"]
+[ext_resource type="Shader" uid="uid://u6jwgetanlm8" path="res://scenes/player/shaders/white_flash.gdshader" id="7_flash"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 size = Vector2(26, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 size = Vector2(26, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+shader = ExtResource("7_flash")
+shader_parameter/flash = 0.0
+shader_parameter/flash_color = Vector3(1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_5gtgg"]
 colors = PackedColorArray(0.972549, 0.5372549, 0.4117647, 0.33333334, 1, 1, 1, 1)
@@ -139,13 +144,13 @@ _data = {
 &"To_Right": SubResource("Animation_5gtgg")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
-shader = ExtResource("7_flash")
-shader_parameter/flash = 0.0
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_dovo2")
+speed = 600.0
+shoot_cooldown = 0.05
+acceleration = 3000.0
+friction = 3000.0
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_lvxji")]
 
@@ -160,10 +165,10 @@ shape = SubResource("RectangleShape2D_dovo2")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_flash")
 texture = ExtResource("3_p47bc")
 hframes = 3
 vframes = 5
-material = SubResource("ShaderMaterial_flash")
 
 [node name="Health" parent="." instance=ExtResource("4_lvxji")]
 max_health = 5
@@ -200,4 +205,3 @@ libraries = {
 script = ExtResource("6_lives")
 
 [editable path="Hurtbox"]
-

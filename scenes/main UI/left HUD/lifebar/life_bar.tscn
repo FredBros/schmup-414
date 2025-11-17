@@ -13,17 +13,19 @@ bg_color = Color(1, 0.15745702, 0.23305884, 1)
 
 [node name="LifeBar" type="VBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
-offset_right = 240.0
-offset_bottom = 5.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 239.0
+offset_bottom = 51.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 script = ExtResource("1_ma0r5")
 
 [node name="Lives" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_minimum_size = Vector2(0, 18)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 30)

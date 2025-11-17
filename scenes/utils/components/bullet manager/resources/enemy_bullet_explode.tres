@@ -1,0 +1,18 @@
+[gd_resource type="BulletData" load_steps=3 format=2]
+
+[ext_resource type="Script" uid="uid://ct8p2x2ab642m" path="res://scenes/utils/components/bullet manager/resources/bullet_data.gd" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://cvu11smex2rt" path="res://scenes/utils/components/bullet manager/resources/bullet_explosion_frames.tres" id="2"]
+
+
+[resource]
+script = ExtResource( 1 )
+damage = 2
+speed = 220.0
+fire_rate = 0.5
+life_duration = 1.2
+is_player_bullet = false
+pattern = 0
+sprite_frames = ExtResource( 2 )
+animation_name = "explode"
+modulate = Color( 1, 1, 1, 1 )
+display_name = "Enemy Exploding Bullet"

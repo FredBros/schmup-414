@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfq40hmh34s0"]
+[gd_scene load_steps=8 format=3 uid="uid://dfq40hmh34s0"]
 
 [ext_resource type="Script" uid="uid://qy238vdwy830" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="Texture2D" uid="uid://808ktx7owcvv" path="res://assets/Pixel SHMUP Free/spritesheet_enemy_1.png" id="2_40wdo"]
-[ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="3_tjssy"]
+[ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
+[ext_resource type="PackedScene" uid="uid://b74tjsjaf8isd" path="res://scenes/utils/components/bullet manager/bullet_manager.tscn" id="5_gl05p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
 size = Vector2(41, 20)
@@ -19,6 +20,7 @@ texture = ExtResource("2_40wdo")
 hframes = 3
 
 [node name="Health" parent="." instance=ExtResource("3_tjssy")]
+invulnerability_duration = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tjssy")
@@ -29,4 +31,7 @@ disabled = true
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_gl05p")
 
+[node name="BulletManager" parent="." instance=ExtResource("5_gl05p")]
+
 [editable path="Hurtbox"]
+[editable path="BulletManager"]

@@ -1,0 +1,17 @@
+[gd_resource type="BulletData" script_class="BulletData" load_steps=2 format=3 uid="uid://kesbj7ivcxo2"]
+
+[ext_resource type="Script" uid="uid://ct8p2x2ab642m" path="res://scenes/utils/components/bullet manager/resources/bullet_data.gd" id="1"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1")
+speed = 400.0
+spread_angle_deg = 10.0
+homing_strength = 2.0
+curve_frequency = 2.0
+curve_amplitude = 8.0
+display_name = "DefaultEnemyBullet"
+sprite_hframes = null
+sprite_vframes = null
+sprite_frame = null
