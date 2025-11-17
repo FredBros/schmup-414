@@ -5,6 +5,7 @@ extends Node2D
 @export var auto_fire_rate: float = 1.0 # shots per second
 @export var default_bullet_data: Resource
 @export var default_bullet_direction := Vector2.DOWN
+@export var debug_logs: bool = false
 
 
 # Optional parent container that holds all bullets (great for pooling later)
@@ -134,6 +135,14 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 					_pattern_curved(b, effective_data, direction, options)
 		_:
 			_pattern_straight(b, effective_data, direction, options)
+
+	# Debug output for testing in-game/editor
+	if debug_logs:
+		var spawner_name := "<none>"
+		if _spawner:
+			spawner_name = _spawner.name
+		var pattern_name := str(effective_data.pattern)
+		print("BulletManager.spawn_bullet => spawner=", spawner_name, ", data=", effective_data, ", pos=", at_pos, ", dir=", direction, ", pattern=", pattern_name)
 
 	return b
 
