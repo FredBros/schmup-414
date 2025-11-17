@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bullet_scene: PackedScene = preload("res://scenes/bullet/bullet.tscn")
+@export var bullet_scene: PackedScene = preload("res://scenes/bullet/bullet prefab/bullet.tscn")
 @export var auto_fire_enabled: bool = false
 @export var auto_fire_rate: float = 1.0 # shots per second
 @export var default_bullet_data: Resource
@@ -67,13 +67,23 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 		push_error("BulletManager.spawn_bullet: no bullet_scene set")
 		return null
 
+	# Prefer bullet_data param; if null, try the spawner's bullet_data_resource; fallback to manager default
+	var effective_data := bullet_data
+	if effective_data == null and _spawner and _object_has_property(_spawner, "bullet_data_resource"):
+		effective_data = _spawner.bullet_data_resource
+	if effective_data == null:
+		effective_data = default_bullet_data
+	if not effective_data:
+		push_error("BulletManager.spawn_bullet: missing BulletData resource (param/spawner/default)")
+		return null
+
 	var bullets_parent = _get_bullets_container()
 	var b = bullet_scene.instantiate()
 	bullets_parent.add_child(b)
 	b.global_position = at_pos
 
 	# Basic stats
-	if bullet_data.has_method("apply_to_sprite"):
+	if effective_data.has_method("apply_to_sprite"):
 		# Prefer AnimatedSprite2D then Sprite2D
 		var sprite_node := b.get_node_or_null("AnimatedSprite2D")
 		if sprite_node == null:
@@ -85,38 +95,45 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 		if bullet_data.has_method("apply_collision"):
 			bullet_data.apply_collision(b)
 
-	if b.has_method("set"):
+	# Prefer type safe bullet access via class_name Bullet when available
+	# The Bullet type is defined in scenes/bullet/bullet.gd; import it if present
+	var is_bullet := b is Bullet
+	if is_bullet or b.has_method("set"):
 		# set fields if they exist
-		if b.has_variable("damage"):
-			b.damage = bullet_data.damage
-		if b.has_variable("speed"):
-			b.speed = bullet_data.speed
+		if is_bullet:
+			b.damage = effective_data.damage
+			b.speed = effective_data.speed
+		else:
+			if _object_has_property(b, "damage"):
+				b.damage = effective_data.damage
+			if _object_has_property(b, "speed"):
+				b.speed = effective_data.speed
 
 	# target_type: choose the opponent by default
 	# bullet.gd defines enum TargetType { PLAYER, ENEMIES }
-	if b.has_variable("target_type") and b.has_variable("TargetType"):
-		if bullet_data.is_player_bullet:
+	if _object_has_property(b, "target_type") and _object_has_property(b, "TargetType"):
+		if effective_data.is_player_bullet:
 			b.target_type = b.TargetType.ENEMIES
 		else:
 			b.target_type = b.TargetType.PLAYER
 
 	# match patterns
-	match bullet_data.pattern:
+	match effective_data.pattern:
 		BulletData.Pattern.STRAIGHT, BulletData.Pattern.AIMED, BulletData.Pattern.SPREAD, BulletData.Pattern.HOMING, BulletData.Pattern.CURVED:
 			# call specific handler
 			match bullet_data.pattern:
 				BulletData.Pattern.STRAIGHT:
-					_pattern_straight(b, bullet_data, direction, options)
+					_pattern_straight(b, effective_data, direction, options)
 				BulletData.Pattern.AIMED:
-					_pattern_aimed(b, bullet_data, _spawner, options)
+					_pattern_aimed(b, effective_data, _spawner, options)
 				BulletData.Pattern.SPREAD:
-					_pattern_spread(b, bullet_data, direction, options)
+					_pattern_spread(b, effective_data, direction, options)
 				BulletData.Pattern.HOMING:
-					_pattern_homing(b, bullet_data, _spawner, options)
+					_pattern_homing(b, effective_data, _spawner, options)
 				BulletData.Pattern.CURVED:
-					_pattern_curved(b, bullet_data, direction, options)
+					_pattern_curved(b, effective_data, direction, options)
 		_:
-			_pattern_straight(b, bullet_data, direction, options)
+			_pattern_straight(b, effective_data, direction, options)
 
 	return b
 
@@ -124,11 +141,26 @@ func _spawn_bullet_instance(bullet_data: Resource, pos: Vector2, _dir: Vector2, 
 	var inst = bullet_scene.instantiate()
 	bullets_parent.add_child(inst)
 	inst.global_position = pos
-	if inst.has_variable("damage"):
+	if _object_has_property(inst, "damage"):
 		inst.damage = bullet_data.damage
-	if inst.has_variable("speed"):
+	if _object_has_property(inst, "speed"):
 		inst.speed = bullet_data.speed
 	return inst
+
+
+func _object_has_property(obj: Object, prop_name: String) -> bool:
+	"""Safely checks whether an object has a property with the specified name.
+
+	Godot 4 removed `has_variable` from some objects; this helper inspects the
+	`get_property_list()` for a property with the given name. This is safe and
+	works with both typed scripts and exported properties.
+	"""
+	if obj == null:
+		return false
+	for p in obj.get_property_list():
+		if p.name == prop_name:
+			return true
+	return false
 
 func _pattern_straight(bullet, data, direction: Vector2, _options := {}) -> void:
 	if direction == Vector2.ZERO:

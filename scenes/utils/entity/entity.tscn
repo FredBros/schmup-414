@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3qh0ec0wac3w"]
 
-[ext_resource type="Script" uid="uid://5ffrq84b586o" path="res://scenes/utils/entity/entity.gd" id="1_83itf"]
-[ext_resource type="PackedScene" uid="uid://bsoit26r2cvpv" path="res://scenes/utils/components/health/health.tscn" id="2_c6pnf"]
+[ext_resource type="Script" uid="uid://5ffrq84b586o" path="res://scenes/bullet/bullet prefab/bullet.gd" id="1_83itf"]
+[ext_resource type="PackedScene" uid="uid://bsoit26r2cvpv" path="res://scenes/utils/components/hitbox/hitbox.tscn" id="2_c6pnf"]
+
 
 [node name="Entity" type="CharacterBody2D"]
 script = ExtResource("1_83itf")

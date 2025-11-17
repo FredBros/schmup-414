@@ -11,9 +11,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 size = Vector2(26, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
-size = Vector2(26, 40)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
 shader = ExtResource("7_flash")
 shader_parameter/flash = 0.0
@@ -144,8 +141,11 @@ _data = {
 &"To_Right": SubResource("Animation_5gtgg")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0owmy"]
+radius = 1.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(1.8, 1.8)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_dovo2")
 speed = 600.0
 shoot_cooldown = 0.05
@@ -155,14 +155,9 @@ friction = 3000.0
 [node name="Hurtbox" parent="." instance=ExtResource("2_lvxji")]
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, -4)
+position = Vector2(0, -2.3841858e-07)
+scale = Vector2(0.23668037, 0.18834354)
 shape = SubResource("RectangleShape2D_75vfm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_dovo2")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_flash")
@@ -203,5 +198,9 @@ libraries = {
 
 [node name="Lives" type="Node" parent="."]
 script = ExtResource("6_lives")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0owmy")
+disabled = true
 
 [editable path="Hurtbox"]

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BulletData" load_steps=12 format=3 uid="uid://b2lwim3xa5357"]
+[gd_resource type="Resource" script_class="BulletData" load_steps=13 format=3 uid="uid://b2lwim3xa5357"]
 
 [ext_resource type="Script" uid="uid://ct8p2x2ab642m" path="res://scenes/utils/components/bullet manager/resources/bullet_data.gd" id="1_0br4f"]
 [ext_resource type="Texture2D" uid="uid://b02gbpte6x4uj" path="res://scenes/utils/components/bullet manager/asset/Bullet 24x24 Free Part 4A2.png" id="2_g22c6"]
+[ext_resource type="Texture2D" uid="uid://dutv2jjvhv81e" path="res://scenes/bullet/bullet prefab/P1_Bullet_Alt2_1.png" id="2_xyx0q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upcvd"]
 atlas = ExtResource("2_g22c6")
@@ -69,6 +70,11 @@ animations = [{
 
 [resource]
 script = ExtResource("1_0br4f")
+sprite = ExtResource("2_xyx0q")
+sprite_hframes = 2
 sprite_frames = SubResource("SpriteFrames_f05c5")
+speed = 2000.0
+fire_rate = 10.0
+collision_preset = 28
 display_name = "basic"
 metadata/_custom_type_script = "uid://ct8p2x2ab642m"

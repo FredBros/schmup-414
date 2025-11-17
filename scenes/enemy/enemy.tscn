@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfq40hmh34s0"]
+[gd_scene load_steps=9 format=3 uid="uid://dfq40hmh34s0"]
 
 [ext_resource type="Script" uid="uid://qy238vdwy830" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="Texture2D" uid="uid://808ktx7owcvv" path="res://assets/Pixel SHMUP Free/spritesheet_enemy_1.png" id="2_40wdo"]
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="3_tjssy"]
 [ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
 [ext_resource type="PackedScene" uid="uid://b74tjsjaf8isd" path="res://scenes/utils/components/bullet manager/bullet_manager.tscn" id="5_gl05p"]
+[ext_resource type="Resource" uid="uid://b2lwim3xa5357" path="res://scenes/bullet/bullet prefab/basic_bullet.tres" id="6_cwlon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
 size = Vector2(41, 20)
@@ -13,6 +14,7 @@ size = Vector2(41, 20)
 size = Vector2(40, 20)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(-1, 0)
 script = ExtResource("1_a3pup")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,6 +34,10 @@ disabled = true
 shape = SubResource("RectangleShape2D_gl05p")
 
 [node name="BulletManager" parent="." instance=ExtResource("5_gl05p")]
+default_bullet_data = ExtResource("6_cwlon")
+bullets_container_path = NodePath("../BulletContainer")
+
+[node name="BulletContainer" type="Node" parent="."]
 
 [editable path="Hurtbox"]
 [editable path="BulletManager"]

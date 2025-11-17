@@ -7,7 +7,7 @@ signal player_hurt()
 
 @export var speed := 350.0
 @export var shoot_cooldown := 0.25
-@export var bullet_scene: PackedScene = preload("res://scenes/bullet/Bullet.tscn")
+@export var bullet_scene: PackedScene = preload("res://scenes/bullet/bullet prefab/bullet.tscn")
 @export var boost_strength := 1.0
 @export var vel_smoothing := 5.0 # larger -> faster smoothing; 0 disables
 @export var enable_velocity_smoothing := true
