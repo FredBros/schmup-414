@@ -89,11 +89,11 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 		if sprite_node == null:
 			sprite_node = b.get_node_or_null("Sprite2D")
 		if sprite_node:
-			bullet_data.apply_to_sprite(sprite_node)
+			effective_data.apply_to_sprite(sprite_node)
 
 		# Apply collision from resource (prefab/shape/preset)
-		if bullet_data.has_method("apply_collision"):
-			bullet_data.apply_collision(b)
+		if effective_data.has_method("apply_collision"):
+			effective_data.apply_collision(b)
 
 	# Prefer type safe bullet access via class_name Bullet when available
 	# The Bullet type is defined in scenes/bullet/bullet.gd; import it if present
@@ -121,7 +121,7 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 	match effective_data.pattern:
 		BulletData.Pattern.STRAIGHT, BulletData.Pattern.AIMED, BulletData.Pattern.SPREAD, BulletData.Pattern.HOMING, BulletData.Pattern.CURVED:
 			# call specific handler
-			match bullet_data.pattern:
+			match effective_data.pattern:
 				BulletData.Pattern.STRAIGHT:
 					_pattern_straight(b, effective_data, direction, options)
 				BulletData.Pattern.AIMED:
