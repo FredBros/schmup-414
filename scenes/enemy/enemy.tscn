@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="3_tjssy"]
 [ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
 [ext_resource type="PackedScene" uid="uid://b74tjsjaf8isd" path="res://scenes/utils/components/bullet manager/bullet_manager.tscn" id="5_gl05p"]
-[ext_resource type="Resource" uid="uid://b2lwim3xa5357" path="res://scenes/bullet/bullet prefab/basic_bullet.tres" id="6_cwlon"]
+[ext_resource type="Resource" uid="uid://bqvsjw41powr6" path="res://scenes/bullet/test/test_bullet.tres" id="6_cwlon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
 size = Vector2(41, 20)
@@ -14,8 +14,9 @@ size = Vector2(41, 20)
 size = Vector2(40, 20)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
-position = Vector2(-1, 0)
 script = ExtResource("1_a3pup")
+shoot_cooldown = 0.5
+bullet_data_resource = ExtResource("6_cwlon")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_40wdo")
@@ -34,10 +35,7 @@ disabled = true
 shape = SubResource("RectangleShape2D_gl05p")
 
 [node name="BulletManager" parent="." instance=ExtResource("5_gl05p")]
-default_bullet_data = ExtResource("6_cwlon")
-bullets_container_path = NodePath("../BulletContainer")
-
-[node name="BulletContainer" type="Node" parent="."]
+debug_logs = true
 
 [editable path="Hurtbox"]
 [editable path="BulletManager"]

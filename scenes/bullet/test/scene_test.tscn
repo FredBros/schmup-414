@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xcrgq37j6mny"]
+
+[ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="1_rjfe3"]
+[ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="2_s5kml"]
+
+[node name="SceneTest" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_rjfe3")]
+position = Vector2(624, 143)
+
+[node name="Player" parent="." instance=ExtResource("2_s5kml")]
+position = Vector2(649, 655)
+
+[node name="BulletContainer" type="Node" parent="." groups=["BulletContainer"]]

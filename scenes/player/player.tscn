@@ -189,6 +189,7 @@ hue_variation_max = 0.65
 [node name="AnimationManager" type="Node" parent="."]
 script = ExtResource("5_p47bc")
 dust_top_path = NodePath("../DustTop")
+debug = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager"]
 root_node = NodePath(".")

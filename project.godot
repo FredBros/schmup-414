@@ -32,6 +32,7 @@ Player=""
 Bullets=""
 Enemies=""
 Hurtbox=""
+BulletContainer=""
 
 [input]
 

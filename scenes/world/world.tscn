@@ -35,3 +35,5 @@ position = Vector2(281, 671)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="BulletContainer" type="Node" parent="." groups=["BulletContainer"]]
