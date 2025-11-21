@@ -19,6 +19,8 @@ extends Node2D
 ## [Optional] If true, enables detailed logging to the console for debugging purposes.
 @export var debug_logs: bool = false
 
+var _bullet_pool: BulletPool
+
 
 func _ready() -> void:
 	if not bullet_scene:
@@ -29,6 +31,14 @@ func _ready() -> void:
 	if has_node("AutoFireTimer"):
 		$AutoFireTimer.wait_time = 1.0
 		$AutoFireTimer.one_shot = false
+		
+	# Find the BulletPool in the scene tree
+	var pools = get_tree().get_nodes_in_group("BulletPool")
+	if pools.size() > 0:
+		_bullet_pool = pools[0]
+		print("[BulletManager] BulletPool found.", _bullet_pool)
+	else:
+		push_error("BulletManager: Could not find a node in the 'BulletPool' group. Please add a BulletPool to your main scene.")
 
 func _process(_delta: float) -> void:
 	pass
@@ -103,34 +113,39 @@ func spawn_bullet(_spawner: Node, bullet_data: Resource, at_pos: Vector2, direct
 		# L'erreur a déjà été affichée dans _get_bullets_container, on arrête ici.
 		return null
 		
-	var b = bullet_scene.instantiate()
-	bullets_parent.add_child(b)
+	var b: Bullet
+	if is_instance_valid(_bullet_pool):
+		b = _bullet_pool.get_bullet()
+	else:
+		# Fallback to instantiating if pool is not found (error already shown)
+		print("[BulletManager] Bullet instantiated without pool.")
+		b = bullet_scene.instantiate()
+		bullets_parent.add_child(b)
 	
-	# match patterns
-	match effective_data.pattern:
-		BulletData.Pattern.STRAIGHT, BulletData.Pattern.AIMED, BulletData.Pattern.SPREAD, BulletData.Pattern.HOMING, BulletData.Pattern.CURVED:
-			# call specific handler
-			match effective_data.pattern:
-				BulletData.Pattern.STRAIGHT:
-					_pattern_straight(b, effective_data, direction)
-				BulletData.Pattern.AIMED:
-					_pattern_aimed(b, effective_data, _spawner, options)
-				BulletData.Pattern.SPREAD:
-					await _pattern_spread(b, effective_data, _spawner, direction, options)
-				BulletData.Pattern.HOMING:
-					_pattern_homing(b, effective_data, _spawner, options)
-				BulletData.Pattern.CURVED:
-					_pattern_curved(b, effective_data, direction)
-		_:
-			_pattern_straight(b, effective_data, direction)
-
-	# Configurer la balle en utilisant la ressource APRES que le pattern ait défini la vélocité/méta
+	# --- CRITICAL CHANGE ---
+	# Setup and activate the bullet IMMEDIATELY after getting it from the pool.
+	# This prevents race conditions with `await` in patterns.
 	if b.has_method("setup"):
 		b.global_position = at_pos
 		b.setup(effective_data)
+		# We activate it later, after the pattern is chosen.
 	else:
 		push_error("BulletManager: La scène de balle n'a pas de méthode 'setup'.")
+		# Return the bullet to the pool if it's unusable
+		if is_instance_valid(_bullet_pool): _bullet_pool._on_bullet_reclaimed(b)
+		return null
 
+	# match patterns
+	match effective_data.pattern:
+		BulletData.Pattern.STRAIGHT: _pattern_straight(b, effective_data, direction)
+		BulletData.Pattern.AIMED: _pattern_aimed(b, effective_data, _spawner, options)
+		BulletData.Pattern.SPREAD: await _pattern_spread(b, effective_data, _spawner, direction, options)
+		BulletData.Pattern.HOMING: _pattern_homing(b, effective_data, _spawner, options)
+		BulletData.Pattern.CURVED: _pattern_curved(b, effective_data, direction)
+		_: _pattern_straight(b, effective_data, direction)
+	
+	# Activate the bullet now that its velocity and state are set by the pattern.
+	b.activate()
 
 	# Debug output for testing in-game/editor
 	if debug_logs:
@@ -216,6 +231,7 @@ func _pattern_spread(bullet, data, _spawner: Node, direction: Vector2, options :
 		
 		if i == 0:
 			# Configure the first bullet that was already created for us.
+			# Its setup was already done in spawn_bullet. We just set its velocity.
 			_pattern_straight(bullet, temp_data, final_dir)
 		else:
 			# For all other bullets, we must instantiate and configure them manually.
@@ -295,14 +311,20 @@ func _spawn_simple_bullet(bullet_data: Resource, at_pos: Vector2, direction: Vec
 	if not bullets_parent:
 		return null
 		
-	var b = bullet_scene.instantiate()
-	bullets_parent.add_child(b)
+	var b: Bullet
+	if is_instance_valid(_bullet_pool):
+		b = _bullet_pool.get_bullet()
+	else:
+		b = bullet_scene.instantiate()
+		bullets_parent.add_child(b)
 	
 	if b.has_method("setup"):
 		b.global_position = at_pos
-		b.setup(bullet_data)
+		b.setup(bullet_data) # Setup first
+		_pattern_straight(b, bullet_data, direction) # Then set velocity
+		b.activate() # Then activate
 	else:
 		push_error("BulletManager: La scène de balle n'a pas de méthode 'setup'.")
-
-	_pattern_straight(b, bullet_data, direction)
+		if is_instance_valid(_bullet_pool): _bullet_pool._on_bullet_reclaimed(b)
+		
 	return b

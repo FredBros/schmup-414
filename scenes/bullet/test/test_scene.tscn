@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xwy6ycyc2fsy"]
+[gd_scene load_steps=6 format=3 uid="uid://xwy6ycyc2fsy"]
 
+[ext_resource type="PackedScene" uid="uid://cwkc0ynimecem" path="res://scenes/utils/components/bullet pool/bullet_pool.tscn" id="3_rr5l7"]
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="4_niox5"]
+[ext_resource type="PackedScene" uid="uid://dib4fvxuj376n" path="res://scenes/bullet/bullet prefab/bullet.tscn" id="4_o08sr"]
 [ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="5_juhy5"]
 
 [sub_resource type="GDScript" id="GDScript_bullets"]
@@ -15,8 +17,6 @@ func _ready():
 [node name="Bullets" type="Node2D" parent="."]
 script = SubResource("GDScript_bullets")
 
-[node name="Enemies" type="Node2D" parent="."]
-
 [node name="Enemy" parent="." instance=ExtResource("4_niox5")]
 position = Vector2(246, 163)
 speed = 0.0
@@ -27,4 +27,5 @@ position = Vector2(281, 671)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="BulletContainer" type="Node" parent="." groups=["BulletContainer"]]
+[node name="BulletPool" parent="." instance=ExtResource("3_rr5l7")]
+bullet_scene = ExtResource("4_o08sr")

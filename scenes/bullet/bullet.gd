@@ -1,6 +1,9 @@
 extends Area2D
 class_name Bullet
 
+## Signal emitted when the bullet should be returned to the pool.
+signal reclaimed
+
 enum TargetType {
 	PLAYER,
 	ENEMIES
@@ -24,6 +27,47 @@ var _is_curved := false
 var _curve_amplitude: float = 0.0
 var _curve_frequency: float = 0.0
 var _curve_time: float = 0.0 # Tracks time for the sine function
+
+var _life_timer: Timer
+var _is_reclaimed := false
+
+
+func activate() -> void:
+	"""Activates the bullet, making it visible and processed."""
+	visible = true
+	_is_reclaimed = false # Reset the reclaimed flag on activation
+	set_process(true)
+	get_node("CollisionShape2D").set_deferred("disabled", false)
+
+
+func deactivate() -> void:
+	"""Deactivates the bullet, hiding it and stopping its processing. Resets its state."""
+	visible = false
+	set_process(false)
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	# Reset state for reuse
+	velocity = Vector2.ZERO
+	position = Vector2.ZERO # Move it off-screen or to origin
+	
+	_is_setup_done = false
+	_homing_target = null
+	_homing_time_left = 0.0
+	
+	_is_curved = false
+	_curve_time = 0.0
+	
+	# Stop any active timer
+	if is_instance_valid(_life_timer) and not _life_timer.is_stopped():
+		# It's crucial to disconnect before stopping to prevent a final timeout signal
+		# from firing in the same frame if the timer is at its end.
+		if _life_timer.timeout.is_connected(_reclaim):
+			_life_timer.timeout.disconnect(_reclaim)
+		_life_timer.stop()
+
+	# Clear any remaining metadata
+	for meta in get_meta_list():
+		remove_meta(meta)
 
 
 func _ready() -> void:
@@ -56,12 +100,20 @@ func setup(data: BulletData) -> void:
 
 	# Configurer la durée de vie de la balle
 	if data.life_duration > 0:
-		var timer = Timer.new()
-		timer.wait_time = data.life_duration
-		timer.one_shot = true
-		timer.timeout.connect(queue_free)
-		add_child(timer)
-		timer.start()
+		if not _life_timer:
+			# Create the timer only once
+			_life_timer = Timer.new()
+			_life_timer.one_shot = true
+			add_child(_life_timer)
+
+		# Disconnect any previous connection to be safe, then reconnect.
+		# This ensures the connection is always valid for pooled objects.
+		if _life_timer.timeout.is_connected(_reclaim):
+			_life_timer.timeout.disconnect(_reclaim)
+		# We connect to our safe _reclaim method instead of directly emitting.
+		_life_timer.timeout.connect(_reclaim)
+		_life_timer.wait_time = data.life_duration
+		_life_timer.start()
 		
 	# Lire les métadonnées pour le guidage (homing)
 	if has_meta("homing_target"):
@@ -121,14 +173,14 @@ func _process(delta: float) -> void:
 		
 	var viewport = get_viewport_rect()
 	if position.y < -20 or position.y > viewport.size.y + 20 or position.x < -20 or position.x > viewport.size.x + 20:
-		call_deferred("queue_free")
+		_reclaim()
 
 func _on_area_entered(area: Area2D) -> void:
 	# On veut collisionner avec les Hurtboxes
 	if area.is_in_group("Hurtbox"):
 		var target = area.get_parent()
-		if not is_instance_valid(target):
-			call_deferred("queue_free")
+		if not is_instance_valid(target): # If target is invalid (e.g., already destroyed)
+			_reclaim()
 			return
 		
 		# Vérifier si la bullet touche le bon type de cible
@@ -143,4 +195,20 @@ func _on_area_entered(area: Area2D) -> void:
 			# Demander au Hurtbox d'appliquer les dégâts
 			if area.has_method("take_damage"):
 				area.take_damage(damage, self)
-			call_deferred("queue_free") # La balle se détruit uniquement après avoir touché une cible valide
+			_reclaim() # La balle est retournée au pool après avoir touché une cible valide
+
+func _reclaim() -> void:
+	"""
+	Safely emits the reclaimed signal, ensuring it only happens once.
+	"""
+	if _is_reclaimed:
+		return
+	_is_reclaimed = true
+	reclaimed.emit(self)
+
+
+func _notification(what: int) -> void:
+	# This is a safety net. If the bullet is being destroyed for any reason
+	# (e.g., scene change), ensure it tries to reclaim itself.
+	if what == NOTIFICATION_PREDELETE:
+		_reclaim()

@@ -33,6 +33,7 @@ Bullets=""
 Enemies=""
 Hurtbox=""
 BulletContainer=""
+BulletPool=""
 
 [input]
 

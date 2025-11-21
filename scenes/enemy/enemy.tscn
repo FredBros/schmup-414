@@ -35,7 +35,6 @@ disabled = true
 shape = SubResource("RectangleShape2D_gl05p")
 
 [node name="BulletManager" parent="." instance=ExtResource("5_gl05p")]
-debug_logs = true
 
 [editable path="Hurtbox"]
 [editable path="BulletManager"]

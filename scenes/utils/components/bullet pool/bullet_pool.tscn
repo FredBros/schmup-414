@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwkc0ynimecem"]
+
+[ext_resource type="Script" uid="uid://dh5ymfk21m7w1" path="res://scenes/utils/components/bullet pool/bullet_pool.gd" id="1_cxpvh"]
+[ext_resource type="PackedScene" uid="uid://dib4fvxuj376n" path="res://scenes/bullet/bullet prefab/bullet.tscn" id="2_817jr"]
+
+[node name="BulletPool" type="Node" groups=["BulletPool"]]
+script = ExtResource("1_cxpvh")
+bullet_scene = ExtResource("2_817jr")
