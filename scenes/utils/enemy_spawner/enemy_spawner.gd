@@ -1,24 +1,45 @@
 extends Node2D
 
-@export var width := 512
-@export var enemy_scene: PackedScene = preload("res://scenes/enemy/enemy.tscn")
-var _spawn_timer: Timer
+## Le type d'ennemi à faire apparaître (doit correspondre à un `type_id` dans l'EnemyPoolManager).
+@export var enemy_type_id: String = "basic_enemy"
+## La largeur de la zone d'apparition.
+@export var spawn_width := 512.0
+## Le nombre d'ennemis à faire apparaître par seconde.
+@export var spawn_rate: float = 1.0
+## Si coché, le spawner commencera à fonctionner automatiquement.
+@export var autostart: bool = true
+
+@onready var _spawn_timer: Timer = $SpawnTimer
+var _enemy_pool_manager: EnemyPoolManager
+
 func _ready() -> void:
-	randomize()
-	_spawn_timer = Timer.new()
-	_spawn_timer.wait_time = 1.2
-	_spawn_timer.autostart = true
-	_spawn_timer.one_shot = false
-	add_child(_spawn_timer)
-	_spawn_timer.connect("timeout", _on_spawn_timeout)
+	# Trouve le manager de pool d'ennemis dans la scène.
+	# On utilise les groupes pour une approche robuste qui ne dépend pas de la structure de la scène.
+	var managers = get_tree().get_nodes_in_group("EnemyPoolManager")
+	if not managers.is_empty():
+		_enemy_pool_manager = managers[0]
+	
+	if not _enemy_pool_manager:
+		push_error("EnemySpawner n'a pas pu trouver de noeud dans le groupe 'EnemyPoolManager'. Assurez-vous qu'un EnemyPoolManager existe dans la scène et qu'il est dans ce groupe.")
+		return
+		
+	_spawn_timer.wait_time = 1.0 / max(0.01, spawn_rate)
+	if autostart:
+		_spawn_timer.start()
 
 func _on_spawn_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
-	var x = randf_range(20, width - 20)
-	enemy.position = Vector2(x, -20)
-	add_child(enemy)
+	if not _enemy_pool_manager:
+		return
 
+	# 1. Demander un ennemi au pool
+	var enemy: Enemy = _enemy_pool_manager.get_enemy(enemy_type_id)
+	if not enemy:
+		push_warning("Le spawner n'a pas pu obtenir d'ennemi de type '%s' du pool." % enemy_type_id)
+		return
 
-func _process(delta: float) -> void:
-	# Scroll vertical (simule le défilement)
-	pass
+	# 2. Positionner l'ennemi
+	var x_pos = randf_range(0, spawn_width)
+	enemy.global_position = global_position + Vector2(x_pos, 0)
+	
+	# 3. Activer l'ennemi pour qu'il commence sa vie
+	enemy.activate()

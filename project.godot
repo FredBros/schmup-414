@@ -34,6 +34,7 @@ Enemies=""
 Hurtbox=""
 BulletContainer=""
 BulletPool=""
+EnemyPoolManager=""
 
 [input]
 

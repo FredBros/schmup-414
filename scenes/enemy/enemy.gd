@@ -1,11 +1,23 @@
 extends "res://scenes/utils/entity/entity.gd"
 
+class_name Enemy
+
+## Signal émis lorsque l'ennemi doit être retourné au pool.
+signal reclaimed(enemy)
+
 @export var speed := 120.0
 @export var shoot_cooldown := 2.0
 @export var bullet_scene: PackedScene
 @export var bullet_data_resource: BulletData
 
-var _can_shoot := true
+var _is_reclaimed := false
+
+## Référence mise en cache au BulletManager pour éviter les appels répétés à get_node.
+@onready var _bullet_manager: Node = get_node_or_null("BulletManager")
+## Référence mise en cache au composant Health.
+@onready var _health_component: Node = get_node_or_null("Health")
+var _lifetime_timer: Timer
+
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -15,33 +27,80 @@ func _ready() -> void:
 	
 	if not bullet_data_resource:
 		bullet_data_resource = load("res://scenes/bullet/bullet prefab/basic_bullet.tres")
-	
-	# Démarrer le tir automatique via le BulletManager si configuré
-	var bm := get_node_or_null("BulletManager")
-	if bm:
-		# Configure the manager default bullet data and fire rate from enemy settings
+
+	# Créer le timer de durée de vie s'il n'existe pas
+	if not has_node("LifetimeTimer"):
+		_lifetime_timer = Timer.new()
+		_lifetime_timer.name = "LifetimeTimer"
+		_lifetime_timer.one_shot = true
+		add_child(_lifetime_timer)
+		_lifetime_timer.timeout.connect(_reclaim)
+	else:
+		_lifetime_timer = get_node("LifetimeTimer")
+
+func activate() -> void:
+	"""Active l'ennemi, le rend visible, réinitialise son état et démarre ses comportements."""
+	visible = true
+	_is_reclaimed = false
+	set_physics_process(true)
+	# Réactiver les collisions (supposant que le Hurtbox gère la collision principale)
+	var hurtbox = find_child("Hurtbox", true, false)
+	if hurtbox:
+		hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
+
+	# Demander au composant Health de se réinitialiser lui-même.
+	if _health_component and _health_component.has_method("reset"):
+		_health_component.reset()
+
+	# Configurer et démarrer le tir automatique
+	if _bullet_manager:
 		if bullet_data_resource:
-			bm.default_bullet_data = bullet_data_resource
-			# Prefer the BulletData-specified fire_rate if present
+			_bullet_manager.default_bullet_data = bullet_data_resource
 			if bullet_data_resource.fire_rate > 0.0:
-				bm.auto_fire_rate = bullet_data_resource.fire_rate
+				_bullet_manager.auto_fire_rate = bullet_data_resource.fire_rate
 			else:
-				bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
+				_bullet_manager.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
 		else:
-			# No bullet resource: fall back to enemy shoot_cooldown
-			bm.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
-		bm.default_bullet_direction = Vector2(0, 1)
-		if bm.debug_logs:
-			print("Enemy._ready: shoot_cooldown=", shoot_cooldown, ", bm.auto_fire_rate=", bm.auto_fire_rate)
-		bm.start_auto_fire()
+			_bullet_manager.auto_fire_rate = 1.0 / max(0.0001, shoot_cooldown)
+		_bullet_manager.default_bullet_direction = Vector2.DOWN
+		_bullet_manager.start_auto_fire()
+		
+	# Démarrer le timer de durée de vie
+	var lifetime = get_meta("pool_lifetime", 0.0)
+	if lifetime > 0.0:
+		_lifetime_timer.wait_time = lifetime
+		_lifetime_timer.start()
+
+
+func deactivate() -> void:
+	"""Désactive l'ennemi, le cache et arrête ses comportements pour le pooling."""
+	visible = false
+	set_physics_process(false)
+	# Désactiver les collisions
+	var hurtbox = find_child("Hurtbox", true, false)
+	if hurtbox:
+		hurtbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+	# Arrêter le tir
+	if _bullet_manager:
+		_bullet_manager.stop_auto_fire()
+		
+	# Arrêter le timer de durée de vie pour éviter qu'il ne se déclenche dans le pool
+	_lifetime_timer.stop()
+
 
 func _physics_process(delta: float) -> void:
 	position.y += speed * delta
-	if position.y > get_viewport().size.y + 20:
-		queue_free()
 
 func _on_damaged(_damage: int, _source: Node) -> void:
 	pass
 
 func _on_die(_source: Node) -> void:
-	queue_free()
+	_reclaim()
+
+func _reclaim() -> void:
+	"""Émet le signal `reclaimed` de manière sécurisée, une seule fois."""
+	if _is_reclaimed:
+		return
+	_is_reclaimed = true
+	reclaimed.emit(self)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brs82oy0lqldf"]
+
+[ext_resource type="Script" uid="uid://bja5xgpm28gue" path="res://scenes/utils/components/enemy pool manager/enemy_pool_manager.gd" id="1_wbbkp"]
+
+[node name="EnemyPoolManager" type="Node" groups=["EnemyPoolManager"]]
+script = ExtResource("1_wbbkp")
