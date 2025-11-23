@@ -6,3 +6,5 @@
 [node name="BulletPool" type="Node" groups=["BulletPool"]]
 script = ExtResource("1_cxpvh")
 bullet_scene = ExtResource("2_817jr")
+
+[node name="BulletsContainer" type="Node" parent="."]

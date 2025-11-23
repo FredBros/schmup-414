@@ -2,8 +2,8 @@ extends Node2D
 
 ## Le type d'ennemi à faire apparaître (doit correspondre à un `type_id` dans l'EnemyPoolManager).
 @export var enemy_type_id: String = "basic_enemy"
-## La largeur de la zone d'apparition.
-@export var spawn_width := 512.0
+## La largeur de la zone d'apparition, en pixels.
+@export var spawn_width := 810.0
 ## Le nombre d'ennemis à faire apparaître par seconde.
 @export var spawn_rate: float = 1.0
 ## Si coché, le spawner commencera à fonctionner automatiquement.

@@ -21,8 +21,9 @@ SignalManager="*res://autoloads/signal manager/signal_manager.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 
@@ -32,9 +33,10 @@ Player=""
 Bullets=""
 Enemies=""
 Hurtbox=""
-BulletContainer=""
 BulletPool=""
 EnemyPoolManager=""
+BulletsContainer=""
+BulletContainer=""
 
 [input]
 

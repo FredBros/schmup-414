@@ -129,9 +129,9 @@ func _handle_movement() -> void:
 	# Apply velocity in physics
 	move_and_slide()
 	
-	# Limiter la position dans la zone de jeu (512x720)
-	position.x = clamp(position.x, _half_width, 512 - _half_width)
-	position.y = clamp(position.y, _half_height, 720 - _half_height)
+	# Limiter la position dans la zone de jeu (810x1080)
+	position.x = clamp(position.x, _half_width, 810 - _half_width)
+	position.y = clamp(position.y, _half_height, 1080 - _half_height)
 
 	# Sprite tilt for feel (tilt is based on normalized horizontal speed)
 	if _sprite:
