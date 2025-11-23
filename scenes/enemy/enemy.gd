@@ -18,6 +18,11 @@ var _is_reclaimed := false
 @onready var _health_component: Node = get_node_or_null("Health")
 var _lifetime_timer: Timer
 
+# --- Variables de comportement ---
+var _behavior_pattern: EnemyBehaviorPattern
+var _time_alive: float = 0.0
+var _start_pos: Vector2
+
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -38,6 +43,11 @@ func _ready() -> void:
 	else:
 		_lifetime_timer = get_node("LifetimeTimer")
 
+func set_behavior_pattern(pattern: EnemyBehaviorPattern) -> void:
+	"""Définit le pattern de comportement que cet ennemi doit suivre."""
+	_behavior_pattern = pattern
+
+
 func activate() -> void:
 	"""Active l'ennemi, le rend visible, réinitialise son état et démarre ses comportements."""
 	visible = true
@@ -47,6 +57,10 @@ func activate() -> void:
 	var hurtbox = find_child("Hurtbox", true, false)
 	if hurtbox:
 		hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
+		
+	# Initialiser les variables de comportement
+	_time_alive = 0.0
+	_start_pos = global_position
 
 	# Demander au composant Health de se réinitialiser lui-même.
 	if _health_component and _health_component.has_method("reset"):
@@ -90,10 +104,29 @@ func deactivate() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position.y += speed * delta
+	_time_alive += delta
+	
+	if not _behavior_pattern:
+		# Comportement par défaut si aucun pattern n'est défini
+		position.y += speed * delta
+		return
 
-func _on_damaged(_damage: int, _source: Node) -> void:
-	pass
+	match _behavior_pattern.movement_type:
+		EnemyBehaviorPattern.MovementType.LINEAR:
+			position.y += speed * delta
+			
+		EnemyBehaviorPattern.MovementType.SINUSOIDAL:
+			# Mouvement vertical de base
+			position.y += speed * delta
+			# Mouvement horizontal sinusoïdal
+			var offset_x = sin(_time_alive * _behavior_pattern.sine_frequency) * _behavior_pattern.sine_amplitude
+			position.x = _start_pos.x + offset_x
+			
+		EnemyBehaviorPattern.MovementType.PATH_2D:
+			# La logique pour suivre un Path2D sera ajoutée ici.
+			# Pour l'instant, il ne fait rien pour ce type.
+			position.y += speed * delta # Comportement de repli
+
 
 func _on_die(_source: Node) -> void:
 	_reclaim()
@@ -104,3 +137,7 @@ func _reclaim() -> void:
 		return
 	_is_reclaimed = true
 	reclaimed.emit(self)
+	
+
+func _on_damaged(_damage: int, _source: Node) -> void:
+	pass

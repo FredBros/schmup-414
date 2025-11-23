@@ -8,6 +8,8 @@ extends Node2D
 @export var spawn_rate: float = 1.0
 ## Si coché, le spawner commencera à fonctionner automatiquement.
 @export var autostart: bool = true
+## Le pattern de comportement à assigner aux ennemis créés par ce spawner.
+@export var behavior_pattern: EnemyBehaviorPattern
 
 @onready var _spawn_timer: Timer = $SpawnTimer
 var _enemy_pool_manager: EnemyPoolManager
@@ -43,3 +45,10 @@ func _on_spawn_timeout() -> void:
 	
 	# 3. Activer l'ennemi pour qu'il commence sa vie
 	enemy.activate()
+	
+	# 4. Assigner le pattern de comportement
+	if behavior_pattern:
+		enemy.set_behavior_pattern(behavior_pattern)
+	else:
+		# S'il n'y a pas de pattern, on s'assure que l'ennemi n'en a pas d'ancien
+		enemy.set_behavior_pattern(null)

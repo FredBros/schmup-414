@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xwy6ycyc2fsy"]
+[gd_scene load_steps=10 format=3 uid="uid://xwy6ycyc2fsy"]
 
 [ext_resource type="PackedScene" uid="uid://cwkc0ynimecem" path="res://scenes/utils/components/bullet pool/bullet_pool.tscn" id="3_rr5l7"]
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="4_niox5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://q8x8tsswa80v" path="res://scenes/utils/components/enemy pool manager/pool_config.gd" id="5_jqodl"]
 [ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="5_juhy5"]
 [ext_resource type="PackedScene" uid="uid://dftlnpxuoduli" path="res://scenes/utils/enemy_spawner/enemy_spawner.tscn" id="6_8egkg"]
+[ext_resource type="Resource" uid="uid://df6tmtd8rko8g" path="res://resources/EnemyBehaviorPattern/sinusoidal_pattern.tres" id="7_8egkg"]
 
 [sub_resource type="GDScript" id="GDScript_bullets"]
 script/source = "extends Node2D
@@ -43,3 +44,4 @@ pools_to_create = Array[ExtResource("5_jqodl")]([SubResource("Resource_qa7w3")])
 debug_mode = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_8egkg")]
+behavior_pattern = ExtResource("7_8egkg")
