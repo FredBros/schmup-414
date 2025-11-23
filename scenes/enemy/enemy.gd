@@ -9,13 +9,14 @@ signal reclaimed(enemy)
 @export var shoot_cooldown := 2.0
 @export var bullet_scene: PackedScene
 @export var bullet_data_resource: BulletData
-
+@export var debug_mode: bool = false
 var _is_reclaimed := false
 
 ## Référence mise en cache au BulletManager pour éviter les appels répétés à get_node.
 @onready var _bullet_manager: Node = get_node_or_null("BulletManager")
 ## Référence mise en cache au composant Health.
-@onready var _health_component: Node = get_node_or_null("Health")
+@onready var _health_component: Node = find_child("Health", true, false)
+@onready var _path_follower: PathFollow2D = $PathFollower
 var _lifetime_timer: Timer
 
 # --- Variables de comportement ---
@@ -50,6 +51,8 @@ func set_behavior_pattern(pattern: EnemyBehaviorPattern) -> void:
 
 func activate() -> void:
 	"""Active l'ennemi, le rend visible, réinitialise son état et démarre ses comportements."""
+	if debug_mode: print("--- ENEMY ", self.name, ": Activating. Children: ", get_children())
+	
 	visible = true
 	_is_reclaimed = false
 	set_physics_process(true)
@@ -88,6 +91,8 @@ func activate() -> void:
 
 func deactivate() -> void:
 	"""Désactive l'ennemi, le cache et arrête ses comportements pour le pooling."""
+	if debug_mode: print("--- ENEMY ", self.name, ": Deactivating.")
+	
 	visible = false
 	set_physics_process(false)
 	# Désactiver les collisions
@@ -98,6 +103,20 @@ func deactivate() -> void:
 	# Arrêter le tir
 	if _bullet_manager:
 		_bullet_manager.stop_auto_fire()
+		
+	# Si le PathFollower a été reparenté, on le récupère pour le pooling.
+	# On utilise notre référence permanente _path_follower.
+	if debug_mode and is_instance_valid(_path_follower):
+		print("--- ENEMY ", self.name, ": Checking PathFollower state before pooling.")
+		print("--- ENEMY: _path_follower instance is valid: ", is_instance_valid(_path_follower))
+		print("--- ENEMY: _path_follower's parent: ", _path_follower.get_parent())
+	if is_instance_valid(_path_follower) and _path_follower.get_parent() != self:
+		if debug_mode: print("--- ENEMY: PathFollower needs to be reclaimed. Removing from old parent.")
+		var old_parent = _path_follower.get_parent()
+		if old_parent: old_parent.remove_child(_path_follower)
+		if debug_mode: print("--- ENEMY: Re-adding PathFollower to self.")
+		_path_follower.name = "PathFollower"
+		add_child(_path_follower)
 		
 	# Arrêter le timer de durée de vie pour éviter qu'il ne se déclenche dans le pool
 	_lifetime_timer.stop()
@@ -123,9 +142,13 @@ func _physics_process(delta: float) -> void:
 			position.x = _start_pos.x + offset_x
 			
 		EnemyBehaviorPattern.MovementType.PATH_2D:
-			# La logique pour suivre un Path2D sera ajoutée ici.
-			# Pour l'instant, il ne fait rien pour ce type.
-			position.y += speed * delta # Comportement de repli
+			var path_follower = _path_follower # Utiliser la référence permanente
+			if not path_follower: return
+			var lifetime = get_meta("pool_lifetime", 6.0)
+			if lifetime > 0:
+				# Fait progresser l'ennemi le long du chemin en se basant sur sa durée de vie.
+				# Quand _time_alive atteint lifetime, progress_ratio atteint 1.0.
+				path_follower.progress_ratio = _time_alive / lifetime
 
 
 func _on_die(_source: Node) -> void:

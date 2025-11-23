@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://brub1ybttnsq7" path="res://scenes/background/background.tscn" id="1_v5dby"]
 [ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="2_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://cini5g6wfanq4" path="res://scenes/UI/hud.tscn" id="3_bq33v"]
-[ext_resource type="Resource" uid="uid://df6tmtd8rko8g" path="res://resources/EnemyBehaviorPattern/sinusoidal_pattern.tres" id="4_bq33v"]
 [ext_resource type="PackedScene" uid="uid://dftlnpxuoduli" path="res://scenes/utils/enemy_spawner/enemy_spawner.tscn" id="5_1yooq"]
 [ext_resource type="PackedScene" uid="uid://brs82oy0lqldf" path="res://scenes/utils/components/enemy pool manager/EnemyPoolManager.tscn" id="6_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cwkc0ynimecem" path="res://scenes/utils/components/bullet pool/bullet_pool.tscn" id="6_t5ptc"]
 [ext_resource type="Script" uid="uid://q8x8tsswa80v" path="res://scenes/utils/components/enemy pool manager/pool_config.gd" id="7_gb53w"]
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="8_5qq27"]
+[ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://resources/EnemyBehaviorPattern/path_behavior.tres" id="9_gb53w"]
 
 [sub_resource type="Resource" id="Resource_dlabj"]
 script = ExtResource("7_gb53w")
@@ -34,7 +34,7 @@ visible = false
 pools_to_create = Array[ExtResource("7_gb53w")]([SubResource("Resource_dlabj")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_1yooq")]
-behavior_pattern = ExtResource("4_bq33v")
+behavior_pattern = ExtResource("9_gb53w")
 
 [node name="BulletsContainer" type="Node" parent="." groups=["BulletsContainer"]]
 
@@ -45,3 +45,5 @@ position = Vector2(405, 900)
 position = Vector2(405, 540)
 
 [node name="Bullets" type="Node" parent="."]
+
+[editable path="EnemySpawner"]

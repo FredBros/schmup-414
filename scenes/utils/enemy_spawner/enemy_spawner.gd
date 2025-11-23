@@ -10,8 +10,11 @@ extends Node2D
 @export var autostart: bool = true
 ## Le pattern de comportement à assigner aux ennemis créés par ce spawner.
 @export var behavior_pattern: EnemyBehaviorPattern
+## Si vrai, active les logs détaillés dans la console pour le débogage.
+@export var debug_mode: bool = false
 
 @onready var _spawn_timer: Timer = $SpawnTimer
+@onready var _movement_path: Path2D = get_node_or_null("MovementPath")
 var _enemy_pool_manager: EnemyPoolManager
 
 func _ready() -> void:
@@ -39,9 +42,34 @@ func _on_spawn_timeout() -> void:
 		push_warning("Le spawner n'a pas pu obtenir d'ennemi de type '%s' du pool." % enemy_type_id)
 		return
 
-	# 2. Positionner l'ennemi
-	var x_pos = randf_range(0, spawn_width)
-	enemy.global_position = global_position + Vector2(x_pos, 0)
+	# 2. Positionner l'ennemi. La logique dépend du pattern.
+	if behavior_pattern and behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:
+		if _movement_path:
+			# Pour un Path2D, on ne positionne pas l'ennemi directement.
+			if debug_mode: print("--- SPAWNER: Attempting Path2D logic for enemy: ", enemy.name)
+			if debug_mode: print("--- SPAWNER: Children of enemy before get_node: ", enemy.get_children())
+			# On accède à la référence directe du PathFollower de l'ennemi.
+			var path_follower = enemy.get_node("PathFollower")
+			if not path_follower:
+				if debug_mode: print("--- SPAWNER: FAILED to find 'PathFollower' as a direct child.")
+				push_error("L'ennemi '%s' n'a pas de noeud PathFollower." % enemy.name)
+				return
+				
+			if debug_mode: print("--- SPAWNER: SUCCESS! Found PathFollower: ", path_follower)
+			if debug_mode: print("--- SPAWNER: PathFollower's current parent: ", path_follower.get_parent())
+			# On le détache de son parent actuel (l'ennemi).
+			path_follower.get_parent().remove_child(path_follower)
+			# On l'attache au Path2D.
+			_movement_path.add_child(path_follower) # L'attacher au Path2D
+			if debug_mode: print("--- SPAWNER: PathFollower moved. New parent: ", path_follower.get_parent())
+		else:
+			push_warning("Le pattern PATH_2D est utilisé, mais aucun noeud 'MovementPath' n'a été trouvé comme enfant du spawner.")
+			# Fallback sur un positionnement simple
+			enemy.global_position = global_position
+	else:
+		# Pour les autres mouvements, on positionne l'ennemi sur une ligne.
+		var x_pos = randf_range(0, spawn_width)
+		enemy.global_position = global_position + Vector2(x_pos, 0)
 	
 	# 3. Activer l'ennemi pour qu'il commence sa vie
 	enemy.activate()

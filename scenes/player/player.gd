@@ -1,4 +1,4 @@
-extends "res://scenes/utils/entity/entity.gd"
+extends CharacterBody2D
 
 signal movement_updated(velocity: Vector2, input_dir: Vector2)
 signal boost_changed(active: bool, strength: float)
@@ -34,6 +34,7 @@ var _flash_running: bool = false
 var _tilt_current := 0.0
 var _last_input_dir: Vector2 = Vector2.ZERO
 
+
 func _ready() -> void:
 	add_to_group("Player")
 	
@@ -43,6 +44,8 @@ func _ready() -> void:
 	if _health_node:
 		_health_node.connect("invulnerability_started", Callable(self, "_on_invulnerability_started"))
 		_health_node.connect("invulnerability_ended", Callable(self, "_on_invulnerability_ended"))
+		_health_node.connect("damaged", Callable(self, "_on_damaged"))
+		_health_node.connect("died", Callable(self, "_on_die"))
 	var collision_shape = $CollisionShape2D
 	if collision_shape and collision_shape.shape:
 		_half_width = collision_shape.shape.extents.x if collision_shape.shape is RectangleShape2D else collision_shape.shape.radius

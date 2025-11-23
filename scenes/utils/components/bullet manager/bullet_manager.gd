@@ -36,7 +36,8 @@ func _ready() -> void:
 	var pools = get_tree().get_nodes_in_group("BulletPool")
 	if pools.size() > 0:
 		_bullet_pool = pools[0]
-		print("[BulletManager] BulletPool found.", _bullet_pool)
+		if debug_logs:
+			print("[BulletManager] BulletPool found.", _bullet_pool)
 	else:
 		push_error("BulletManager: Could not find a node in the 'BulletPool' group. Please add a BulletPool to your main scene.")
 
