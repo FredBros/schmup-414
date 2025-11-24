@@ -4,6 +4,7 @@ extends Node2D
 @export var debug_mode: bool = false
 
 var _enemy_pool_manager: EnemyPoolManager
+var _level_sequencer: Node
 var _screen_size: Vector2
 
 func _ready() -> void:
@@ -11,7 +12,9 @@ func _ready() -> void:
 	# Note: Make sure your LevelSequencer is in the "LevelSequencer" group.
 	var sequencers = get_tree().get_nodes_in_group("LevelSequencer")
 	if not sequencers.is_empty():
-		sequencers[0].request_spawn.connect(_on_spawn_requested)
+		_level_sequencer = sequencers[0]
+		_level_sequencer.request_spawn.connect(_on_spawn_requested)
+		_level_sequencer.request_squadron_spawn.connect(_on_squadron_spawn_requested)
 	else:
 		push_warning("EnemySpawner: No node found in the 'LevelSequencer' group. The spawner will not receive any orders.")
 	
@@ -21,6 +24,69 @@ func _ready() -> void:
 		_enemy_pool_manager = managers[0]
 		
 	_screen_size = get_viewport_rect().size
+
+func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
+	if not _enemy_pool_manager: return
+	
+	# 1. Get a SquadronController from a pool (we'll assume it's pooled like an enemy)
+	# For now, we instantiate it. You should create a pool for it later.
+	var controller_scene = preload("res://scenes/squadron/squadron_controller.tscn") # Make sure this path is correct
+	var controller: SquadronController = controller_scene.instantiate()
+	add_child(controller) # Add it to the scene tree
+	
+	# 2. Configure the controller
+	controller.behavior_pattern = event_data.behavior_pattern
+	controller.formation_pattern = event_data.formation_pattern
+	
+	# 3. Spawn and assign members
+	var members: Array[Enemy] = []
+	for offset in event_data.formation_pattern.member_offsets:
+		var enemy: Enemy = _enemy_pool_manager.get_enemy(event_data.enemy_type_id)
+		if not enemy:
+			push_warning("Spawner: Pool for '%s' is empty while building a squadron." % event_data.enemy_type_id)
+			continue
+		
+		# The enemy's initial position is relative to the controller's spawn position
+		# We'll set the controller's position to the center of the screen for now.
+		# A more advanced system could use SpawnZone for squadrons too.
+		controller.global_position = _screen_size / 2.0
+		enemy.global_position = controller.global_position + offset
+		
+		# Set a basic behavior pattern for the enemy itself (e.g., STATIONARY)
+		# so it doesn't try to move on its own.
+		var stationary_pattern = EnemyBehaviorPattern.new()
+		stationary_pattern.movement_type = EnemyBehaviorPattern.MovementType.STATIONARY
+		enemy.set_behavior_pattern(stationary_pattern)
+		
+		# Handle Homing for the entire squadron
+		if event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING:
+			var potential_targets: Array[Node2D] = _level_sequencer.get_player_targets()
+			if not potential_targets.is_empty():
+				# For a squadron, the CONTROLLER targets the player.
+				# We can just pick the first player for simplicity.
+				var target = potential_targets[0]
+				controller.set_target(target)
+
+		enemy.activate()
+		members.append(enemy)
+
+	# 4. Assign the members list to the controller and activate it
+	controller.members = members
+	controller.activate() # You'll need to create this function in the controller
+
+	# 5. Handle Path2D reparenting for the controller
+	if event_data.behavior_pattern and event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:
+		var path_node = get_node_or_null(event_data.movement_path)
+		if path_node and path_node is Path2D:
+			# We assume the SquadronController scene has a PathFollow2D node named "PathFollower"
+			var path_follower = controller.get_node_or_null("PathFollower")
+			if path_follower:
+				path_follower.get_parent().remove_child(path_follower)
+				path_node.add_child(path_follower)
+			else:
+				push_warning("Spawner: SquadronController scene is missing a 'PathFollower' child node.")
+		else:
+			push_warning("Spawner: Path2D not found at path for squadron: %s" % event_data.movement_path)
 
 func _on_spawn_requested(event_data: SpawnEventData) -> void:
 	if not _enemy_pool_manager: return
@@ -33,6 +99,36 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 		
 		# Apply the behavior pattern
 		enemy.set_behavior_pattern(event_data.behavior_pattern)
+		
+		# If the pattern is HOMING, inject the player target from the sequencer.
+		if event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING:
+			if is_instance_valid(_level_sequencer) and _level_sequencer.has_method("get_player_targets"):
+				var potential_targets: Array[Node2D] = _level_sequencer.get_player_targets()
+				
+				if not potential_targets.is_empty():
+					var chosen_target: Node2D = null
+					
+					if potential_targets.size() == 1:
+						# If there's only one player, the choice is easy.
+						chosen_target = potential_targets[0]
+					else:
+						# Find the closest player to the enemy's spawn position.
+						var closest_dist_sq = INF
+						for target in potential_targets:
+							if is_instance_valid(target):
+								var dist_sq = enemy.global_position.distance_squared_to(target.global_position)
+								if dist_sq < closest_dist_sq:
+									closest_dist_sq = dist_sq
+									chosen_target = target
+					
+					if is_instance_valid(chosen_target):
+						enemy.set_target(chosen_target)
+					else:
+						push_warning("EnemySpawner: Could not find a valid closest player for Homing enemy.")
+				else:
+					push_warning("EnemySpawner: get_player_targets() returned an empty array.")
+			else:
+				push_warning("EnemySpawner: _level_sequencer is not valid or does not have get_player_targets().")
 		
 		# Position the enemy
 		if event_data.behavior_pattern and event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:

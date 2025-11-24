@@ -1,7 +1,10 @@
 extends Resource
 class_name WaveData
 
-## Délai en secondes après la fin de la vague précédente avant de lancer celle-ci.
-@export var delay_before_start: float = 2.0
-## La liste des groupes d'ennemis à faire apparaître dans cette vague.
+## Delay in seconds before this wave starts after the previous one ends.
+@export var delay_before_start: float = 3.0
+
+## A list of individual enemy spawn events for this wave.
 @export var spawn_events: Array[SpawnEventData]
+## A list of squadron spawn events for this wave.
+@export var squadron_spawn_events: Array[SquadronSpawnEventData]

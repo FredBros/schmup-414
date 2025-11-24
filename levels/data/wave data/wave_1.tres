@@ -1,11 +1,19 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3 uid="uid://dx5mnxigni1jl"]
+[gd_resource type="Resource" script_class="WaveData" load_steps=7 format=3 uid="uid://dx5mnxigni1jl"]
 
 [ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="1_cmyxg"]
 [ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_xb6j5"]
-[ext_resource type="Resource" uid="uid://ch7dpu7q7fncg" path="res://levels/data/spawn event data/spawn_3_sinusoid.tres" id="3_xb6j5"]
+[ext_resource type="Resource" uid="uid://b6gc2pscmeuw8" path="res://resources/EnemyBehaviorPattern/linear_vertical_left_patternt.tres" id="3_re8mv"]
+[ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron data/SquadronSpawnEventData.gd" id="4_ciht8"]
+[ext_resource type="Resource" uid="uid://chefmfwb833fy" path="res://levels/data/squadron data/formation_line_5.tres" id="5_ciht8"]
+
+[sub_resource type="Resource" id="Resource_s1vgr"]
+script = ExtResource("4_ciht8")
+enemy_type_id = "basic_enemy"
+behavior_pattern = ExtResource("3_re8mv")
+formation_pattern = ExtResource("5_ciht8")
+metadata/_custom_type_script = "uid://dusuo5uyypl2l"
 
 [resource]
 script = ExtResource("1_cmyxg")
-delay_before_start = 5.0
-spawn_events = Array[ExtResource("2_xb6j5")]([ExtResource("3_xb6j5")])
+squadron_spawn_events = Array[ExtResource("4_ciht8")]([SubResource("Resource_s1vgr")])
 metadata/_custom_type_script = "uid://bwsv5nsff62qk"

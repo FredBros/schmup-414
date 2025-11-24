@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3qh0ec0wac3w"]
+[gd_scene load_steps=15 format=3 uid="uid://c3qh0ec0wac3w"]
 
 [ext_resource type="Script" uid="uid://djjopar8ksh0e" path="res://scenes/world/world.gd" id="1_dlabj"]
 [ext_resource type="Script" uid="uid://cuxwynkuxfl0" path="res://scenes/world/game_bounds.gd" id="1_q711r"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="8_5qq27"]
 [ext_resource type="Script" uid="uid://bwnhook52xe06" path="res://levels/level_sequencer.gd" id="10_gb53w"]
 [ext_resource type="Resource" uid="uid://d2w4nf0t535ln" path="res://levels/data/level data/level_1.tres" id="11_5qq27"]
+[ext_resource type="PackedScene" uid="uid://bbg6nyssff2nq" path="res://scenes/path/path_top_left_loop.tscn" id="13_srmg5"]
 
 [sub_resource type="Resource" id="Resource_dlabj"]
 script = ExtResource("7_gb53w")
 type_id = "basic_enemy"
 scene = ExtResource("8_5qq27")
+lifetime = 15.0
 metadata/_custom_type_script = "uid://q8x8tsswa80v"
 
 [node name="World" type="Node2D"]
@@ -44,12 +46,18 @@ pools_to_create = Array[ExtResource("7_gb53w")]([SubResource("Resource_dlabj")])
 position = Vector2(405, 900)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(405, 540)
 
 [node name="Bullets" type="Node" parent="."]
 
-[node name="LevelSequencer" type="Node" parent="." groups=["LevelSequencer"]]
+[node name="LevelSequencer" type="Node" parent="." node_paths=PackedStringArray("players") groups=["LevelSequencer"]]
 script = ExtResource("10_gb53w")
 level_data = ExtResource("11_5qq27")
+players = [NodePath("../Player")]
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="PathTopLeftLoop" parent="Paths" instance=ExtResource("13_srmg5")]
 
 [editable path="EnemySpawner"]

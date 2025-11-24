@@ -29,7 +29,6 @@ func _ready() -> void:
 			var enemy: Enemy = config.scene.instantiate()
 			# Attacher un métadata pour savoir à quel pool il appartient
 			enemy.set_meta("pool_type", config.type_id)
-			enemy.set_meta("pool_lifetime", config.lifetime)
 			enemy.reclaimed.connect(_on_enemy_reclaimed)
 			add_child(enemy)
 			enemy.deactivate()
@@ -53,8 +52,7 @@ func get_enemy(type_id: String) -> Enemy:
 			push_warning("Le pool pour '%s' est vide. Envisagez d'augmenter sa taille. Création d'une nouvelle instance." % type_id)
 		var config = pools_to_create.filter(func(c): return c.type_id == type_id)[0]
 		var enemy: Enemy = config.scene.instantiate()
-		enemy.set_meta("pool_type", config.type_id)
-		enemy.set_meta("pool_lifetime", config.lifetime)
+		enemy.set_meta("pool_type", config.type_id) # On garde le type pour le retour au pool
 		enemy.reclaimed.connect(_on_enemy_reclaimed)
 		add_child(enemy)
 		return enemy

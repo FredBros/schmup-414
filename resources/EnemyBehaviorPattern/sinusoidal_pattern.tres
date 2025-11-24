@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_ksmu5")
 movement_type = 1
-sine_amplitude = 20.0
-sine_frequency = 4.0
+homing_speed = 200.0
+bounce_speed = 800.0
 metadata/_custom_type_script = "uid://dg83fupxxxrup"

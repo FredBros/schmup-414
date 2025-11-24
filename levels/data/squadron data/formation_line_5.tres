@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FormationPattern" load_steps=2 format=3 uid="uid://chefmfwb833fy"]
+
+[ext_resource type="Script" uid="uid://dx2ut3fqdsor8" path="res://levels/data/squadron data/formation_pattern.gd" id="1_qiyrg"]
+
+[resource]
+script = ExtResource("1_qiyrg")
+member_offsets = Array[Vector2]([Vector2(-100, 0), Vector2(-50, 0), Vector2(0, 0), Vector2(50, 0), Vector2(100, 0)])
+metadata/_custom_type_script = "uid://dx2ut3fqdsor8"

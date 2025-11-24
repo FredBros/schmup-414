@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_n4umv")
 movement_type = 2
+lifetime = 3.0
 metadata/_custom_type_script = "uid://dg83fupxxxrup"

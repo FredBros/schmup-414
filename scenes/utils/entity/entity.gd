@@ -1,6 +1,11 @@
-extends Node2D
+extends CharacterBody2D
 
 class_name Entity
+
+@export_group("Health")
+@export var max_health: float = 10.0
+
+var health: float
 
 # Utiliser find_child pour trouver le noeud Health de manière robuste.
 # Cela fonctionne que "Health" soit un enfant direct (comme dans Player)

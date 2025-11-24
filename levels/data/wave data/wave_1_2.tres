@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3 uid="uid://bsv6u32ys50ll"]
+[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3 uid="uid://bsv6u32ys50ll"]
 
 [ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="1_5h35v"]
 [ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_dfjpo"]
-[ext_resource type="Resource" uid="uid://b4n1oq5r7jajl" path="res://levels/data/spawn event data/spawn_5_linear.tres" id="3_dfjpo"]
+[ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron data/SquadronSpawnEventData.gd" id="3_dfjpo"]
+[ext_resource type="Resource" uid="uid://dyfr5xbi6wbnr" path="res://levels/data/squadron data/squadron_spawn_1.tres" id="4_rpl0k"]
 
 [resource]
 script = ExtResource("1_5h35v")
-spawn_events = Array[ExtResource("2_dfjpo")]([ExtResource("3_dfjpo")])
+squadron_spawn_events = Array[ExtResource("3_dfjpo")]([ExtResource("4_rpl0k")])
 metadata/_custom_type_script = "uid://bwsv5nsff62qk"

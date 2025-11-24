@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=4 format=3 uid="uid://dyfr5xbi6wbnr"]
+
+[ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://resources/EnemyBehaviorPattern/path_behavior.tres" id="1_ksj7s"]
+[ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron data/SquadronSpawnEventData.gd" id="1_uw5fq"]
+[ext_resource type="Resource" uid="uid://8u5ih6yi6fke" path="res://levels/data/squadron data/formation_v_5.tres" id="2_7k3u3"]
+
+[resource]
+script = ExtResource("1_uw5fq")
+enemy_type_id = "basic_enemy"
+behavior_pattern = ExtResource("1_ksj7s")
+formation_pattern = ExtResource("2_7k3u3")
+movement_path = NodePath("../Paths/PathTopLeftLoop")
+metadata/_custom_type_script = "uid://dusuo5uyypl2l"

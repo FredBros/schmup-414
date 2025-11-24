@@ -13,9 +13,8 @@ size = Vector2(40, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
 size = Vector2(41, 20)
 
-[node name="Enemy" type="Node2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_a3pup")
-shoot_cooldown = 0.5
 bullet_data_resource = ExtResource("6_cwlon")
 
 [node name="PathFollower" type="PathFollow2D" parent="."]
