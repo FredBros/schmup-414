@@ -47,6 +47,11 @@ func _process(delta: float) -> void:
 	while i < _spawn_events_queue.size():
 		var event: SpawnEventData = _spawn_events_queue[i]
 		if _time_since_wave_start >= event.spawn_delay:
+			# This is where you could trigger a radar warning in the future.
+			# We get the deduced spawn edge from the event data itself.
+			var edge = event.get_spawn_edge()
+			print("RADAR (Future): Threat incoming from ", SpawnEventData.SpawnEdge.keys()[edge])
+			
 			print("SEQUENCER: Emitting spawn request for event in wave ", _current_wave_index) # Kept as is
 			emit_signal("request_spawn", event)
 			_spawn_events_queue.remove_at(i)

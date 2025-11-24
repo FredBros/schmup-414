@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpawnEventData" load_steps=3 format=3 uid="uid://b4n1oq5r7jajl"]
+
+[ext_resource type="Resource" uid="uid://b6gc2pscmeuw8" path="res://resources/EnemyBehaviorPattern/linear_vertical_left_patternt.tres" id="1_l5mka"]
+[ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_nc4xv"]
+
+[resource]
+script = ExtResource("2_nc4xv")
+behavior_pattern = ExtResource("1_l5mka")
+count = 6
+spawn_zone = 18
+spawn_edge = null
+metadata/_custom_type_script = "uid://b4t8yg7sbek6x"

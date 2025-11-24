@@ -4,6 +4,7 @@ extends Node2D
 @export var debug_mode: bool = false
 
 var _enemy_pool_manager: EnemyPoolManager
+var _screen_size: Vector2
 
 func _ready() -> void:
 	# The spawner listens for orders from the LevelSequencer.
@@ -18,6 +19,8 @@ func _ready() -> void:
 	var managers = get_tree().get_nodes_in_group("EnemyPoolManager")
 	if not managers.is_empty():
 		_enemy_pool_manager = managers[0]
+		
+	_screen_size = get_viewport_rect().size
 
 func _on_spawn_requested(event_data: SpawnEventData) -> void:
 	if not _enemy_pool_manager: return
@@ -44,11 +47,69 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 			else:
 				push_warning("Spawner: Path2D not found at path: %s" % event_data.movement_path)
 		else:
-			# Positioning for non-Path2D movements
-			# The spawn area is centered on spawn_center.x and has a width of spawn_area_width.
-			var half_width = event_data.spawn_area_width / 2.0
-			var x_pos = randf_range(event_data.spawn_center.x - half_width, event_data.spawn_center.x + half_width)
-			enemy.global_position = Vector2(x_pos, event_data.spawn_center.y)
+			# Positioning for non-Path2D movements based on SpawnZone
+			var spawn_pos := Vector2.ZERO
+			var spawn_offset = 50.0 # Default distance outside the screen
+			
+			match event_data.spawn_zone:
+				# --- Top Edge Spawns ---
+				SpawnEventData.SpawnZone.FULL_TOP:
+					spawn_pos.x = randf_range(0, _screen_size.x)
+					spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.LEFT_HALF_TOP:
+					spawn_pos.x = randf_range(0, _screen_size.x / 2.0)
+					spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.RIGHT_HALF_TOP:
+					spawn_pos.x = randf_range(_screen_size.x / 2.0, _screen_size.x)
+					spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.LEFT_THIRD_TOP:
+					spawn_pos.x = randf_range(0, _screen_size.x / 3.0)
+					spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.CENTER_THIRD_TOP:
+					spawn_pos.x = randf_range(_screen_size.x / 3.0, _screen_size.x * 2.0 / 3.0)
+					spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.RIGHT_THIRD_TOP:
+					spawn_pos.x = randf_range(_screen_size.x * 2.0 / 3.0, _screen_size.x)
+					spawn_pos.y = - spawn_offset
+				# --- Bottom Edge Spawns ---
+				SpawnEventData.SpawnZone.FULL_BOTTOM:
+					spawn_pos.x = randf_range(0, _screen_size.x)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.LEFT_HALF_BOTTOM:
+					spawn_pos.x = randf_range(0, _screen_size.x / 2.0)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.RIGHT_HALF_BOTTOM:
+					spawn_pos.x = randf_range(_screen_size.x / 2.0, _screen_size.x)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.LEFT_THIRD_BOTTOM:
+					spawn_pos.x = randf_range(0, _screen_size.x / 3.0)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.CENTER_THIRD_BOTTOM:
+					spawn_pos.x = randf_range(_screen_size.x / 3.0, _screen_size.x * 2.0 / 3.0)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.RIGHT_THIRD_BOTTOM:
+					spawn_pos.x = randf_range(_screen_size.x * 2.0 / 3.0, _screen_size.x)
+					spawn_pos.y = _screen_size.y + spawn_offset
+				# --- Left Edge Spawns ---
+				SpawnEventData.SpawnZone.FULL_LEFT:
+					spawn_pos.x = - spawn_offset
+					spawn_pos.y = randf_range(0, _screen_size.y)
+				SpawnEventData.SpawnZone.TOP_HALF_LEFT:
+					spawn_pos.x = - spawn_offset
+					spawn_pos.y = randf_range(0, _screen_size.y / 2.0)
+				SpawnEventData.SpawnZone.BOTTOM_HALF_LEFT:
+					spawn_pos.x = - spawn_offset
+					spawn_pos.y = randf_range(_screen_size.y / 2.0, _screen_size.y)
+				# --- Right Edge Spawns ---
+				SpawnEventData.SpawnZone.FULL_RIGHT:
+					spawn_pos.x = _screen_size.x + spawn_offset
+					spawn_pos.y = randf_range(0, _screen_size.y)
+				# --- Special ---
+				SpawnEventData.SpawnZone.EXACT_POINT:
+					spawn_pos.x = event_data.spawn_point.x + randf_range(-event_data.spawn_point_variation.x, event_data.spawn_point_variation.x)
+					spawn_pos.y = event_data.spawn_point.y + randf_range(-event_data.spawn_point_variation.y, event_data.spawn_point_variation.y)
+			
+			enemy.global_position = spawn_pos
 		
 		enemy.activate()
 		

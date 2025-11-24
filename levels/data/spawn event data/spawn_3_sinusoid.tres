@@ -7,4 +7,5 @@
 script = ExtResource("2_hien8")
 behavior_pattern = ExtResource("1_8j7sk")
 count = 3
+spawn_zone = 5
 metadata/_custom_type_script = "uid://b4t8yg7sbek6x"
