@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3qh0ec0wac3w"]
+[gd_scene load_steps=14 format=3 uid="uid://c3qh0ec0wac3w"]
 
+[ext_resource type="Script" uid="uid://djjopar8ksh0e" path="res://scenes/world/world.gd" id="1_dlabj"]
 [ext_resource type="Script" uid="uid://cuxwynkuxfl0" path="res://scenes/world/game_bounds.gd" id="1_q711r"]
 [ext_resource type="PackedScene" uid="uid://brub1ybttnsq7" path="res://scenes/background/background.tscn" id="1_v5dby"]
 [ext_resource type="PackedScene" uid="uid://2af5c4g7ruox" path="res://scenes/player/player.tscn" id="2_t5ptc"]
@@ -9,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cwkc0ynimecem" path="res://scenes/utils/components/bullet pool/bullet_pool.tscn" id="6_t5ptc"]
 [ext_resource type="Script" uid="uid://q8x8tsswa80v" path="res://scenes/utils/components/enemy pool manager/pool_config.gd" id="7_gb53w"]
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://scenes/enemy/enemy.tscn" id="8_5qq27"]
-[ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://resources/EnemyBehaviorPattern/path_behavior.tres" id="9_gb53w"]
+[ext_resource type="Script" uid="uid://bwnhook52xe06" path="res://levels/level_sequencer.gd" id="10_gb53w"]
+[ext_resource type="Resource" uid="uid://d2w4nf0t535ln" path="res://levels/data/level data/level_1.tres" id="11_5qq27"]
 
 [sub_resource type="Resource" id="Resource_dlabj"]
 script = ExtResource("7_gb53w")
@@ -18,6 +20,7 @@ scene = ExtResource("8_5qq27")
 metadata/_custom_type_script = "uid://q8x8tsswa80v"
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_dlabj")
 
 [node name="GameBounds" type="Node2D" parent="."]
 script = ExtResource("1_q711r")
@@ -34,7 +37,7 @@ visible = false
 pools_to_create = Array[ExtResource("7_gb53w")]([SubResource("Resource_dlabj")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_1yooq")]
-behavior_pattern = ExtResource("9_gb53w")
+debug_mode = true
 
 [node name="BulletsContainer" type="Node" parent="." groups=["BulletsContainer"]]
 
@@ -45,5 +48,9 @@ position = Vector2(405, 900)
 position = Vector2(405, 540)
 
 [node name="Bullets" type="Node" parent="."]
+
+[node name="LevelSequencer" type="Node" parent="." groups=["LevelSequencer"]]
+script = ExtResource("10_gb53w")
+level_data = ExtResource("11_5qq27")
 
 [editable path="EnemySpawner"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpawnEventData" load_steps=3 format=3 uid="uid://ch7dpu7q7fncg"]
+
+[ext_resource type="Resource" uid="uid://df6tmtd8rko8g" path="res://resources/EnemyBehaviorPattern/sinusoidal_pattern.tres" id="1_8j7sk"]
+[ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_hien8"]
+
+[resource]
+script = ExtResource("2_hien8")
+behavior_pattern = ExtResource("1_8j7sk")
+count = 3
+metadata/_custom_type_script = "uid://b4t8yg7sbek6x"

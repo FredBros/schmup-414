@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3 uid="uid://dx5mnxigni1jl"]
+
+[ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="1_cmyxg"]
+[ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_xb6j5"]
+[ext_resource type="Resource" uid="uid://ch7dpu7q7fncg" path="res://levels/data/spawn event data/spawn_3_sinusoid.tres" id="3_xb6j5"]
+
+[resource]
+script = ExtResource("1_cmyxg")
+delay_before_start = 5.0
+spawn_events = Array[ExtResource("2_xb6j5")]([ExtResource("3_xb6j5")])
+metadata/_custom_type_script = "uid://bwsv5nsff62qk"
