@@ -16,5 +16,6 @@ metadata/_custom_type_script = "uid://dusuo5uyypl2l"
 
 [resource]
 script = ExtResource("1_cmyxg")
+start_time = 1.0
 squadron_spawn_events = Array[ExtResource("4_ciht8")]([SubResource("Resource_s1vgr")])
 metadata/_custom_type_script = "uid://bwsv5nsff62qk"
