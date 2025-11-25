@@ -156,12 +156,26 @@ func _physics_process(delta: float) -> void:
 		EnemyBehaviorPattern.MovementType.PATH_2D:
 			# Fait progresser l'ennemi le long du chemin en se basant sur sa durée de vie.
 			# Quand _age atteint lifetime, progress_ratio atteint 1.0.
+			if _behavior_pattern.rotate_to_movement:
+				_path_follower.rotates = true
+			
 			if _behavior_pattern.lifetime > 0:
 				_path_follower.progress_ratio = _age / _behavior_pattern.lifetime
+			
+			# For Path2D, velocity is not used, but rotation needs to be set from the follower.
+			self.rotation = _path_follower.rotation + PI / 2
 			return # move_and_slide is not needed for PathFollower2D
 
 	move_and_slide()
 	
+	# Rotate the enemy to face its movement direction, if enabled.
+	if _behavior_pattern.rotate_to_movement:
+		# Only rotate if there is a velocity to avoid snapping to a default angle.
+		if velocity.length_squared() > 0:
+			# velocity.angle() gives the angle for pointing right (X-axis).
+			# We add PI/2 (90 degrees) because our sprites point up (Y-axis).
+			rotation = velocity.angle() + PI / 2
+
 	# Increment age and reclaim if lifetime is exceeded.
 	_age += delta
 	if _behavior_pattern and _behavior_pattern.lifetime > 0 and _age >= _behavior_pattern.lifetime:

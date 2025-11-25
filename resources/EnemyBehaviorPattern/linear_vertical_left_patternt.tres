@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_qwrab")
+movement_type = 2
+lifetime = 5.0
+sinusoidal_frequency = 4.0
+sinusoidal_amplitude = 200.0
 metadata/_custom_type_script = "uid://dg83fupxxxrup"

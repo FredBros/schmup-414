@@ -11,6 +11,7 @@ script = ExtResource("4_ciht8")
 enemy_type_id = "basic_enemy"
 behavior_pattern = ExtResource("3_re8mv")
 formation_pattern = ExtResource("5_ciht8")
+movement_path = NodePath("../Paths/PathTopLeftLoop")
 metadata/_custom_type_script = "uid://dusuo5uyypl2l"
 
 [resource]

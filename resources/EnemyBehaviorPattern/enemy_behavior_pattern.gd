@@ -16,6 +16,8 @@ enum MovementType {
 @export var movement_type: MovementType = MovementType.LINEAR
 ## Lifetime in seconds. If <= 0, lives forever. For PATH_2D, this MUST be > 0 and defines the time to travel the path.
 @export var lifetime: float = 0.0
+## If true, the entity will automatically rotate to face its direction of movement.
+@export var rotate_to_movement: bool = true
 
 @export_group("Linear")
 ## The constant velocity for the LINEAR movement type.

@@ -58,6 +58,12 @@ func _physics_process(delta: float) -> void:
 				push_warning("SquadronController: Path2D movement requires a 'lifetime' > 0 in its EnemyBehaviorPattern, but it is 0. The squadron will not move.")
 
 			self.global_position = _path_follower.global_position
+			
+			# Handle rotation for Path2D
+			if behavior_pattern.rotate_to_movement:
+				# PathFollower2D can automatically rotate to follow the path.
+				_path_follower.rotates = true # This makes the follower node rotate.
+				self.rotation = _path_follower.rotation + PI / 2 # We copy the follower's rotation and add 90 degrees.
 		# We skip the rest of the physics logic for Path2D
 	else:
 		# --- Standard movement logic for other patterns ---
@@ -109,16 +115,26 @@ func _physics_process(delta: float) -> void:
 		
 		global_position += velocity * delta
 
+	# Rotate the squadron to face its movement direction, if enabled.
+	# This must be done BEFORE updating member positions.
+	if behavior_pattern.rotate_to_movement and velocity.length_squared() > 0:
+		# velocity.angle() gives the angle for pointing right (X-axis).
+		# We add PI/2 (90 degrees) because our sprites point up (Y-axis).
+		self.rotation = velocity.angle() + PI / 2
+
 	# 2. Update member positions
 	# The lerp factor determines how "tight" the formation is.
 	var formation_tightness = 0.1 # Value between 0 and 1
 	for i in range(members.size()):
 		var enemy = members[i]
 		if is_instance_valid(enemy) and i < formation_pattern.member_offsets.size():
-			var offset = formation_pattern.member_offsets[i]
+			# Rotate the offset vector by the controller's NEW rotation
+			var offset = formation_pattern.member_offsets[i].rotated(self.rotation)
 			var target_pos = self.global_position + offset
 			# The enemy smoothly moves towards its designated spot in the formation
 			enemy.global_position = enemy.global_position.lerp(target_pos, formation_tightness)
+			# Make the enemy inherit the squadron's rotation
+			enemy.rotation = self.rotation
 
 	# 3. Check for deactivation
 	_age += delta

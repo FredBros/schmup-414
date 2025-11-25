@@ -38,6 +38,83 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	controller.behavior_pattern = event_data.behavior_pattern
 	controller.formation_pattern = event_data.formation_pattern
 	
+	# 3. Determine the spawn position for the controller (the center of the squadron)
+	var spawn_pos := Vector2.ZERO
+	var spawn_offset = 50.0 # Default distance outside the screen
+	
+	# Special case for spawning at the start of a path
+	if event_data.spawn_zone == SquadronSpawnEventData.SpawnZone.PATH_START:
+		var path_node = get_node_or_null(event_data.movement_path)
+		if path_node and path_node is Path2D:
+			# Temporarily add a PathFollower to get the start position
+			var temp_follower = PathFollow2D.new()
+			path_node.add_child(temp_follower)
+			temp_follower.progress_ratio = 0.0
+			spawn_pos = temp_follower.global_position
+			temp_follower.queue_free() # Clean up the temporary node
+		else:
+			push_warning("Spawner: PATH_START spawn zone selected for squadron, but Path2D not found at path: %s. Spawning at top." % event_data.movement_path)
+			spawn_pos = Vector2(_screen_size.x / 2.0, -spawn_offset) # Fallback
+	else:
+		# Logic for all other spawn zones (copied from _on_spawn_requested)
+		match event_data.spawn_zone:
+			# --- Top Edge Spawns ---
+			SquadronSpawnEventData.SpawnZone.FULL_TOP:
+				spawn_pos.x = randf_range(0, _screen_size.x)
+				spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.LEFT_HALF_TOP:
+				spawn_pos.x = randf_range(0, _screen_size.x / 2.0)
+				spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.RIGHT_HALF_TOP:
+				spawn_pos.x = randf_range(_screen_size.x / 2.0, _screen_size.x)
+				spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.LEFT_THIRD_TOP:
+				spawn_pos.x = randf_range(0, _screen_size.x / 3.0)
+				spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.CENTER_THIRD_TOP:
+				spawn_pos.x = randf_range(_screen_size.x / 3.0, _screen_size.x * 2.0 / 3.0)
+				spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.RIGHT_THIRD_TOP:
+				spawn_pos.x = randf_range(_screen_size.x * 2.0 / 3.0, _screen_size.x)
+				spawn_pos.y = - spawn_offset
+			# --- Bottom Edge Spawns ---
+			SquadronSpawnEventData.SpawnZone.FULL_BOTTOM:
+				spawn_pos.x = randf_range(0, _screen_size.x)
+				spawn_pos.y = _screen_size.y + spawn_offset
+			# (You can add the other bottom thirds/halves here if needed)
+			# --- Left Edge Spawns ---
+			SquadronSpawnEventData.SpawnZone.FULL_LEFT:
+				spawn_pos.x = - spawn_offset
+				spawn_pos.y = randf_range(0, _screen_size.y)
+			SquadronSpawnEventData.SpawnZone.TOP_HALF_LEFT:
+				spawn_pos.x = - spawn_offset
+				spawn_pos.y = randf_range(0, _screen_size.y / 2.0)
+			SquadronSpawnEventData.SpawnZone.BOTTOM_HALF_LEFT:
+				spawn_pos.x = - spawn_offset
+				spawn_pos.y = randf_range(_screen_size.y / 2.0, _screen_size.y)
+			# --- Right Edge Spawns ---
+			SquadronSpawnEventData.SpawnZone.FULL_RIGHT:
+				spawn_pos.x = _screen_size.x + spawn_offset
+				spawn_pos.y = randf_range(0, _screen_size.y)
+			# --- Special ---
+			SquadronSpawnEventData.SpawnZone.EXACT_POINT:
+				spawn_pos.x = event_data.spawn_point.x + randf_range(-event_data.spawn_point_variation.x, event_data.spawn_point_variation.x)
+				spawn_pos.y = event_data.spawn_point.y + randf_range(-event_data.spawn_point_variation.y, event_data.spawn_point_variation.y)
+			_: # Fallback for any other non-implemented zone
+				spawn_pos.x = randf_range(0, _screen_size.x)
+				spawn_pos.y = - spawn_offset
+	
+	if debug_mode:
+		print(
+			"[SPAWNER DEBUG] Spawning SQUADRON. Zone: %s, Calculated Position: (%d, %d)" % [
+				SquadronSpawnEventData.SpawnZone.keys()[event_data.spawn_zone],
+				spawn_pos.x,
+				spawn_pos.y
+			]
+		)
+
+	controller.global_position = spawn_pos
+	
 	# 3. Spawn and assign members
 	var members: Array[Enemy] = []
 	for offset in event_data.formation_pattern.member_offsets:
@@ -46,11 +123,8 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 			push_warning("Spawner: Pool for '%s' is empty while building a squadron." % event_data.enemy_type_id)
 			continue
 		
-		# The enemy's initial position is relative to the controller's spawn position
-		# We'll set the controller's position to the center of the screen for now.
-		# A more advanced system could use SpawnZone for squadrons too.
-		controller.global_position = _screen_size / 2.0
-		enemy.global_position = controller.global_position + offset
+		# The enemy's initial position is its final position in the formation.
+		enemy.global_position = spawn_pos + offset
 		
 		# Set a basic behavior pattern for the enemy itself (e.g., STATIONARY)
 		# so it doesn't try to move on its own.
