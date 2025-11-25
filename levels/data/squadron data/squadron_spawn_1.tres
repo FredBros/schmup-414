@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_uw5fq")
-spawn_zone = 2
+spawn_zone = 19
 enemy_type_id = "basic_enemy"
 behavior_pattern = ExtResource("1_ksj7s")
 formation_pattern = ExtResource("2_ksj7s")

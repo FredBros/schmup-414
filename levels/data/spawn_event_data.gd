@@ -27,7 +27,12 @@ enum SpawnZone {
 	TOP_HALF_RIGHT, ## Spawns on the top half of the right screen edge.
 	BOTTOM_HALF_RIGHT, ## Spawns on the bottom half of the right screen edge.
 	# --- Special ---
-	EXACT_POINT ## Spawns at a specific point defined by `spawn_point`, with optional variation.
+	EXACT_POINT, ## Spawns at a specific point defined by `spawn_point`, with optional variation.
+	# --- Corners (1/4 of each adjacent edge) ---
+	CORNER_TOP_LEFT, ## Spawns on the top 1/4 of the left edge OR the left 1/4 of the top edge.
+	CORNER_TOP_RIGHT, ## Spawns on the top 1/4 of the right edge OR the right 1/4 of the top edge.
+	CORNER_BOTTOM_LEFT, ## Spawns on the bottom 1/4 of the left edge OR the left 1/4 of the bottom edge.
+	CORNER_BOTTOM_RIGHT ## Spawns on the bottom 1/4 of the right edge OR the right 1/4 of the bottom edge.
 }
 
 ## Defines the edge of the screen from which a threat originates. Used for radar systems.

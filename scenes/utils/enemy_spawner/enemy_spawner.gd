@@ -3,6 +3,9 @@ extends Node2D
 ## If true, enables detailed logs in the console for debugging.
 @export var debug_mode: bool = false
 
+## The size in pixels for the corner spawn zones.
+const CORNER_ZONE_SIZE = 150.0
+
 var _enemy_pool_manager: EnemyPoolManager
 var _level_sequencer: Node
 var _screen_size: Vector2
@@ -100,6 +103,35 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 			SquadronSpawnEventData.SpawnZone.EXACT_POINT:
 				spawn_pos.x = event_data.spawn_point.x + randf_range(-event_data.spawn_point_variation.x, event_data.spawn_point_variation.x)
 				spawn_pos.y = event_data.spawn_point.y + randf_range(-event_data.spawn_point_variation.y, event_data.spawn_point_variation.y)
+			# --- Corners ---
+			SquadronSpawnEventData.SpawnZone.CORNER_TOP_LEFT:
+				if randf() < 0.5: # Left edge, top quarter
+					spawn_pos.x = - spawn_offset
+					spawn_pos.y = randf_range(0, CORNER_ZONE_SIZE)
+				else: # Top edge, left quarter
+					spawn_pos.x = randf_range(0, CORNER_ZONE_SIZE)
+					spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.CORNER_TOP_RIGHT:
+				if randf() < 0.5: # Right edge, top quarter
+					spawn_pos.x = _screen_size.x + spawn_offset
+					spawn_pos.y = randf_range(0, CORNER_ZONE_SIZE)
+				else: # Top edge, right quarter
+					spawn_pos.x = randf_range(_screen_size.x - CORNER_ZONE_SIZE, _screen_size.x)
+					spawn_pos.y = - spawn_offset
+			SquadronSpawnEventData.SpawnZone.CORNER_BOTTOM_LEFT:
+				if randf() < 0.5: # Left edge, bottom quarter
+					spawn_pos.x = - spawn_offset
+					spawn_pos.y = randf_range(_screen_size.y - CORNER_ZONE_SIZE, _screen_size.y)
+				else: # Bottom edge, left quarter
+					spawn_pos.x = randf_range(0, CORNER_ZONE_SIZE)
+					spawn_pos.y = _screen_size.y + spawn_offset
+			SquadronSpawnEventData.SpawnZone.CORNER_BOTTOM_RIGHT:
+				if randf() < 0.5: # Right edge, bottom quarter
+					spawn_pos.x = _screen_size.x + spawn_offset
+					spawn_pos.y = randf_range(_screen_size.y - CORNER_ZONE_SIZE, _screen_size.y)
+				else: # Bottom edge, right quarter
+					spawn_pos.x = randf_range(_screen_size.x - CORNER_ZONE_SIZE, _screen_size.x)
+					spawn_pos.y = _screen_size.y + spawn_offset
 			_: # Fallback for any other non-implemented zone
 				spawn_pos.x = randf_range(0, _screen_size.x)
 				spawn_pos.y = - spawn_offset
@@ -278,6 +310,35 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 				SpawnEventData.SpawnZone.EXACT_POINT:
 					spawn_pos.x = event_data.spawn_point.x + randf_range(-event_data.spawn_point_variation.x, event_data.spawn_point_variation.x)
 					spawn_pos.y = event_data.spawn_point.y + randf_range(-event_data.spawn_point_variation.y, event_data.spawn_point_variation.y)
+				# --- Corners ---
+				SpawnEventData.SpawnZone.CORNER_TOP_LEFT:
+					if randf() < 0.5: # Left edge, top quarter
+						spawn_pos.x = - spawn_offset
+						spawn_pos.y = randf_range(0, CORNER_ZONE_SIZE)
+					else: # Top edge, left quarter
+						spawn_pos.x = randf_range(0, CORNER_ZONE_SIZE)
+						spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.CORNER_TOP_RIGHT:
+					if randf() < 0.5: # Right edge, top quarter
+						spawn_pos.x = _screen_size.x + spawn_offset
+						spawn_pos.y = randf_range(0, CORNER_ZONE_SIZE)
+					else: # Top edge, right quarter
+						spawn_pos.x = randf_range(_screen_size.x - CORNER_ZONE_SIZE, _screen_size.x)
+						spawn_pos.y = - spawn_offset
+				SpawnEventData.SpawnZone.CORNER_BOTTOM_LEFT:
+					if randf() < 0.5: # Left edge, bottom quarter
+						spawn_pos.x = - spawn_offset
+						spawn_pos.y = randf_range(_screen_size.y - CORNER_ZONE_SIZE, _screen_size.y)
+					else: # Bottom edge, left quarter
+						spawn_pos.x = randf_range(0, CORNER_ZONE_SIZE)
+						spawn_pos.y = _screen_size.y + spawn_offset
+				SpawnEventData.SpawnZone.CORNER_BOTTOM_RIGHT:
+					if randf() < 0.5: # Right edge, bottom quarter
+						spawn_pos.x = _screen_size.x + spawn_offset
+						spawn_pos.y = randf_range(_screen_size.y - CORNER_ZONE_SIZE, _screen_size.y)
+					else: # Bottom edge, right quarter
+						spawn_pos.x = randf_range(_screen_size.x - CORNER_ZONE_SIZE, _screen_size.x)
+						spawn_pos.y = _screen_size.y + spawn_offset
 			
 			enemy.global_position = spawn_pos
 		

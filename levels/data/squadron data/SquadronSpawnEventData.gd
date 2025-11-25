@@ -5,16 +5,30 @@ class_name SquadronSpawnEventData
 ## Defines the area where the enemy group will appear.
 enum SpawnZone {
 	# Top Edge
-	FULL_TOP, LEFT_HALF_TOP, RIGHT_HALF_TOP, LEFT_THIRD_TOP, CENTER_THIRD_TOP, RIGHT_THIRD_TOP,
+	FULL_TOP, ## Spawns anywhere along the top edge of the screen.
+	LEFT_HALF_TOP, ## Spawns on the left half of the top screen edge.
+	RIGHT_HALF_TOP, ## Spawns on the right half of the top screen edge.
+	LEFT_THIRD_TOP, ## Spawns on the left third of the top screen edge.
+	CENTER_THIRD_TOP, ## Spawns on the center third of the top screen edge.
+	RIGHT_THIRD_TOP, ## Spawns on the right third of the top screen edge.
 	# Bottom Edge
-	FULL_BOTTOM, LEFT_HALF_BOTTOM, RIGHT_HALF_BOTTOM, LEFT_THIRD_BOTTOM, CENTER_THIRD_BOTTOM, RIGHT_THIRD_BOTTOM,
+	FULL_BOTTOM, ## Spawns anywhere along the bottom edge of the screen.
+	LEFT_HALF_BOTTOM, ## Spawns on the left half of the bottom screen edge.
+	RIGHT_HALF_BOTTOM, ## Spawns on the right half of the bottom screen edge.
+	LEFT_THIRD_BOTTOM, ## Spawns on the left third of the bottom screen edge.
+	CENTER_THIRD_BOTTOM, ## Spawns on the center third of the bottom screen edge.
+	RIGHT_THIRD_BOTTOM, ## Spawns on the right third of the bottom screen edge.
 	# Left Edge
-	FULL_LEFT, TOP_HALF_LEFT, BOTTOM_HALF_LEFT,
+	FULL_LEFT, ## Spawns anywhere along the left edge of the screen.
+	TOP_HALF_LEFT, ## Spawns on the top half of the left screen edge.
+	BOTTOM_HALF_LEFT, ## Spawns on the bottom half of the left screen edge.
 	# Right Edge
-	FULL_RIGHT,
+	FULL_RIGHT, ## Spawns anywhere along the right edge of the screen.
 	# Special
-	EXACT_POINT,
-	PATH_START # Spawns at the beginning of the assigned Path2D
+	EXACT_POINT, ## Spawns at a specific point defined by `spawn_point`.
+	PATH_START, # Spawns at the beginning of the assigned Path2D
+	# Corners (1/4 of each adjacent edge)
+	CORNER_TOP_LEFT, CORNER_TOP_RIGHT, CORNER_BOTTOM_LEFT, CORNER_BOTTOM_RIGHT
 }
 
 @export_group("Spawning")
