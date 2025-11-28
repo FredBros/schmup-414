@@ -1,0 +1,2180 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+Vulkan 1.4.315 - Forward+ - Using Device #0: AMD - AMD Radeon RX 6600
+
+[POOL_DEBUG] Initializing BulletPool, populating with 200 bullets...
+[POOL_DEBUG] Pool populated. Total bullets: 200
+[POOL_DEBUG] Initializing BulletPool, populating with 200 bullets...
+[POOL_DEBUG] Pool populated. Total bullets: 200
+SEQUENCER: Starting level timeline...
+SEQUENCER: Triggering Wave 0 at level time 0.15
+[SPAWNER DEBUG] Spawner's parent is: World. Adding controller there.
+[SPAWNER DEBUG] Spawning SQUADRON. Zone: FULL_TOP, Calculated Position: (659, -50)
+[@CharacterBody2D@818] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@817] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@816] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@815] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@814] MAKE_VISIBLE called. Current visibility: false
+SEQUENCER: Triggering Wave 1 at level time 1.01
+[SPAWNER DEBUG] Spawner's parent is: World. Adding controller there.
+[SPAWNER DEBUG] Spawning SQUADRON. Zone: CENTER_THIRD_TOP, Calculated Position: (477, -50)
+[@CharacterBody2D@813] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@812] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@811] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@810] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@809] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 199
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@399:<Area2D#67746400791>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (137.7637, 56.2386)
+[@Area2D@399] ACTIVATE called.
+[@Area2D@399] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 198
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@397:<Area2D#67662514706>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (87.76373, 56.2386)
+[@Area2D@397] ACTIVATE called.
+[@Area2D@397] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 197
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@395:<Area2D#67578628621>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (37.76374, 56.2386)
+[@Area2D@395] ACTIVATE called.
+[@Area2D@395] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 196
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@393:<Area2D#67494742536>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (-12.23626, 56.2386)
+[@Area2D@393] ACTIVATE called.
+[@Area2D@393] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 195
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@391:<Area2D#67410856451>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-62.23626, 56.2386)
+[@Area2D@391] ACTIVATE called.
+[@Area2D@391] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 194
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@389:<Area2D#67326970366>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (140.4803, 76.40755)
+[@Area2D@389] ACTIVATE called.
+[@Area2D@389] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 193
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@387:<Area2D#67243084281>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (90.48031, 76.40755)
+[@Area2D@387] ACTIVATE called.
+[@Area2D@387] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 192
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@385:<Area2D#67159198196>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (40.48031, 76.40755)
+[@Area2D@385] ACTIVATE called.
+[@Area2D@385] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 191
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@383:<Area2D#67075312111>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (-9.519691, 76.40755)
+[@Area2D@383] ACTIVATE called.
+[@Area2D@383] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 190
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@381:<Area2D#66991426026>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-59.51969, 76.40755)
+[@Area2D@381] ACTIVATE called.
+[@Area2D@381] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 189
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@379:<Area2D#66907539941>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (143.3679, 96.54783)
+[@Area2D@379] ACTIVATE called.
+[@Area2D@379] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 188
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@377:<Area2D#66823653856>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (93.36786, 96.54783)
+[@Area2D@377] ACTIVATE called.
+[@Area2D@377] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 187
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@375:<Area2D#66739767771>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (43.36786, 96.54783)
+[@Area2D@375] ACTIVATE called.
+[@Area2D@375] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 186
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@373:<Area2D#66655881686>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (-6.632137, 96.54783)
+[@Area2D@373] ACTIVATE called.
+[@Area2D@373] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 185
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@371:<Area2D#66571995601>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-56.63214, 96.54783)
+[@Area2D@371] ACTIVATE called.
+[@Area2D@371] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 184
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@369:<Area2D#66488109516>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (146.4258, 116.6616)
+[@Area2D@369] ACTIVATE called.
+[@Area2D@369] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 183
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@367:<Area2D#66404223431>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (96.42575, 116.6616)
+[@Area2D@367] ACTIVATE called.
+[@Area2D@367] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 182
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@365:<Area2D#66320337346>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (46.42575, 116.6616)
+[@Area2D@365] ACTIVATE called.
+[@Area2D@365] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 181
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@363:<Area2D#66236451261>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (-3.574245, 116.6616)
+[@Area2D@363] ACTIVATE called.
+[@Area2D@363] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 180
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@361:<Area2D#66152565176>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-53.57425, 116.6616)
+[@Area2D@361] ACTIVATE called.
+[@Area2D@361] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 179
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@359:<Area2D#66068679091>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 48.33335)
+[@Area2D@359] ACTIVATE called.
+[@Area2D@359] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 178
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@357:<Area2D#65984793006>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 48.33335)
+[@Area2D@357] ACTIVATE called.
+[@Area2D@357] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 177
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@355:<Area2D#65900906921>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 48.33335)
+[@Area2D@355] ACTIVATE called.
+[@Area2D@355] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 176
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@353:<Area2D#65817020836>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 48.33335)
+[@Area2D@353] ACTIVATE called.
+[@Area2D@353] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 175
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@351:<Area2D#65733134751>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 48.33335)
+[@Area2D@351] ACTIVATE called.
+[@Area2D@351] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 174
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@349:<Area2D#65649248666>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (149.6555, 136.7527)
+[@Area2D@349] ACTIVATE called.
+[@Area2D@349] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 173
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@347:<Area2D#65565362581>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (99.65552, 136.7527)
+[@Area2D@347] ACTIVATE called.
+[@Area2D@347] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 172
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@345:<Area2D#65481476496>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (49.65552, 136.7527)
+[@Area2D@345] ACTIVATE called.
+[@Area2D@345] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 171
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@343:<Area2D#65397590411>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (-0.344479, 136.7527)
+[@Area2D@343] ACTIVATE called.
+[@Area2D@343] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 170
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@341:<Area2D#65313704326>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-50.34448, 136.7527)
+[@Area2D@341] ACTIVATE called.
+[@Area2D@341] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 169
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@339:<Area2D#65229818241>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 70.00002)
+[@Area2D@339] ACTIVATE called.
+[@Area2D@339] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 168
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@337:<Area2D#65145932156>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 70.00002)
+[@Area2D@337] ACTIVATE called.
+[@Area2D@337] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 167
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@335:<Area2D#65062046071>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 70.00002)
+[@Area2D@335] ACTIVATE called.
+[@Area2D@335] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 166
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@333:<Area2D#64978159986>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 70.00002)
+[@Area2D@333] ACTIVATE called.
+[@Area2D@333] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 165
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@331:<Area2D#64894273901>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 70.00002)
+[@Area2D@331] ACTIVATE called.
+[@Area2D@331] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 164
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@329:<Area2D#64810387816>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (153.0584, 156.8148)
+[@Area2D@329] ACTIVATE called.
+[@Area2D@329] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 163
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@327:<Area2D#64726501731>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (103.0584, 156.8148)
+[@Area2D@327] ACTIVATE called.
+[@Area2D@327] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 162
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@325:<Area2D#64642615646>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (53.05844, 156.8148)
+[@Area2D@325] ACTIVATE called.
+[@Area2D@325] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 161
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@323:<Area2D#64558729561>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (3.058441, 156.8148)
+[@Area2D@323] ACTIVATE called.
+[@Area2D@323] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 160
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@321:<Area2D#64474843476>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-46.94156, 156.8148)
+[@Area2D@321] ACTIVATE called.
+[@Area2D@321] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 159
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@319:<Area2D#64390957391>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 91.66666)
+[@Area2D@319] ACTIVATE called.
+[@Area2D@319] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 158
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@317:<Area2D#64307071306>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 91.66666)
+[@Area2D@317] ACTIVATE called.
+[@Area2D@317] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 157
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@315:<Area2D#64223185221>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 91.66666)
+[@Area2D@315] ACTIVATE called.
+[@Area2D@315] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 156
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@313:<Area2D#64139299136>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 91.66666)
+[@Area2D@313] ACTIVATE called.
+[@Area2D@313] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 155
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@311:<Area2D#64055413051>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 91.66666)
+[@Area2D@311] ACTIVATE called.
+[@Area2D@311] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 154
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@309:<Area2D#63971526966>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (156.6372, 176.8444)
+[@Area2D@309] ACTIVATE called.
+[@Area2D@309] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 153
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@307:<Area2D#63887640881>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (106.6372, 176.8444)
+[@Area2D@307] ACTIVATE called.
+[@Area2D@307] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 152
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@305:<Area2D#63803754796>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (56.63723, 176.8444)
+[@Area2D@305] ACTIVATE called.
+[@Area2D@305] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 151
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@303:<Area2D#63719868711>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (6.637226, 176.8444)
+[@Area2D@303] ACTIVATE called.
+[@Area2D@303] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 150
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@301:<Area2D#63635982626>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-43.36277, 176.8444)
+[@Area2D@301] ACTIVATE called.
+[@Area2D@301] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 149
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@299:<Area2D#63552096541>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 113.3333)
+[@Area2D@299] ACTIVATE called.
+[@Area2D@299] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 148
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@297:<Area2D#63468210456>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 113.3333)
+[@Area2D@297] ACTIVATE called.
+[@Area2D@297] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 147
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@295:<Area2D#63384324371>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 113.3333)
+[@Area2D@295] ACTIVATE called.
+[@Area2D@295] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 146
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@293:<Area2D#63300438286>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 113.3333)
+[@Area2D@293] ACTIVATE called.
+[@Area2D@293] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 145
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@291:<Area2D#63216552201>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 113.3333)
+[@Area2D@291] ACTIVATE called.
+[@Area2D@291] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 144
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@289:<Area2D#63132666116>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (160.396, 196.8399)
+[@Area2D@289] ACTIVATE called.
+[@Area2D@289] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 143
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@287:<Area2D#63048780031>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (110.396, 196.8399)
+[@Area2D@287] ACTIVATE called.
+[@Area2D@287] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 142
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@285:<Area2D#62964893946>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (60.39596, 196.8399)
+[@Area2D@285] ACTIVATE called.
+[@Area2D@285] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 141
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@283:<Area2D#62881007861>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (10.39596, 196.8399)
+[@Area2D@283] ACTIVATE called.
+[@Area2D@283] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 140
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@281:<Area2D#62797121776>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-39.60404, 196.8399)
+[@Area2D@281] ACTIVATE called.
+[@Area2D@281] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 139
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@279:<Area2D#62713235691>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 135.0)
+[@Area2D@279] ACTIVATE called.
+[@Area2D@279] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 138
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@277:<Area2D#62629349606>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 135.0)
+[@Area2D@277] ACTIVATE called.
+[@Area2D@277] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 137
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@275:<Area2D#62545463521>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 135.0)
+[@Area2D@275] ACTIVATE called.
+[@Area2D@275] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 136
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@273:<Area2D#62461577436>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 135.0)
+[@Area2D@273] ACTIVATE called.
+[@Area2D@273] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 135
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@271:<Area2D#62377691351>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 135.0)
+[@Area2D@271] ACTIVATE called.
+[@Area2D@271] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 134
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@269:<Area2D#62293805266>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (164.3398, 216.8005)
+[@Area2D@269] ACTIVATE called.
+[@Area2D@269] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 133
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@267:<Area2D#62209919181>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (114.3398, 216.8005)
+[@Area2D@267] ACTIVATE called.
+[@Area2D@267] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 132
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@265:<Area2D#62126033096>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (64.33979, 216.8005)
+[@Area2D@265] ACTIVATE called.
+[@Area2D@265] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 131
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@263:<Area2D#62042147011>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (14.33979, 216.8005)
+[@Area2D@263] ACTIVATE called.
+[@Area2D@263] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 130
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@261:<Area2D#61958260926>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-35.66021, 216.8005)
+[@Area2D@261] ACTIVATE called.
+[@Area2D@261] Velocity set to: (-0.000009, 200.0)
+SEQUENCER: Triggering Wave 2 at level time 3.01
+[SPAWNER DEBUG] Spawner's parent is: World. Adding controller there.
+[SPAWNER DEBUG] Spawning SQUADRON. Zone: CENTER_THIRD_TOP, Calculated Position: (513, -50)
+SEQUENCER: LEVEL COMPLETE (Timeline finished)
+[@CharacterBody2D@808] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@807] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@806] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@805] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@804] MAKE_VISIBLE called. Current visibility: false
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 129
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@259:<Area2D#61874374841>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 156.6667)
+[@Area2D@259] ACTIVATE called.
+[@Area2D@259] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 128
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@257:<Area2D#61790488756>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 156.6667)
+[@Area2D@257] ACTIVATE called.
+[@Area2D@257] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 127
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@255:<Area2D#61706602671>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 156.6667)
+[@Area2D@255] ACTIVATE called.
+[@Area2D@255] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 126
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@253:<Area2D#61622716586>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 156.6667)
+[@Area2D@253] ACTIVATE called.
+[@Area2D@253] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 125
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@251:<Area2D#61538830501>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 156.6667)
+[@Area2D@251] ACTIVATE called.
+[@Area2D@251] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 124
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@249:<Area2D#61454944416>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (168.4747, 236.7244)
+[@Area2D@249] ACTIVATE called.
+[@Area2D@249] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 123
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@247:<Area2D#61371058331>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (118.4747, 236.7244)
+[@Area2D@247] ACTIVATE called.
+[@Area2D@247] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 122
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@245:<Area2D#61287172246>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (68.47469, 236.7244)
+[@Area2D@245] ACTIVATE called.
+[@Area2D@245] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 121
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@243:<Area2D#61203286161>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (18.47469, 236.7244)
+[@Area2D@243] ACTIVATE called.
+[@Area2D@243] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 120
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@241:<Area2D#61119400076>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-31.52531, 236.7244)
+[@Area2D@241] ACTIVATE called.
+[@Area2D@241] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 119
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@239:<Area2D#61035513991>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 178.3334)
+[@Area2D@239] ACTIVATE called.
+[@Area2D@239] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 118
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@237:<Area2D#60951627906>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 178.3334)
+[@Area2D@237] ACTIVATE called.
+[@Area2D@237] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 117
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@235:<Area2D#60867741821>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 178.3334)
+[@Area2D@235] ACTIVATE called.
+[@Area2D@235] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 116
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@233:<Area2D#60783855736>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 178.3334)
+[@Area2D@233] ACTIVATE called.
+[@Area2D@233] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 115
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@231:<Area2D#60699969651>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 178.3334)
+[@Area2D@231] ACTIVATE called.
+[@Area2D@231] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 114
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@229:<Area2D#60616083566>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (172.8063, 256.6042)
+[@Area2D@229] ACTIVATE called.
+[@Area2D@229] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 113
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@227:<Area2D#60532197481>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (122.8063, 256.6042)
+[@Area2D@227] ACTIVATE called.
+[@Area2D@227] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 112
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@225:<Area2D#60448311396>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (72.8063, 256.6042)
+[@Area2D@225] ACTIVATE called.
+[@Area2D@225] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 111
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@223:<Area2D#60364425311>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (22.8063, 256.6042)
+[@Area2D@223] ACTIVATE called.
+[@Area2D@223] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 110
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@221:<Area2D#60280539226>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-27.1937, 256.6042)
+[@Area2D@221] ACTIVATE called.
+[@Area2D@221] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 109
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@219:<Area2D#60196653141>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 200.0002)
+[@Area2D@219] ACTIVATE called.
+[@Area2D@219] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 108
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@217:<Area2D#60112767056>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 200.0002)
+[@Area2D@217] ACTIVATE called.
+[@Area2D@217] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 107
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@215:<Area2D#60028880971>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 200.0002)
+[@Area2D@215] ACTIVATE called.
+[@Area2D@215] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 106
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@213:<Area2D#59944994886>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 200.0002)
+[@Area2D@213] ACTIVATE called.
+[@Area2D@213] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 105
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@211:<Area2D#59861108801>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 200.0002)
+[@Area2D@211] ACTIVATE called.
+[@Area2D@211] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 104
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@209:<Area2D#59777222716>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (177.3429, 276.4401)
+[@Area2D@209] ACTIVATE called.
+[@Area2D@209] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 103
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@207:<Area2D#59693336631>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (127.3429, 276.4401)
+[@Area2D@207] ACTIVATE called.
+[@Area2D@207] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 102
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@205:<Area2D#59609450546>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (77.34287, 276.4401)
+[@Area2D@205] ACTIVATE called.
+[@Area2D@205] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 101
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@203:<Area2D#59525564461>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (27.34287, 276.4401)
+[@Area2D@203] ACTIVATE called.
+[@Area2D@203] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 100
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@201:<Area2D#59441678376>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-22.65713, 276.4401)
+[@Area2D@201] ACTIVATE called.
+[@Area2D@201] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 99
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@199:<Area2D#59357792291>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 221.6669)
+[@Area2D@199] ACTIVATE called.
+[@Area2D@199] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 98
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@197:<Area2D#59273906206>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 221.6669)
+[@Area2D@197] ACTIVATE called.
+[@Area2D@197] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 97
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@195:<Area2D#59190020121>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 221.6669)
+[@Area2D@195] ACTIVATE called.
+[@Area2D@195] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 96
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@193:<Area2D#59106134036>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 221.6669)
+[@Area2D@193] ACTIVATE called.
+[@Area2D@193] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 95
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@191:<Area2D#59022247951>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 221.6669)
+[@Area2D@191] ACTIVATE called.
+[@Area2D@191] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 94
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@189:<Area2D#58938361866>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (182.0919, 296.2244)
+[@Area2D@189] ACTIVATE called.
+[@Area2D@189] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 93
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@187:<Area2D#58854475781>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (132.0919, 296.2244)
+[@Area2D@187] ACTIVATE called.
+[@Area2D@187] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 92
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@185:<Area2D#58770589696>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (82.09193, 296.2244)
+[@Area2D@185] ACTIVATE called.
+[@Area2D@185] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 91
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@183:<Area2D#58686703611>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (32.09193, 296.2244)
+[@Area2D@183] ACTIVATE called.
+[@Area2D@183] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 90
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@181:<Area2D#58602817526>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-17.90807, 296.2244)
+[@Area2D@181] ACTIVATE called.
+[@Area2D@181] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 89
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@179:<Area2D#58518931441>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 243.3336)
+[@Area2D@179] ACTIVATE called.
+[@Area2D@179] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 88
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@177:<Area2D#58435045356>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 243.3336)
+[@Area2D@177] ACTIVATE called.
+[@Area2D@177] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 87
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@175:<Area2D#58351159271>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 243.3336)
+[@Area2D@175] ACTIVATE called.
+[@Area2D@175] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 86
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@173:<Area2D#58267273186>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 243.3336)
+[@Area2D@173] ACTIVATE called.
+[@Area2D@173] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 85
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@171:<Area2D#58183387101>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 243.3336)
+[@Area2D@171] ACTIVATE called.
+[@Area2D@171] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 84
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@169:<Area2D#58099501016>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (187.0635, 315.9558)
+[@Area2D@169] ACTIVATE called.
+[@Area2D@169] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 83
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@167:<Area2D#58015614931>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (137.0635, 315.9558)
+[@Area2D@167] ACTIVATE called.
+[@Area2D@167] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 82
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@165:<Area2D#57931728846>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (87.06347, 315.9558)
+[@Area2D@165] ACTIVATE called.
+[@Area2D@165] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 81
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@163:<Area2D#57847842761>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (37.06347, 315.9558)
+[@Area2D@163] ACTIVATE called.
+[@Area2D@163] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 80
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@161:<Area2D#57763956676>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-12.93653, 315.9558)
+[@Area2D@161] ACTIVATE called.
+[@Area2D@161] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 79
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@159:<Area2D#57680070591>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 48.33335)
+[@Area2D@159] ACTIVATE called.
+[@Area2D@159] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 78
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@157:<Area2D#57596184506>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 48.33335)
+[@Area2D@157] ACTIVATE called.
+[@Area2D@157] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 77
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@155:<Area2D#57512298421>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 48.33335)
+[@Area2D@155] ACTIVATE called.
+[@Area2D@155] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 76
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@153:<Area2D#57428412336>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 48.33335)
+[@Area2D@153] ACTIVATE called.
+[@Area2D@153] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 75
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: @Area2D@151:<Area2D#57344526251>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 48.33335)
+[@Area2D@151] ACTIVATE called.
+[@Area2D@151] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 74
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@149:<Area2D#57260640166>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 265.0003)
+[@Area2D@149] ACTIVATE called.
+[@Area2D@149] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 73
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@147:<Area2D#57176754081>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 265.0003)
+[@Area2D@147] ACTIVATE called.
+[@Area2D@147] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 72
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@145:<Area2D#57092867996>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 265.0003)
+[@Area2D@145] ACTIVATE called.
+[@Area2D@145] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 71
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@143:<Area2D#57008981911>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 265.0003)
+[@Area2D@143] ACTIVATE called.
+[@Area2D@143] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 70
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@141:<Area2D#56925095826>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 265.0003)
+[@Area2D@141] ACTIVATE called.
+[@Area2D@141] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 69
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@139:<Area2D#56841209741>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (192.2671, 335.6257)
+[@Area2D@139] ACTIVATE called.
+[@Area2D@139] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 68
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@137:<Area2D#56757323656>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (142.2671, 335.6257)
+[@Area2D@137] ACTIVATE called.
+[@Area2D@137] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 67
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@135:<Area2D#56673437571>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (92.26709, 335.6257)
+[@Area2D@135] ACTIVATE called.
+[@Area2D@135] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 66
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@133:<Area2D#56589551486>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (42.26709, 335.6257)
+[@Area2D@133] ACTIVATE called.
+[@Area2D@133] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 65
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@131:<Area2D#56505665401>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (-7.73291, 335.6257)
+[@Area2D@131] ACTIVATE called.
+[@Area2D@131] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 64
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@129:<Area2D#56421779316>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 70.00002)
+[@Area2D@129] ACTIVATE called.
+[@Area2D@129] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 63
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@127:<Area2D#56337893231>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 70.00002)
+[@Area2D@127] ACTIVATE called.
+[@Area2D@127] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 62
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@125:<Area2D#56254007146>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 70.00002)
+[@Area2D@125] ACTIVATE called.
+[@Area2D@125] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 61
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@123:<Area2D#56170121061>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 70.00002)
+[@Area2D@123] ACTIVATE called.
+[@Area2D@123] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 60
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: @Area2D@121:<Area2D#56086234976>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 70.00002)
+[@Area2D@121] ACTIVATE called.
+[@Area2D@121] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 59
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@119:<Area2D#56002348891>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 286.6668)
+[@Area2D@119] ACTIVATE called.
+[@Area2D@119] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 58
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@117:<Area2D#55918462806>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 286.6668)
+[@Area2D@117] ACTIVATE called.
+[@Area2D@117] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 57
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@115:<Area2D#55834576721>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 286.6668)
+[@Area2D@115] ACTIVATE called.
+[@Area2D@115] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 56
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@113:<Area2D#55750690636>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 286.6668)
+[@Area2D@113] ACTIVATE called.
+[@Area2D@113] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 55
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@111:<Area2D#55666804551>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 286.6668)
+[@Area2D@111] ACTIVATE called.
+[@Area2D@111] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 54
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@109:<Area2D#55582918466>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (197.7147, 355.23)
+[@Area2D@109] ACTIVATE called.
+[@Area2D@109] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 53
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@107:<Area2D#55499032381>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (147.7147, 355.23)
+[@Area2D@107] ACTIVATE called.
+[@Area2D@107] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 52
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@105:<Area2D#55415146296>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (97.71467, 355.23)
+[@Area2D@105] ACTIVATE called.
+[@Area2D@105] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 51
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got[...]
+  ERROR: [output overflow, print less text!]
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 49
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@99:<Area2D#55163488041>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 91.66666)
+[@Area2D@99] ACTIVATE called.
+[@Area2D@99] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 48
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@97:<Area2D#55079601956>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 91.66666)
+[@Area2D@97] ACTIVATE called.
+[@Area2D@97] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 47
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@95:<Area2D#54995715871>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 91.66666)
+[@Area2D@95] ACTIVATE called.
+[@Area2D@95] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 46
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@93:<Area2D#54911829786>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 91.66666)
+[@Area2D@93] ACTIVATE called.
+[@Area2D@93] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 45
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: @Area2D@91:<Area2D#54827943701>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 91.66666)
+[@Area2D@91] ACTIVATE called.
+[@Area2D@91] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 44
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@89:<Area2D#54744057616>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 308.3333)
+[@Area2D@89] ACTIVATE called.
+[@Area2D@89] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 43
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@87:<Area2D#54660171531>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 308.3333)
+[@Area2D@87] ACTIVATE called.
+[@Area2D@87] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 42
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@85:<Area2D#54576285446>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 308.3333)
+[@Area2D@85] ACTIVATE called.
+[@Area2D@85] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 41
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@83:<Area2D#54492399361>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 308.3333)
+[@Area2D@83] ACTIVATE called.
+[@Area2D@83] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 40
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@81:<Area2D#54408513276>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 308.3333)
+[@Area2D@81] ACTIVATE called.
+[@Area2D@81] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 39
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@79:<Area2D#54324627191>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (203.4188, 374.7614)
+[@Area2D@79] ACTIVATE called.
+[@Area2D@79] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 38
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@77:<Area2D#54240741106>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (153.4188, 374.7614)
+[@Area2D@77] ACTIVATE called.
+[@Area2D@77] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 37
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@75:<Area2D#54156855021>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (103.4188, 374.7614)
+[@Area2D@75] ACTIVATE called.
+[@Area2D@75] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 36
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@73:<Area2D#54072968936>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (53.41882, 374.7614)
+[@Area2D@73] ACTIVATE called.
+[@Area2D@73] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 35
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@71:<Area2D#53989082851>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (3.418816, 374.7614)
+[@Area2D@71] ACTIVATE called.
+[@Area2D@71] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 34
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@69:<Area2D#53905196766>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 113.3333)
+[@Area2D@69] ACTIVATE called.
+[@Area2D@69] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 33
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@67:<Area2D#53821310681>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 113.3333)
+[@Area2D@67] ACTIVATE called.
+[@Area2D@67] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 32
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@65:<Area2D#53737424596>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 113.3333)
+[@Area2D@65] ACTIVATE called.
+[@Area2D@65] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 31
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@63:<Area2D#53653538511>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 113.3333)
+[@Area2D@63] ACTIVATE called.
+[@Area2D@63] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 30
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: @Area2D@61:<Area2D#53569652426>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 113.3333)
+[@Area2D@61] ACTIVATE called.
+[@Area2D@61] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 29
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@59:<Area2D#53485766341>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 329.9999)
+[@Area2D@59] ACTIVATE called.
+[@Area2D@59] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 28
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@57:<Area2D#53401880256>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 329.9999)
+[@Area2D@57] ACTIVATE called.
+[@Area2D@57] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 27
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@55:<Area2D#53317994171>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 329.9999)
+[@Area2D@55] ACTIVATE called.
+[@Area2D@55] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 26
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@53:<Area2D#53234108086>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 329.9999)
+[@Area2D@53] ACTIVATE called.
+[@Area2D@53] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 25
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@51:<Area2D#53150222001>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 329.9999)
+[@Area2D@51] ACTIVATE called.
+[@Area2D@51] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 24
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@49:<Area2D#53066335916>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (209.3935, 394.2115)
+[@Area2D@49] ACTIVATE called.
+[@Area2D@49] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 23
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@47:<Area2D#52982449831>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (159.3935, 394.2115)
+[@Area2D@47] ACTIVATE called.
+[@Area2D@47] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 22
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@45:<Area2D#52898563746>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (109.3935, 394.2115)
+[@Area2D@45] ACTIVATE called.
+[@Area2D@45] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 21
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@43:<Area2D#52814677661>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (59.39349, 394.2115)
+[@Area2D@43] ACTIVATE called.
+[@Area2D@43] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 20
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@41:<Area2D#52730791576>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (9.393494, 394.2115)
+[@Area2D@41] ACTIVATE called.
+[@Area2D@41] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 19
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@39:<Area2D#52646905491>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 135.0)
+[@Area2D@39] ACTIVATE called.
+[@Area2D@39] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 18
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@37:<Area2D#52563019406>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 135.0)
+[@Area2D@37] ACTIVATE called.
+[@Area2D@37] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 17
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@35:<Area2D#52479133321>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 135.0)
+[@Area2D@35] ACTIVATE called.
+[@Area2D@35] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 16
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@33:<Area2D#52395247236>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 135.0)
+[@Area2D@33] ACTIVATE called.
+[@Area2D@33] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 15
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: @Area2D@31:<Area2D#52311361151>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 135.0)
+[@Area2D@31] ACTIVATE called.
+[@Area2D@31] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 14
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: @Area2D@29:<Area2D#52227475066>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 351.6664)
+[@Area2D@29] ACTIVATE called.
+[@Area2D@29] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 13
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: @Area2D@27:<Area2D#52143588981>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 351.6664)
+[@Area2D@27] ACTIVATE called.
+[@Area2D@27] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 12
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: @Area2D@25:<Area2D#52059702896>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 351.6664)
+[@Area2D@25] ACTIVATE called.
+[@Area2D@25] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 11
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: @Area2D@23:<Area2D#51975816811>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 351.6664)
+[@Area2D@23] ACTIVATE called.
+[@Area2D@23] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 10
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: @Area2D@21:<Area2D#51891930726>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 351.6664)
+[@Area2D@21] ACTIVATE called.
+[@Area2D@21] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 9
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: @Area2D@19:<Area2D#51808044641>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (215.6543, 413.5714)
+[@Area2D@19] ACTIVATE called.
+[@Area2D@19] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 8
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: @Area2D@17:<Area2D#51724158556>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (165.6543, 413.5714)
+[@Area2D@17] ACTIVATE called.
+[@Area2D@17] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 7
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: @Area2D@15:<Area2D#51640272471>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (115.6543, 413.5714)
+[@Area2D@15] ACTIVATE called.
+[@Area2D@15] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 6
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: @Area2D@13:<Area2D#51556386386>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (65.65434, 413.5714)
+[@Area2D@13] ACTIVATE called.
+[@Area2D@13] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 5
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: @Area2D@11:<Area2D#51472500301>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (15.65434, 413.5714)
+[@Area2D@11] ACTIVATE called.
+[@Area2D@11] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 4
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: @Area2D@9:<Area2D#51388614216>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 156.6667)
+[@Area2D@9] ACTIVATE called.
+[@Area2D@9] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 3
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: @Area2D@7:<Area2D#51304727989>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 156.6667)
+[@Area2D@7] ACTIVATE called.
+[@Area2D@7] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 2
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: @Area2D@5:<Area2D#51220841987>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 156.6667)
+[@Area2D@5] ACTIVATE called.
+[@Area2D@5] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 1
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: @Area2D@3:<Area2D#51136955895>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 156.6667)
+[@Area2D@3] ACTIVATE called.
+[@Area2D@3] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] Bullet retrieved from pool. Pool size now: 0
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#51036292621>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 156.6667)
+[EnemyBullet] ACTIVATE called.
+[EnemyBullet] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94422175383>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 373.3329)
+[@Area2D@823] ACTIVATE called.
+[@Area2D@823] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94522838705>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 373.3329)
+[@Area2D@825] ACTIVATE called.
+[@Area2D@825] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94623502012>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 373.3329)
+[@Area2D@827] ACTIVATE called.
+[@Area2D@827] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94724165316>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 373.3329)
+[@Area2D@829] ACTIVATE called.
+[@Area2D@829] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94824828619>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 373.3329)
+[@Area2D@831] ACTIVATE called.
+[@Area2D@831] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#94925491920>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (222.2186, 432.8304)
+[@Area2D@833] ACTIVATE called.
+[@Area2D@833] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#95026155221>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (172.2186, 432.8304)
+[@Area2D@835] ACTIVATE called.
+[@Area2D@835] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#95126818522>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (122.2186, 432.8304)
+[@Area2D@837] ACTIVATE called.
+[@Area2D@837] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#95227481823>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (72.21861, 432.8304)
+[@Area2D@839] ACTIVATE called.
+[@Area2D@839] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown fi[...]
+  ERROR: [output overflow, print less text!]
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#95932124863>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 394.9995)
+[@Area2D@853] ACTIVATE called.
+[@Area2D@853] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96032788141>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 394.9995)
+[@Area2D@855] ACTIVATE called.
+[@Area2D@855] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96133451521>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 394.9995)
+[@Area2D@857] ACTIVATE called.
+[@Area2D@857] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96234114822>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 394.9995)
+[@Area2D@859] ACTIVATE called.
+[@Area2D@859] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96334778123>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 394.9995)
+[@Area2D@861] ACTIVATE called.
+[@Area2D@861] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96435441424>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (229.1055, 451.9761)
+[@Area2D@863] ACTIVATE called.
+[@Area2D@863] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96536104725>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (179.1055, 451.9761)
+[@Area2D@865] ACTIVATE called.
+[@Area2D@865] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96636768026>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (129.1055, 451.9761)
+[@Area2D@867] ACTIVATE called.
+[@Area2D@867] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96737431327>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (79.10547, 451.9761)
+[@Area2D@869] ACTIVATE called.
+[@Area2D@869] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96838094628>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (29.10547, 451.9761)
+[@Area2D@871] ACTIVATE called.
+[@Area2D@871] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#96938757929>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 200.0002)
+[@Area2D@873] ACTIVATE called.
+[@Area2D@873] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97039421230>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 200.0002)
+[@Area2D@875] ACTIVATE called.
+[@Area2D@875] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97140084531>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 200.0002)
+[@Area2D@877] ACTIVATE called.
+[@Area2D@877] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97240747832>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 200.0002)
+[@Area2D@879] ACTIVATE called.
+[@Area2D@879] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97341411133>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 200.0002)
+[@Area2D@881] ACTIVATE called.
+[@Area2D@881] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97442074434>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 416.666)
+[@Area2D@883] ACTIVATE called.
+[@Area2D@883] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97542737735>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 416.666)
+[@Area2D@885] ACTIVATE called.
+[@Area2D@885] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97643401036>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 416.666)
+[@Area2D@887] ACTIVATE called.
+[@Area2D@887] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97744064337>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 416.666)
+[@Area2D@889] ACTIVATE called.
+[@Area2D@889] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97844727638>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 416.666)
+[@Area2D@891] ACTIVATE called.
+[@Area2D@891] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#97945390939>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (236.3367, 470.9953)
+[@Area2D@893] ACTIVATE called.
+[@Area2D@893] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98046054240>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (186.3367, 470.9953)
+[@Area2D@895] ACTIVATE called.
+[@Area2D@895] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98146717541>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (136.3367, 470.9953)
+[@Area2D@897] ACTIVATE called.
+[@Area2D@897] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98247380842>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (86.33665, 470.9953)
+[@Area2D@899] ACTIVATE called.
+[@Area2D@899] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98348044143>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (36.33665, 470.9953)
+[@Area2D@901] ACTIVATE called.
+[@Area2D@901] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98448707444>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 221.6669)
+[@Area2D@903] ACTIVATE called.
+[@Area2D@903] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98549370745>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 221.6669)
+[@Area2D@905] ACTIVATE called.
+[@Area2D@905] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98650034046>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 221.6669)
+[@Area2D@907] ACTIVATE called.
+[@Area2D@907] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98750697347>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 221.6669)
+[@Area2D@909] ACTIVATE called.
+[@Area2D@909] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98851360648>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 221.6669)
+[@Area2D@911] ACTIVATE called.
+[@Area2D@911] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#98952023949>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 438.3326)
+[@Area2D@913] ACTIVATE called.
+[@Area2D@913] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99052687250>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 438.3326)
+[@Area2D@915] ACTIVATE called.
+[@Area2D@915] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99153350551>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 438.3326)
+[@Area2D@917] ACTIVATE called.
+[@Area2D@917] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99254013852>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 438.3326)
+[@Area2D@919] ACTIVATE called.
+[@Area2D@919] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99354677153>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 438.3326)
+[@Area2D@921] ACTIVATE called.
+[@Area2D@921] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99455340454>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (243.9354, 489.8698)
+[@Area2D@923] ACTIVATE called.
+[@Area2D@923] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99556003755>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (193.9354, 489.8698)
+[@Area2D@925] ACTIVATE called.
+[@Area2D@925] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99656667056>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (143.9354, 489.8698)
+[@Area2D@927] ACTIVATE called.
+[@Area2D@927] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99757330357>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (93.93544, 489.8698)
+[@Area2D@929] ACTIVATE called.
+[@Area2D@929] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99857993658>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (43.93544, 489.8698)
+[@Area2D@931] ACTIVATE called.
+[@Area2D@931] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#99958656959>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 243.3336)
+[@Area2D@933] ACTIVATE called.
+[@Area2D@933] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100059320260>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 243.3336)
+[@Area2D@935] ACTIVATE called.
+[@Area2D@935] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100159983561>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 243.3336)
+[@Area2D@937] ACTIVATE called.
+[@Area2D@937] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100260646862>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 243.3336)
+[@Area2D@939] ACTIVATE called.
+[@Area2D@939] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@808] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100361310163>
+[@CharacterBody2D@808] _fire_projectile: Activating bullet at position (413.3206, 243.3336)
+[@Area2D@941] ACTIVATE called.
+[@Area2D@941] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@809] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@809] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@809] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@809] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100461973464>
+[@CharacterBody2D@809] _fire_projectile: Activating bullet at position (577.6152, 459.9991)
+[@Area2D@943] ACTIVATE called.
+[@Area2D@943] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@810] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@810] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@810] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@810] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100562636765>
+[@CharacterBody2D@810] _fire_projectile: Activating bullet at position (527.6152, 459.9991)
+[@Area2D@945] ACTIVATE called.
+[@Area2D@945] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@811] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@811] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@811] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@811] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100663300066>
+[@CharacterBody2D@811] _fire_projectile: Activating bullet at position (477.6152, 459.9991)
+[@Area2D@947] ACTIVATE called.
+[@Area2D@947] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@812] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@812] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@812] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@812] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100763963367>
+[@CharacterBody2D@812] _fire_projectile: Activating bullet at position (427.6152, 459.9991)
+[@Area2D@949] ACTIVATE called.
+[@Area2D@949] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@813] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@813] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@813] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@813] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100864626668>
+[@CharacterBody2D@813] _fire_projectile: Activating bullet at position (377.6152, 459.9991)
+[@Area2D@951] ACTIVATE called.
+[@Area2D@951] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@814] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@814] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@814] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@814] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#100965289969>
+[@CharacterBody2D@814] _fire_projectile: Activating bullet at position (251.9287, 508.5807)
+[@Area2D@953] ACTIVATE called.
+[@Area2D@953] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@815] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@815] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@815] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@815] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101065953270>
+[@CharacterBody2D@815] _fire_projectile: Activating bullet at position (201.9287, 508.5807)
+[@Area2D@955] ACTIVATE called.
+[@Area2D@955] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@816] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@816] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@816] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@816] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101166616571>
+[@CharacterBody2D@816] _fire_projectile: Activating bullet at position (151.9287, 508.5807)
+[@Area2D@957] ACTIVATE called.
+[@Area2D@957] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@817] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@817] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@817] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@817] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101267279872>
+[@CharacterBody2D@817] _fire_projectile: Activating bullet at position (101.9287, 508.5807)
+[@Area2D@959] ACTIVATE called.
+[@Area2D@959] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@818] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@818] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@818] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@818] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101367943173>
+[@CharacterBody2D@818] _fire_projectile: Activating bullet at position (51.92867, 508.5807)
+[@Area2D@961] ACTIVATE called.
+[@Area2D@961] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@804] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@804] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@804] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@804] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101468606474>
+[@CharacterBody2D@804] _fire_projectile: Activating bullet at position (613.3206, 265.0003)
+[@Area2D@963] ACTIVATE called.
+[@Area2D@963] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@805] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@805] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@805] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@805] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101569269775>
+[@CharacterBody2D@805] _fire_projectile: Activating bullet at position (563.3206, 265.0003)
+[@Area2D@965] ACTIVATE called.
+[@Area2D@965] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@806] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@806] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@806] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@806] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101669933076>
+[@CharacterBody2D@806] _fire_projectile: Activating bullet at position (513.3206, 265.0003)
+[@Area2D@967] ACTIVATE called.
+[@Area2D@967] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@807] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@807] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@807] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@807] _fire_projectile: SUCCESS, got bullet instance: EnemyBullet:<Area2D#101770596377>
+[@CharacterBody2D@807] _fire_projectile: Activating bullet at position (463.3206, 265.0003)
+[@Area2D@969] ACTIVATE called.
+[@Area2D@969] Velocity set to: (-0.000009, 200.0)
+[@CharacterBody2D@808] _handle_shooting: Cooldown finished. Calling _execute_shot()
+[@CharacterBody2D@808] _execute_shot: Executing shot of type SINGLE
+[@CharacterBody2D@808] _fire_projectile: Attempting to get bullet from pool...
+[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.
+[@CharacterBody2D@808] _fire[...]
+  ERROR: [output overflow, print less text!]
+[POOL_DEBUG] Bullet reclaimed. Pool size now: 1
+[POOL_DEBUG] Bullet reclaimed. Pool size now: 2
+[POOL_DEBUG] Bullet reclaimed. Pool size now: 3
+[POOL_DEBUG] Bullet reclaimed. Pool size now: 4
+--- Debugging process stopped ---

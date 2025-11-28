@@ -1,5 +1,10 @@
 extends Area2D
 
+class_name Hurtbox
+
+## Si coché, cette hurtbox appartient au joueur.
+@export var is_player_hurtbox: bool = false
+
 @onready var health: Node = null
 
 func _ready() -> void:

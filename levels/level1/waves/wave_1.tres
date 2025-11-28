@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=7 format=3 uid="uid://dx5mnxigni1jl"]
+
+[ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="1_cmyxg"]
+[ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_xb6j5"]
+[ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron_spawn_event_data.gd" id="3_vtn2y"]
+[ext_resource type="Resource" uid="uid://b6gc2pscmeuw8" path="res://levels/patterns/EnemyBehaviorPattern/linear_vertical_left_patternt.tres" id="4_qg7tq"]
+[ext_resource type="Resource" uid="uid://chefmfwb833fy" path="res://levels/patterns/squadron data/formation_line_5.tres" id="5_gjbi8"]
+
+[sub_resource type="Resource" id="Resource_s1vgr"]
+script = ExtResource("3_vtn2y")
+enemy_type_id = "basic_enemy"
+behavior_pattern = ExtResource("4_qg7tq")
+formation_pattern = ExtResource("5_gjbi8")
+movement_path = NodePath("../Paths/PathTopLeftLoop")
+metadata/_custom_type_script = "uid://dusuo5uyypl2l"
+
+[resource]
+script = ExtResource("1_cmyxg")
+squadron_spawn_events = Array[ExtResource("3_vtn2y")]([SubResource("Resource_s1vgr")])
+metadata/_custom_type_script = "uid://bwsv5nsff62qk"

@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c2ew1jmv3pq1d"]
+
+[ext_resource type="Texture2D" uid="uid://cmq61bepkesjn" path="res://assets/Bullets/500 Bullet 24x24 Free/Bullet 24x24 Free Part 4A.png" id="1_nf8tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4c61"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epjtw"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbul0"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8omks"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ttj1"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hues"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuxgo"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky7jq"]
+atlas = ExtResource("1_nf8tj")
+region = Rect2(168, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4c61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epjtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbul0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8omks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ttj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hues")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuxgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky7jq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

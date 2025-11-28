@@ -33,9 +33,14 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	
 	# 1. Get a SquadronController from a pool (we'll assume it's pooled like an enemy)
 	# For now, we instantiate it. You should create a pool for it later.
-	var controller_scene = preload("res://scenes/squadron/squadron_controller.tscn") # Make sure this path is correct
+	var controller_scene = preload("res://scenes/utils/squadron controller/squadron_controller.tscn") # Make sure this path is correct
 	var controller: SquadronController = controller_scene.instantiate()
-	add_child(controller) # Add it to the scene tree
+	# CORRECTION: Add the controller to the same parent as the spawner (the 'world' node).
+	if debug_mode:
+		print("[SPAWNER DEBUG] Spawner's parent is: ", get_parent().name, ". Adding controller there.")
+
+	# This ensures the controller and the enemies it manages are in the same coordinate space.
+	get_parent().add_child(controller)
 	
 	# 2. Configure the controller
 	controller.behavior_pattern = event_data.behavior_pattern
@@ -155,9 +160,6 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 			push_warning("Spawner: Pool for '%s' is empty while building a squadron." % event_data.enemy_type_id)
 			continue
 		
-		# The enemy's initial position is its final position in the formation.
-		enemy.global_position = spawn_pos + offset
-		
 		# Set a basic behavior pattern for the enemy itself (e.g., STATIONARY)
 		# so it doesn't try to move on its own.
 		var stationary_pattern = EnemyBehaviorPattern.new()
@@ -173,7 +175,11 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 				var target = potential_targets[0]
 				controller.set_target(target)
 
-		enemy.activate()
+		# CORRECTION: Do NOT set the enemy's position here.
+		# The SquadronController is solely responsible for positioning its members.
+		# We activate the enemy at a neutral position (0,0), and the controller
+		# will place it correctly in its first _physics_process frame.
+		enemy.activate(Vector2.ZERO)
 		members.append(enemy)
 
 	# 4. Assign the members list to the controller and activate it
@@ -246,6 +252,11 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 				
 				var start_offset = event_data.path_start_point + randf_range(-event_data.path_start_randomness, event_data.path_start_randomness)
 				path_follower.progress_ratio = clamp(start_offset, 0.0, 1.0)
+				
+				# CORRECTION : Activer et rendre visible l'ennemi pour les mouvements Path2D.
+				# La position est gérée par le PathFollower, donc on active à (0,0).
+				enemy.activate(Vector2.ZERO)
+				enemy.make_visible()
 			else:
 				push_warning("Spawner: Path2D not found at path: %s" % event_data.movement_path)
 		else:
@@ -340,9 +351,12 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 						spawn_pos.x = randf_range(_screen_size.x - CORNER_ZONE_SIZE, _screen_size.x)
 						spawn_pos.y = _screen_size.y + spawn_offset
 			
-			enemy.global_position = spawn_pos
+			# Pass the calculated spawn position to the activate function.
+			enemy.activate(spawn_pos)
+			# Make the enemy visible now that it's positioned.
+			enemy.make_visible()
 		
-		enemy.activate()
+		# For non-Path2D, activation is handled inside the 'else' block.
 		
 		# Wait for the interval before spawning the next one in the group
 		if event_data.interval > 0:

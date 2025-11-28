@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalManager="*res://autoloads/signal manager/signal_manager.gd"
+EnemyBulletPool="*res://scenes/utils/components/bullet pool/bullet_pool.tscn"
+GameArea="*res://autoloads/game area/game_area.gd"
 
 [display]
 
@@ -25,6 +27,12 @@ window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 window/stretch/scale=0.5
+
+[file_customization]
+
+folder_colors={
+"res://enemies/": "red"
+}
 
 [global_group]
 
@@ -36,6 +44,7 @@ BulletPool=""
 EnemyPoolManager=""
 BulletsContainer=""
 BulletContainer=""
+EnemyBullets=""
 
 [input]
 
@@ -79,3 +88,12 @@ focus_mode={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":9,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player_body"
+2d_physics/layer_2="player_hurtbox"
+2d_physics/layer_3="enemy_body"
+2d_physics/layer_4="enemy_hurtbox"
+2d_physics/layer_5="player_bullet"
+2d_physics/layer_6="enemy_bullet"

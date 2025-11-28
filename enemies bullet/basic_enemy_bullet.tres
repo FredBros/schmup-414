@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BulletData" load_steps=4 format=3 uid="uid://bjb0irilin6qx"]
+
+[ext_resource type="Script" uid="uid://ct8p2x2ab642m" path="res://enemies bullet/bullet_data.gd" id="1_e01x5"]
+[ext_resource type="SpriteFrames" uid="uid://c2ew1jmv3pq1d" path="res://enemies bullet/asset/frames/basic_sprite_frames.tres" id="2_a6a1g"]
+[ext_resource type="Texture2D" uid="uid://b02gbpte6x4uj" path="res://enemies bullet/asset/Bullet 24x24 Free Part 4A2.png" id="2_ej0iq"]
+
+[resource]
+script = ExtResource("1_e01x5")
+sprite = ExtResource("2_ej0iq")
+sprite_hframes = 24
+sprite_vframes = 15
+sprite_frame = 1
+sprite_frames = ExtResource("2_a6a1g")
+speed = 200.0
+life_duration = 10.0
+metadata/_custom_type_script = "uid://ct8p2x2ab642m"

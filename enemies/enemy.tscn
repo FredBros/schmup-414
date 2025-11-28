@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfq40hmh34s0"]
+
+[ext_resource type="Script" uid="uid://qy238vdwy830" path="res://enemies/enemy.gd" id="1_a3pup"]
+[ext_resource type="Resource" uid="uid://bun46oky5eii2" path="res://enemies/patterns/shooting/basic_enemy_single.tres" id="2_07tka"]
+[ext_resource type="Texture2D" uid="uid://808ktx7owcvv" path="res://assets/Pixel SHMUP Free/spritesheet_enemy_1.png" id="2_40wdo"]
+[ext_resource type="PackedScene" uid="uid://cwycyow6ftyli" path="res://scenes/utils/components/health/health.tscn" id="3_tjssy"]
+[ext_resource type="PackedScene" uid="uid://b4d85uw275wdj" path="res://scenes/utils/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl05p"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjssy"]
+size = Vector2(41, 20)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_a3pup")
+shooting_pattern = ExtResource("2_07tka")
+
+[node name="PathFollower" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollower"]
+position = Vector2(2.38419e-07, 0)
+texture = ExtResource("2_40wdo")
+hframes = 3
+
+[node name="Hurtbox" parent="PathFollower" instance=ExtResource("4_gl05p")]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="PathFollower/Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_gl05p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollower"]
+shape = SubResource("RectangleShape2D_tjssy")
+disabled = true
+
+[node name="Health" parent="PathFollower" instance=ExtResource("3_tjssy")]
+invulnerability_duration = 0.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+
+[editable path="PathFollower/Hurtbox"]

@@ -9,7 +9,7 @@ class_name BulletPool
 ## If true, enables detailed logging to the console for debugging purposes.
 @export var debug_mode: bool = false
 
-var _pool: Array[Bullet] = []
+var _pool: Array[Node] = []
 
 
 func _ready() -> void:
@@ -30,7 +30,7 @@ func _ready() -> void:
 		print("[POOL_DEBUG] Pool populated. Total bullets: ", _pool.size())
 
 
-func get_bullet() -> Bullet:
+func get_bullet() -> Node:
 	"""
 	Retrieves an inactive bullet from the pool.
 	If the pool is empty, it creates a new one as a fallback (with a warning).
@@ -39,21 +39,30 @@ func get_bullet() -> Bullet:
 		if debug_mode:
 			print("[POOL_DEBUG] POOL EMPTY! Fallback to instantiate.")
 		push_warning("BulletPool is empty! Consider increasing pool_size. Creating a new bullet on the fly.")
-		var bullet = bullet_scene.instantiate()
-		bullet.reclaimed.connect(_on_bullet_reclaimed)
-		add_child(bullet)
-		return bullet
+		var new_bullet = bullet_scene.instantiate()
+		new_bullet.reclaimed.connect(_on_bullet_reclaimed)
+		# Ne pas l'ajouter en enfant ici, le tireur s'en chargera.
+		return new_bullet
 		
 	var bullet = _pool.pop_back()
+	# On s'assure que la balle n'a plus de parent avant de la retourner.
+	if is_instance_valid(bullet) and bullet.get_parent() == self:
+		remove_child(bullet)
 	if debug_mode:
 		print("[POOL_DEBUG] Bullet retrieved from pool. Pool size now: ", _pool.size())
 	return bullet
 
 
-func _on_bullet_reclaimed(bullet: Bullet) -> void:
+func _on_bullet_reclaimed(bullet: Node) -> void:
 	"""
 	Receives a bullet that has finished its lifecycle and returns it to the pool.
 	"""
+	# Reparent the bullet back to the pool to keep it in the scene tree
+	# but out of the main game world.
+	if is_instance_valid(bullet) and bullet.get_parent() != self:
+		bullet.get_parent().remove_child(bullet)
+		add_child(bullet)
+		
 	bullet.deactivate()
 	_pool.append(bullet)
 	if debug_mode:

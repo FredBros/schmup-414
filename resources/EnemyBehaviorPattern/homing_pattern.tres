@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyBehaviorPattern" load_steps=2 format=3 uid="uid://uq4vcew8crlj"]
-
-[ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://resources/EnemyBehaviorPattern/enemy_behavior_pattern.gd" id="1_rkx60"]
-
-[resource]
-script = ExtResource("1_rkx60")
-movement_type = 4
-metadata/_custom_type_script = "uid://dg83fupxxxrup"
