@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ShootingPattern" load_steps=3 format=3 uid="uid://j40n4l6710gu"]
+
+[ext_resource type="PackedScene" uid="uid://4bobd3ljr1oo" path="res://enemies bullet/enemy_bullet.tscn" id="1_vny6a"]
+[ext_resource type="Script" uid="uid://b2wn8p7gvedax" path="res://enemies/patterns/shooting/shooting_pattern.gd" id="2_mc8pi"]
+
+[resource]
+script = ExtResource("2_mc8pi")
+shot_type = 3
+projectile_scene = ExtResource("1_vny6a")
+cooldown = 1.0
+spread_count = 3
+spread_angle = 60.0
+metadata/_custom_type_script = "uid://b2wn8p7gvedax"

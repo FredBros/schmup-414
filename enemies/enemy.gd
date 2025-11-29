@@ -5,8 +5,6 @@ class_name Enemy
 ## Signal émis lorsque l'ennemi doit être retourné au pool.
 signal reclaimed(enemy)
 
-@export_group("Shooting")
-@export var shooting_pattern: ShootingPattern
 @export_group("Debugging")
 @export var debug_mode: bool = false
 
@@ -23,17 +21,21 @@ var _age: float = 0.0
 var _is_reclaimed := false
 # --- End Movement Pattern Variables ---
 
+## Classe interne pour gérer l'état d'un seul pattern de tir actif.
+class ActiveShootingPatternState:
+	var timed_pattern: TimedShootingPattern
+	var cooldown_timer: float = 0.0
+	var burst_shots_left: int = 0
+	var burst_interval_timer: float = 0.0
+	var spiral_angle: float = 0.0 # Angle de départ pour ce pattern en spirale
+
+	func _init(p: TimedShootingPattern):
+		timed_pattern = p
+		cooldown_timer = p.pattern.initial_delay
+
 # --- Shooting Pattern Variables ---
-var _is_shooting_active := false
-var _shoot_cooldown_timer: float = 0.0
-
-# State for burst shots
-var _burst_shots_left: int = 0
-var _burst_interval_timer: float = 0.0
-
-# State for spiral shots
-var _spiral_angle: float = 0.0
-
+var _timed_shooting_patterns: Array[TimedShootingPattern] = []
+var _active_pattern_states: Array[ActiveShootingPatternState] = []
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -41,6 +43,11 @@ func _ready() -> void:
 func set_behavior_pattern(pattern: EnemyBehaviorPattern) -> void:
 	"""Définit le pattern de comportement que cet ennemi doit suivre."""
 	_behavior_pattern = pattern
+
+func set_shooting_patterns(patterns: Array[TimedShootingPattern]) -> void:
+	"""Définit la liste des patterns de tir que cet ennemi doit utiliser."""
+	_timed_shooting_patterns = patterns
+	_active_pattern_states.clear()
 
 func set_target(target: Node2D) -> void:
 	"""Définit la cible que l'ennemi doit poursuivre (pour le Homing)."""
@@ -61,7 +68,7 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# --- Reset state variables ---
 	_age = 0.0 # Reset lifetime counter
 	velocity = Vector2.ZERO # Reset velocity on activation
-	_is_shooting_active = false
+	# La logique de tir est maintenant gérée par la liste _active_pattern_states
 	set_physics_process(true)
 	# Réactiver les collisions (supposant que le Hurtbox gère la collision principale)
 	var hurtbox = find_child("Hurtbox", true, false)
@@ -82,14 +89,10 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# Reset health
 	health = max_health
 
-	# Initialize shooting pattern
-	if shooting_pattern and shooting_pattern.shot_type != ShootingPattern.ShotType.NONE:
-		# On attend un frame pour s'assurer que la position de l'ennemi est bien mise à jour
-		# avant d'activer le tir. Cela évite que le premier tir parte de la mauvaise position.
-		await get_tree().physics_frame
-		_is_shooting_active = true
-		_shoot_cooldown_timer = shooting_pattern.initial_delay
-		_burst_shots_left = 0 # Ensure burst is reset
+	# L'initialisation des patterns de tir est maintenant gérée dans set_shooting_patterns.
+	# On attend juste un frame pour s'assurer que la position est correcte avant que
+	# le premier _physics_process ne déclenche potentiellement un tir.
+	await get_tree().physics_frame
 
 
 func deactivate() -> void:
@@ -102,7 +105,9 @@ func deactivate() -> void:
 		hurtbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 	# Arrêter le tir
-	_is_shooting_active = false
+	_active_pattern_states.clear()
+	_timed_shooting_patterns.clear()
+
 	# Si le PathFollower a été reparenté, on le récupère pour le pooling.
 	# On utilise notre référence permanente _path_follower.
 	if is_instance_valid(_path_follower) and _path_follower.get_parent() != self:
@@ -207,83 +212,100 @@ func _physics_process(delta: float) -> void:
 
 
 func _handle_shooting(delta: float) -> void:
-	if not _is_shooting_active:
-		if debug_mode:
-			# Ce message ne devrait apparaître qu'une seule fois au début si le tir est désactivé.
-			print("[%s] _handle_shooting: SKIPPING (shooting not active)" % name)
+	# --- Gérer l'activation/désactivation des patterns en fonction du temps ---
+	# On itère à l'envers pour pouvoir supprimer des éléments sans problème.
+	for i in range(_active_pattern_states.size() - 1, -1, -1):
+		var state = _active_pattern_states[i]
+		# Si le pattern a un end_time défini et que l'âge de l'ennemi le dépasse, on le supprime.
+		if state.timed_pattern.end_time > 0 and _age >= state.timed_pattern.end_time:
+			_active_pattern_states.remove_at(i)
+			continue # Passe au suivant
+	
+	# Vérifier si de nouveaux patterns doivent être activés.
+	for timed_pattern in _timed_shooting_patterns:
+		# Si l'âge est dans l'intervalle de temps du pattern...
+		if _age >= timed_pattern.start_time:
+			# ...et qu'il n'est pas déjà actif...
+			if not _is_pattern_active(timed_pattern.pattern):
+				# ...on l'active.
+				_active_pattern_states.append(ActiveShootingPatternState.new(timed_pattern))
+
+
+	# Boucle sur chaque pattern de tir actif et gère son état indépendamment.
+	for state in _active_pattern_states:
+		# --- Burst Logic ---
+		if state.burst_shots_left > 0:
+			state.burst_interval_timer -= delta
+			if state.burst_interval_timer <= 0:
+				_fire_projectile(_get_shot_direction(state.timed_pattern.pattern), state.timed_pattern.pattern)
+				state.burst_shots_left -= 1
+				if state.burst_shots_left > 0:
+					state.burst_interval_timer = state.timed_pattern.pattern.burst_interval
+			continue # Ne pas traiter le cooldown principal pendant une rafale
+
+		# --- Main Cooldown Logic ---
+		state.cooldown_timer -= delta
+		if state.cooldown_timer <= 0:
+			_execute_shot(state)
+			state.cooldown_timer = state.timed_pattern.pattern.cooldown # Réinitialiser pour le prochain tir
+
+
+func _execute_shot(state: ActiveShootingPatternState) -> void:
+	if not state.timed_pattern.pattern or state.timed_pattern.pattern.projectile_scene == null:
 		return
 
-	# --- Burst Logic ---
-	# If a burst is in progress, prioritize it.
-	if _burst_shots_left > 0:
-		_burst_interval_timer -= delta
-		if _burst_interval_timer <= 0:
-			_fire_projectile(_get_shot_direction())
-			_burst_shots_left -= 1
-			if _burst_shots_left > 0:
-				_burst_interval_timer = shooting_pattern.burst_interval
-		return # Don't process main cooldown while bursting
+	var direction = _get_shot_direction(state.timed_pattern.pattern)
 
-	# --- Main Cooldown Logic ---
-	_shoot_cooldown_timer -= delta
-	if _shoot_cooldown_timer <= 0:
-		if debug_mode:
-			print("[%s] _handle_shooting: Cooldown finished. Calling _execute_shot()" % name)
-		_execute_shot()
-		_shoot_cooldown_timer = shooting_pattern.cooldown # Reset for next shot
-
-
-func _execute_shot() -> void:
-	if not shooting_pattern or shooting_pattern.projectile_scene == null:
-		return
-	if debug_mode:
-		print("[%s] _execute_shot: Executing shot of type %s" % [name, ShootingPattern.ShotType.keys()[shooting_pattern.shot_type]])
-
-	var direction = _get_shot_direction()
-
-	match shooting_pattern.shot_type:
+	match state.timed_pattern.pattern.shot_type:
 		ShootingPattern.ShotType.SINGLE:
-			_fire_projectile(direction)
+			_fire_projectile(direction, state.timed_pattern.pattern)
 
 		ShootingPattern.ShotType.BURST:
 			# Fire the first shot immediately, then start the burst sequence.
-			_fire_projectile(direction)
-			_burst_shots_left = shooting_pattern.burst_count - 1
-			if _burst_shots_left > 0:
-				_burst_interval_timer = shooting_pattern.burst_interval
+			_fire_projectile(direction, state.timed_pattern.pattern)
+			state.burst_shots_left = state.timed_pattern.pattern.burst_count - 1
+			if state.burst_shots_left > 0:
+				state.burst_interval_timer = state.timed_pattern.pattern.burst_interval
 
 		ShootingPattern.ShotType.SPREAD:
-			var total_angle = deg_to_rad(shooting_pattern.spread_angle)
-			var angle_step = total_angle / (shooting_pattern.spread_count - 1) if shooting_pattern.spread_count > 1 else 0
+			var total_angle = deg_to_rad(state.timed_pattern.pattern.spread_angle)
+			var angle_step = total_angle / (state.timed_pattern.pattern.spread_count - 1) if state.timed_pattern.pattern.spread_count > 1 else 0
 			var start_angle = direction.angle() - total_angle / 2.0
 
-			for i in range(shooting_pattern.spread_count):
+			for i in range(state.timed_pattern.pattern.spread_count):
 				var shot_angle = start_angle + i * angle_step
-				_fire_projectile(Vector2.from_angle(shot_angle))
+				_fire_projectile(Vector2.from_angle(shot_angle), state.timed_pattern.pattern)
 
 		ShootingPattern.ShotType.SPIRAL:
 			# For spiral, we use a persistent angle that we rotate over time.
-			var shot_angle = deg_to_rad(_spiral_angle)
-			_fire_projectile(Vector2.from_angle(shot_angle))
+			var shot_angle = deg_to_rad(state.spiral_angle)
+			_fire_projectile(Vector2.from_angle(shot_angle), state.timed_pattern.pattern)
 			# The spiral interval is handled by the main cooldown for simplicity here.
 			# For a denser spiral, you could use a separate timer like for bursts.
 
-	# Update spiral angle for the next shot, regardless of type (it only affects spiral)
-	_spiral_angle += shooting_pattern.spiral_rotation_speed * shooting_pattern.cooldown
+	# Mettre à jour l'angle de la spirale pour le prochain tir de CE pattern.
+	state.spiral_angle += state.timed_pattern.pattern.spiral_rotation_speed * state.timed_pattern.pattern.cooldown
 
 
-func _get_shot_direction() -> Vector2:
+func _is_pattern_active(pattern_to_check: ShootingPattern) -> bool:
+	"""Vérifie si un pattern de tir donné est déjà dans la liste des états actifs."""
+	for state in _active_pattern_states:
+		if state.timed_pattern.pattern == pattern_to_check:
+			return true
+	return false
+
+func _get_shot_direction(pattern: ShootingPattern) -> Vector2:
 	"""Determines the base direction for a shot (aimed or forward)."""
-	if shooting_pattern.aimed and is_instance_valid(_player):
+	if pattern.aimed and is_instance_valid(_player):
 		return global_position.direction_to(_player.global_position)
 	else:
 		# Si le tir n'est pas visé, les ennemis tirent généralement vers le bas (Y positif dans Godot).
 		return Vector2.DOWN
 
 
-func _fire_projectile(direction: Vector2) -> void:
+func _fire_projectile(direction: Vector2, pattern: ShootingPattern) -> void:
 	"""Instantiates and fires a single projectile."""
-	if not shooting_pattern or not shooting_pattern.projectile_scene:
+	if not pattern or not pattern.projectile_scene:
 		push_warning("Attempted to fire but shooting_pattern or its projectile_scene is not set.")
 		return
 	if debug_mode:

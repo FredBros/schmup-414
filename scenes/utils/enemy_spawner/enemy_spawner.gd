@@ -165,6 +165,9 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 		var stationary_pattern = EnemyBehaviorPattern.new()
 		stationary_pattern.movement_type = EnemyBehaviorPattern.MovementType.STATIONARY
 		enemy.set_behavior_pattern(stationary_pattern)
+		# Transmettre le shooting pattern de l'événement au membre de l'escadrille.
+		if not event_data.shooting_patterns.is_empty():
+			enemy.set_shooting_patterns(event_data.shooting_patterns)
 		
 		# Handle Homing for the entire squadron
 		if event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING:
@@ -211,6 +214,9 @@ func _on_spawn_requested(event_data: SpawnEventData) -> void:
 		
 		# Apply the behavior pattern
 		enemy.set_behavior_pattern(event_data.behavior_pattern)
+		# Transmettre le shooting pattern de l'événement à l'ennemi.
+		if not event_data.shooting_patterns.is_empty():
+			enemy.set_shooting_patterns(event_data.shooting_patterns)
 		
 		# If the pattern is HOMING, inject the player target from the sequencer.
 		if event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING:

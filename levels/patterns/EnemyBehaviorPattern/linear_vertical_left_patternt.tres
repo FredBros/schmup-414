@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_qwrab")
-movement_type = 2
-lifetime = 5.0
+lifetime = 10.0
 linear_speed = 100.0
 sinusoidal_frequency = 4.0
 sinusoidal_amplitude = 200.0

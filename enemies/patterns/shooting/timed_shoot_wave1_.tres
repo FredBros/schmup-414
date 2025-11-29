@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TimedShootingPattern" load_steps=3 format=3 uid="uid://cwninvk47hsfd"]
+
+[ext_resource type="Resource" uid="uid://ime3kc786gfi" path="res://enemies/patterns/shooting/basic_3_burst.tres" id="1_7xcqi"]
+[ext_resource type="Script" uid="uid://dg42twmvuei5p" path="res://enemies/patterns/shooting/timed_shooting_pattern.gd" id="1_rvej8"]
+
+[resource]
+script = ExtResource("1_rvej8")
+pattern = ExtResource("1_7xcqi")
+end_time = 2.0
+metadata/_custom_type_script = "uid://dg42twmvuei5p"

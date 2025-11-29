@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=4 format=3 uid="uid://dyfr5xbi6wbnr"]
+[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=7 format=3 uid="uid://dyfr5xbi6wbnr"]
 
 [ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://levels/level1/paths/path_behavior.tres" id="1_ksj7s"]
 [ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron_spawn_event_data.gd" id="1_uw5fq"]
 [ext_resource type="Resource" uid="uid://chefmfwb833fy" path="res://levels/patterns/squadron data/formation_line_5.tres" id="2_ksj7s"]
+[ext_resource type="Script" uid="uid://b2wn8p7gvedax" path="res://enemies/patterns/shooting/shooting_pattern.gd" id="4_qih8k"]
+[ext_resource type="Resource" uid="uid://j40n4l6710gu" path="res://enemies/patterns/shooting/basic_3_spread.tres" id="4_v40ju"]
+[ext_resource type="Resource" uid="uid://ime3kc786gfi" path="res://enemies/patterns/shooting/basic_3_burst.tres" id="6_k0w2m"]
 
 [resource]
 script = ExtResource("1_uw5fq")
 spawn_zone = 4
 enemy_type_id = "basic_enemy"
 behavior_pattern = ExtResource("1_ksj7s")
+shooting_patterns = Array[ExtResource("4_qih8k")]([ExtResource("4_v40ju"), ExtResource("6_k0w2m")])
 formation_pattern = ExtResource("2_ksj7s")
 metadata/_custom_type_script = "uid://dusuo5uyypl2l"

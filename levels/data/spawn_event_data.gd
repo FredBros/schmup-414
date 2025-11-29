@@ -53,6 +53,8 @@ enum SpawnEdge {
 @export var enemy_type_id: String = "basic_enemy"
 ## The behavior pattern to use for these enemies.
 @export var behavior_pattern: EnemyBehaviorPattern
+## A list of timed shooting patterns to assign to these enemies.
+@export var shooting_patterns: Array[TimedShootingPattern]
 ## The number of enemies to spawn in this group.
 @export var count: int = 1
 ## The time interval between each enemy in this group.

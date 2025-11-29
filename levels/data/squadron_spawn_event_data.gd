@@ -50,6 +50,9 @@ enum SpawnZone {
 ## The movement pattern for the squadron as a whole (the invisible leader).
 @export var behavior_pattern: EnemyBehaviorPattern
 
+## A list of timed shooting patterns to assign to all squadron members.
+@export var shooting_patterns: Array[TimedShootingPattern]
+
 ## The formation pattern that defines the shape of the squadron.
 @export var formation_pattern: FormationPattern
 
