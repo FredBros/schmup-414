@@ -58,10 +58,8 @@ func set_target(target: Node2D) -> void:
 func activate(new_global_position: Vector2) -> void: # Note: cette fonction devient 'async' à cause de 'await'
 	"""Active l'ennemi, le rend visible, réinitialise son état et démarre ses comportements."""
 	# La visibilité est maintenant gérée par le spawner ou le squadron_controller
-	# pour éviter un flash à la position (0,0) avant le positionnement final.
-	# L'ennemi est donc invisible par défaut à l'activation.
-	visible = false
-	# On applique la position AVANT toute autre logique, en particulier avant le 'await'.
+	# L'ennemi est invisible par défaut (propriété de la scène ou via deactivate()).
+	# On applique la position AVANT toute autre logique.
 	# C'est la garantie que la position est correcte dès le début.
 	self.global_position = new_global_position
 	_is_reclaimed = false
@@ -92,7 +90,7 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# L'initialisation des patterns de tir est maintenant gérée dans set_shooting_patterns.
 	# On attend juste un frame pour s'assurer que la position est correcte avant que
 	# le premier _physics_process ne déclenche potentiellement un tir.
-	await get_tree().physics_frame
+	# await get_tree().physics_frame # On enlève l'await qui complique la logique.
 
 
 func deactivate() -> void:
@@ -191,7 +189,8 @@ func _physics_process(delta: float) -> void:
 			if _behavior_pattern.lifetime > 0:
 				_path_follower.progress_ratio = _age / _behavior_pattern.lifetime
 			
-			# For Path2D, velocity is not used, but rotation needs to be set from the follower.
+			# For Path2D, we update the enemy's position and rotation from the follower.
+			self.global_position = _path_follower.global_position
 			self.rotation = _path_follower.rotation + PI / 2
 			return # move_and_slide is not needed for PathFollower2D
 

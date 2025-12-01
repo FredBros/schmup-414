@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SignalManager="*res://autoloads/signal manager/signal_manager.gd"
 EnemyBulletPool="*res://scenes/utils/components/bullet pool/bullet_pool.tscn"
 GameArea="*res://autoloads/game area/game_area.gd"
+squadron_controller_pool_manager="*res://autoloads/squadron controller pool manager/squadron_controller_pool_manager.gd"
 
 [display]
 

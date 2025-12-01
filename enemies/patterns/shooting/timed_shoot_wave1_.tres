@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_rvej8")
 pattern = ExtResource("1_7xcqi")
-end_time = 2.0
+end_time = 4.0
 metadata/_custom_type_script = "uid://dg42twmvuei5p"

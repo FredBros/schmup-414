@@ -8,4 +8,5 @@ script = ExtResource("1_ga56g")
 shot_type = 2
 projectile_scene = ExtResource("1_oqci4")
 cooldown = 1.0
+burst_count = 5
 metadata/_custom_type_script = "uid://b2wn8p7gvedax"

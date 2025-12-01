@@ -145,6 +145,7 @@ _data = {
 radius = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_dovo2")
 speed = 600.0

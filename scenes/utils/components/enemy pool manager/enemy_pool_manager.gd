@@ -69,6 +69,8 @@ func _on_enemy_reclaimed(enemy: Enemy) -> void:
 	var type_id: String = enemy.get_meta("pool_type", "")
 	if _pools.has(type_id):
 		enemy.deactivate()
+		# Reparent the enemy back to the pool manager to keep it in the scene tree.
+		enemy.reparent(self)
 		var pool: Array[Enemy] = _pools[type_id]
 		pool.append(enemy)
 		if debug_mode:

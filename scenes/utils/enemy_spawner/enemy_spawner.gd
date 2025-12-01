@@ -7,6 +7,7 @@ extends Node2D
 const CORNER_ZONE_SIZE = 150.0
 
 var _enemy_pool_manager: EnemyPoolManager
+var _squadron_pool_manager: SquadronControllerPoolManager
 var _level_sequencer: Node
 var _screen_size: Vector2
 
@@ -25,26 +26,28 @@ func _ready() -> void:
 	var managers = get_tree().get_nodes_in_group("EnemyPoolManager")
 	if not managers.is_empty():
 		_enemy_pool_manager = managers[0]
+	
+	# Find the squadron controller pool manager.
+	_squadron_pool_manager = get_node("/root/squadron_controller_pool_manager")
 		
 	_screen_size = get_viewport_rect().size
 
 func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
-	if not _enemy_pool_manager: return
+	if not _enemy_pool_manager or not _squadron_pool_manager: return
 	
-	# 1. Get a SquadronController from a pool (we'll assume it's pooled like an enemy)
-	# For now, we instantiate it. You should create a pool for it later.
-	var controller_scene = preload("res://scenes/utils/squadron controller/squadron_controller.tscn") # Make sure this path is correct
-	var controller: SquadronController = controller_scene.instantiate()
-	# CORRECTION: Add the controller to the same parent as the spawner (the 'world' node).
+	# 1. Get a SquadronController from the pool.
+	var controller: SquadronController = _squadron_pool_manager.get_controller()
+
 	if debug_mode:
 		print("[SPAWNER DEBUG] Spawner's parent is: ", get_parent().name, ". Adding controller there.")
 
-	# This ensures the controller and the enemies it manages are in the same coordinate space.
-	get_parent().add_child(controller)
+	# Reparent the controller from its pool to the main scene ('World').
+	controller.reparent(get_parent())
 	
 	# 2. Configure the controller
 	controller.behavior_pattern = event_data.behavior_pattern
 	controller.formation_pattern = event_data.formation_pattern
+	controller.debug_mode = self.debug_mode # Pass the debug flag
 	
 	# 3. Determine the spawn position for the controller (the center of the squadron)
 	var spawn_pos := Vector2.ZERO
@@ -160,6 +163,13 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 			push_warning("Spawner: Pool for '%s' is empty while building a squadron." % event_data.enemy_type_id)
 			continue
 		
+		if debug_mode:
+			print(
+				"[SPAWNER DEBUG] Got enemy '%s' from pool. Is inside tree: %s. Parent: %s" % [
+					enemy.name, enemy.is_inside_tree(), "null" if not enemy.get_parent() else enemy.get_parent().name
+				]
+			)
+		
 		# Set a basic behavior pattern for the enemy itself (e.g., STATIONARY)
 		# so it doesn't try to move on its own.
 		var stationary_pattern = EnemyBehaviorPattern.new()
@@ -182,6 +192,10 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 		# The SquadronController is solely responsible for positioning its members.
 		# We activate the enemy at a neutral position (0,0), and the controller
 		# will place it correctly in its first _physics_process frame.
+		
+		# Reparent the enemy from the pool manager to the main scene ('World').
+		enemy.reparent(get_parent())
+		
 		enemy.activate(Vector2.ZERO)
 		members.append(enemy)
 

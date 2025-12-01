@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://q8x8tsswa80v" path="res://scenes/utils/components/enemy pool manager/pool_config.gd" id="7_gb53w"]
 [ext_resource type="PackedScene" uid="uid://dfq40hmh34s0" path="res://enemies/enemy.tscn" id="8_5qq27"]
 [ext_resource type="Script" uid="uid://bwnhook52xe06" path="res://levels/level_sequencer.gd" id="10_gb53w"]
-[ext_resource type="Resource" uid="uid://d2w4nf0t535ln" path="res://levels/level1/level_1.tres" id="11_5qq27"]
+[ext_resource type="Resource" uid="uid://bbjnqtnjfi6du" path="res://scenes/test/level_test.tres" id="12_srmg5"]
 [ext_resource type="PackedScene" uid="uid://bbg6nyssff2nq" path="res://levels/level1/paths/path_top_left_loop.tscn" id="13_srmg5"]
 
 [sub_resource type="Resource" id="Resource_dlabj"]
@@ -54,7 +54,7 @@ position = Vector2(405, 540)
 
 [node name="LevelSequencer" type="Node" parent="." node_paths=PackedStringArray("players") groups=["LevelSequencer"]]
 script = ExtResource("10_gb53w")
-level_data = ExtResource("11_5qq27")
+level_data = ExtResource("12_srmg5")
 players = [NodePath("../Player")]
 
 [node name="Paths" type="Node" parent="."]

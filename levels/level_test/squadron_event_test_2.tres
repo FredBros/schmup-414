@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=8 format=3 uid="uid://bfovs6ueef53y"]
+
+[ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="1_3hh2h"]
+[ext_resource type="Resource" uid="uid://8u5ih6yi6fke" path="res://levels/patterns/squadron data/formation_v_5.tres" id="2_uxtln"]
+[ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron_spawn_event_data.gd" id="3_mmydg"]
+[ext_resource type="Script" uid="uid://dg42twmvuei5p" path="res://enemies/patterns/shooting/timed_shooting_pattern.gd" id="4_01ip2"]
+[ext_resource type="Resource" uid="uid://ime3kc786gfi" path="res://enemies/patterns/shooting/basic_3_burst.tres" id="5_3hh2h"]
+
+[sub_resource type="Resource" id="Resource_uxtln"]
+script = ExtResource("1_3hh2h")
+linear_speed = 50.0
+metadata/_custom_type_script = "uid://dg83fupxxxrup"
+
+[sub_resource type="Resource" id="Resource_mmydg"]
+script = ExtResource("4_01ip2")
+pattern = ExtResource("5_3hh2h")
+metadata/_custom_type_script = "uid://dg42twmvuei5p"
+
+[resource]
+script = ExtResource("3_mmydg")
+spawn_zone = 1
+spawn_delay = 2.0
+enemy_type_id = "basic_enemy"
+behavior_pattern = SubResource("Resource_uxtln")
+shooting_patterns = Array[ExtResource("4_01ip2")]([SubResource("Resource_mmydg")])
+formation_pattern = ExtResource("2_uxtln")
+metadata/_custom_type_script = "uid://dusuo5uyypl2l"
