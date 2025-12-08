@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyBehaviorPattern" load_steps=2 format=3 uid="uid://bd8egoneosr0"]
+
+[ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="1_wb125"]
+
+[resource]
+script = ExtResource("1_wb125")
+duration = 2.0
+linear_speed = 100.0
+metadata/_custom_type_script = "uid://dg83fupxxxrup"

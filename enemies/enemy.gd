@@ -186,8 +186,8 @@ func _physics_process(delta: float) -> void:
 			if _behavior_pattern.rotate_to_movement:
 				_path_follower.rotates = true
 			
-			if _behavior_pattern.lifetime > 0:
-				_path_follower.progress_ratio = _age / _behavior_pattern.lifetime
+			if _behavior_pattern.duration > 0:
+				_path_follower.progress_ratio = _age / _behavior_pattern.duration
 			
 			# For Path2D, we update the enemy's position and rotation from the follower.
 			self.global_position = _path_follower.global_position
@@ -206,7 +206,7 @@ func _physics_process(delta: float) -> void:
 
 	# Increment age and reclaim if lifetime is exceeded.
 	_age += delta
-	if _behavior_pattern and _behavior_pattern.lifetime > 0 and _age >= _behavior_pattern.lifetime:
+	if _behavior_pattern and _behavior_pattern.duration > 0 and _age >= _behavior_pattern.duration:
 		_reclaim()
 
 
@@ -324,17 +324,24 @@ func _fire_projectile(direction: Vector2, pattern: ShootingPattern) -> void:
 	# CORRECTION: Le PathFollower est reparenté. La source de vérité est la position
 	# de l'ennemi lui-même (self), après avoir attendu un physics_frame.
 	bullet.global_position = self.global_position
+	# The bullet's rotation should match the direction angle.
+	# If the bullet sprite points 'right', no correction is needed.
 	bullet.rotation = direction.angle()
 
 	# Add the bullet to the main scene tree ('world') AFTER setting its position.
-	# This ensures it appears at the correct location on its first frame.
-	# CORRECTION : Ne JAMAIS ajouter à get_tree().root. Les objets de jeu doivent
-	# vivre dans le même conteneur. On suppose que le parent de l'ennemi est le 'World'.
-	# Si l'ennemi est dans une escadrille, get_parent() est le World.
-	get_parent().add_child(bullet)
-	if debug_mode:
-		print("[%s] _fire_projectile: Activating bullet at position %s" % [name, bullet.global_position])
-	bullet.activate() # Active la balle après l'avoir positionnée
+	# We get the main scene ('World') by navigating up from the spawner.
+	# This prevents adding bullets as children of the SquadronController.
+	var world = get_tree().get_first_node_in_group("World")
+	if is_instance_valid(world):
+		world.add_child(bullet)
+		# Activate the bullet ONLY if it was successfully added to the scene.
+		if debug_mode:
+			print("[%s] _fire_projectile: Activating bullet at position %s" % [name, bullet.global_position])
+		bullet.activate() # Active la balle après l'avoir positionnée
+	else:
+		push_error("Enemy: Could not find 'World' node to add bullet to.")
+		# If we can't add the bullet, reclaim it immediately to avoid errors.
+		bullet._reclaim() # Corrected from reclaim() to _reclaim()
 	# The bullet script itself should read its BulletData and set its velocity.
 	# Example: bullet.velocity = direction * bullet_data.speed
 
@@ -358,5 +365,5 @@ func _on_screen_exited() -> void:
 	# On ne supprime l'ennemi que si sa durée de vie est infinie (lifetime <= 0).
 	# Si une lifetime est définie, c'est elle qui a la priorité pour la suppression,
 	# ce qui permet à l'ennemi de sortir et de rentrer à l'écran.
-	if _behavior_pattern and _behavior_pattern.lifetime <= 0:
+	if _behavior_pattern and _behavior_pattern.duration <= 0:
 		_reclaim()

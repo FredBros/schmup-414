@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://bl6i7723hm8ht"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://bl6i7723hm8ht"]
 
 [ext_resource type="Script" uid="uid://bpxj68qbgjjoi" path="res://levels/data/level_data.gd" id="1_w2byd"]
 [ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="2_n8821"]
+[ext_resource type="Resource" uid="uid://c6hm2ahgjvabw" path="res://scenes/test/test_wave.tres" id="3_n8821"]
 
 [resource]
 script = ExtResource("1_w2byd")
+waves = Array[ExtResource("2_n8821")]([ExtResource("3_n8821")])
 metadata/_custom_type_script = "uid://bpxj68qbgjjoi"

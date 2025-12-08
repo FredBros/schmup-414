@@ -47,8 +47,8 @@ enum SpawnZone {
 ## The type of enemy to use for the squadron members.
 @export var enemy_type_id: String
 
-## The movement pattern for the squadron as a whole (the invisible leader).
-@export var behavior_pattern: EnemyBehaviorPattern
+## A sequence of movement patterns for the squadron. The controller will execute them one after another.
+@export var sequential_behavior_patterns: Array[EnemyBehaviorPattern]
 
 ## A list of timed shooting patterns to assign to all squadron members.
 @export var shooting_patterns: Array[TimedShootingPattern]

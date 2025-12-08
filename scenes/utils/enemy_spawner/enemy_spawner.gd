@@ -45,9 +45,10 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	controller.reparent(get_parent())
 	
 	# 2. Configure the controller
-	controller.behavior_pattern = event_data.behavior_pattern
+	controller.sequential_behavior_patterns = event_data.sequential_behavior_patterns # Utiliser la liste des patterns
 	controller.formation_pattern = event_data.formation_pattern
 	controller.debug_mode = self.debug_mode # Pass the debug flag
+	controller.level_sequencer = _level_sequencer # Passer la référence au LevelSequencer pour le homing
 	
 	# 3. Determine the spawn position for the controller (the center of the squadron)
 	var spawn_pos := Vector2.ZERO
@@ -174,27 +175,19 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 		# so it doesn't try to move on its own.
 		var stationary_pattern = EnemyBehaviorPattern.new()
 		stationary_pattern.movement_type = EnemyBehaviorPattern.MovementType.STATIONARY
+		stationary_pattern.rotate_to_movement = false # The controller handles rotation.
 		enemy.set_behavior_pattern(stationary_pattern)
 		# Transmettre le shooting pattern de l'événement au membre de l'escadrille.
 		if not event_data.shooting_patterns.is_empty():
 			enemy.set_shooting_patterns(event_data.shooting_patterns)
 		
-		# Handle Homing for the entire squadron
-		if event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING:
-			var potential_targets: Array[Node2D] = _level_sequencer.get_player_targets()
-			if not potential_targets.is_empty():
-				# For a squadron, the CONTROLLER targets the player.
-				# We can just pick the first player for simplicity.
-				var target = potential_targets[0]
-				controller.set_target(target)
-
-		# CORRECTION: Do NOT set the enemy's position here.
 		# The SquadronController is solely responsible for positioning its members.
 		# We activate the enemy at a neutral position (0,0), and the controller
 		# will place it correctly in its first _physics_process frame.
-		
-		# Reparent the enemy from the pool manager to the main scene ('World').
-		enemy.reparent(get_parent())
+
+		# Reparent the enemy from the pool manager to be a child of the controller.
+		# This simplifies rotation and positioning immensely.
+		enemy.reparent(controller)
 		
 		enemy.activate(Vector2.ZERO)
 		members.append(enemy)
@@ -202,20 +195,6 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	# 4. Assign the members list to the controller and activate it
 	controller.members = members
 	controller.activate() # You'll need to create this function in the controller
-
-	# 5. Handle Path2D reparenting for the controller
-	if event_data.behavior_pattern and event_data.behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:
-		var path_node = get_node_or_null(event_data.movement_path)
-		if path_node and path_node is Path2D:
-			# We assume the SquadronController scene has a PathFollow2D node named "PathFollower"
-			var path_follower = controller.get_node_or_null("PathFollower")
-			if path_follower:
-				path_follower.get_parent().remove_child(path_follower)
-				path_node.add_child(path_follower)
-			else:
-				push_warning("Spawner: SquadronController scene is missing a 'PathFollower' child node.")
-		else:
-			push_warning("Spawner: Path2D not found at path for squadron: %s" % event_data.movement_path)
 
 func _on_spawn_requested(event_data: SpawnEventData) -> void:
 	if not _enemy_pool_manager: return
