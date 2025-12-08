@@ -29,6 +29,9 @@ var _age: float = 0.0
 # This will be set by the spawner.
 var debug_mode := false
 
+## Speed at which the squadron turns to align with its direction (in radians/sec).
+@export var turn_speed: float = 4.0
+
 func activate() -> void:
 	"""Activates the controller, resetting its state and making it process."""
 	_is_reclaimed = false
@@ -182,8 +185,11 @@ func _physics_process(delta: float) -> void:
 	# --- Rotation Logic: Rotate the controller itself ---
 	if _current_behavior_pattern.rotate_to_movement and velocity.length_squared() > 0:
 		# We rotate the controller itself. This is the single source of truth for rotation.
-		# We add PI/2 because our sprites point 'up' (-Y), but a rotation of 0 points 'right' (+X).
-		self.rotation = velocity.angle() + PI / 2
+		# Calculate the target angle based on velocity.
+		var target_angle = velocity.angle() + PI / 2
+		
+		# Instead of jumping to the target angle, we interpolate the current angle towards it.
+		self.rotation = lerp_angle(self.rotation, target_angle, turn_speed * delta)
 	
 	# --- Member Positioning ---
 	if formation_pattern:
