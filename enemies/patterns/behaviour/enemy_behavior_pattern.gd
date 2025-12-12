@@ -49,3 +49,7 @@ enum MovementType {
 @export var bounce_speed: float = 150.0
 ## How many times the enemy will bounce before flying off-screen. -1 for infinite.
 @export var bounce_count: int = 3
+
+@export_group("Path 2D")
+## The NodePath to the Path2D node to follow (only for PATH_2D movement).
+@export var movement_path: NodePath

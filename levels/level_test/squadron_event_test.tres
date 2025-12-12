@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=11 format=3 uid="uid://bey2o0wjt0rmw"]
+[gd_resource type="Resource" script_class="SquadronSpawnEventData" load_steps=9 format=3 uid="uid://bey2o0wjt0rmw"]
 
 [ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="1_wctvs"]
 [ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron_spawn_event_data.gd" id="1_wwdyo"]
 [ext_resource type="Resource" uid="uid://8u5ih6yi6fke" path="res://levels/patterns/squadron data/formation_v_5.tres" id="2_8y56e"]
 [ext_resource type="Script" uid="uid://dg42twmvuei5p" path="res://enemies/patterns/shooting/timed_shooting_pattern.gd" id="2_wctvs"]
-[ext_resource type="Resource" uid="uid://bd8egoneosr0" path="res://levels/patterns/EnemyBehaviorPattern/Behavior_Descend_2s.tres" id="4_wdvrx"]
-[ext_resource type="Resource" uid="uid://bfl7s8ug811m5" path="res://levels/patterns/EnemyBehaviorPattern/Behavior_Stop_1s.tres" id="5_axtju"]
+[ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://levels/level1/paths/path_behavior.tres" id="4_jjc66"]
 [ext_resource type="Resource" uid="uid://cwninvk47hsfd" path="res://enemies/patterns/shooting/timed_shoot_wave1_.tres" id="5_cl2v7"]
-[ext_resource type="Resource" uid="uid://qx1mx74j2iob" path="res://levels/patterns/EnemyBehaviorPattern/Behavior_Left_Infinite.tres" id="6_61a5a"]
 [ext_resource type="Resource" uid="uid://j40n4l6710gu" path="res://enemies/patterns/shooting/basic_3_spread.tres" id="6_cl2v7"]
 
 [sub_resource type="Resource" id="Resource_jjc66"]
@@ -18,10 +16,9 @@ metadata/_custom_type_script = "uid://dg42twmvuei5p"
 
 [resource]
 script = ExtResource("1_wwdyo")
-spawn_zone = 16
-spawn_point = Vector2(400, 200)
+spawn_zone = 4
 enemy_type_id = "basic_enemy"
-sequential_behavior_patterns = Array[ExtResource("1_wctvs")]([ExtResource("4_wdvrx"), ExtResource("5_axtju"), ExtResource("6_61a5a")])
+sequential_behavior_patterns = Array[ExtResource("1_wctvs")]([ExtResource("4_jjc66")])
 shooting_patterns = Array[ExtResource("2_wctvs")]([ExtResource("5_cl2v7"), SubResource("Resource_jjc66")])
 formation_pattern = ExtResource("2_8y56e")
 metadata/_custom_type_script = "uid://dusuo5uyypl2l"

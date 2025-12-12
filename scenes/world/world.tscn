@@ -34,12 +34,12 @@ game_size = Vector2(810, 1080)
 visible = false
 
 [node name="BulletPool" parent="." instance=ExtResource("6_t5ptc")]
+debug_mode = false
 
 [node name="EnemyPoolManager" parent="." instance=ExtResource("6_j2gmx")]
 pools_to_create = Array[ExtResource("7_gb53w")]([SubResource("Resource_dlabj")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_1yooq")]
-debug_mode = true
 
 [node name="BulletsContainer" type="Node" parent="." groups=["BulletsContainer"]]
 

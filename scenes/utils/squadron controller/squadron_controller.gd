@@ -40,17 +40,20 @@ func activate() -> void:
 	_current_segment_age = 0.0
 	_sinusoidal_time = 0.0
 	
-	
-	# Make the controller itself visible. This is the missing piece.
-	visible = true
-	
 	set_physics_process(true)
-	# Make all members visible
-	for member in members:
-		if is_instance_valid(member):
-			member.make_visible()
 	
-	_apply_current_segment_pattern() # Appliquer le premier segment de comportement
+	# Apply the first pattern and immediately update positions once.
+	_apply_current_segment_pattern()
+	
+	# Pre-calculate the initial velocity and set the rotation instantly.
+	# This ensures the squadron is correctly oriented BEFORE the first frame is rendered,
+	# preventing a visual "snap" or "maneuver" on spawn.
+	_calculate_velocity(0.0) # Calculate velocity without advancing time.
+	_apply_rotation(1.0) # Apply rotation instantly (weight = 1.0).
+	
+	_update_members(0.0) # Initial placement without advancing time.
+	
+	_activate_and_show_members()
 
 func _apply_current_segment_pattern() -> void:
 	"""Applique les paramètres du pattern de comportement actuel."""
@@ -95,6 +98,22 @@ func _apply_current_segment_pattern() -> void:
 		if old_parent: old_parent.remove_child(_path_follower)
 		add_child(_path_follower)
 
+func _activate_and_show_members() -> void:
+	"""Activates member logic and makes them visible. Called after initial placement."""
+	if not formation_pattern: return
+	
+	for member in members:
+		if is_instance_valid(member):
+			# Activate internal logic. This sets `is_squadron_member` to true
+			# and `set_physics_process(false)`.
+			member.activate_logic_only()
+			
+			# Now that it's in the correct starting position, make it visible.
+			# We use call_deferred to make the member visible on the next idle frame.
+			# This ensures all positioning is finalized before the enemy is drawn, preventing a one-frame visual glitch.
+			member.call_deferred("make_visible")
+
+
 func set_target(target: Node2D) -> void:
 	"""Sets the target for the entire squadron (e.g., for Homing)."""
 	for member in members:
@@ -130,7 +149,36 @@ func _physics_process(delta: float) -> void:
 	_current_segment_age += delta
 	_age += delta # Garder une trace de l'âge total si nécessaire pour d'autres choses
 
+	_calculate_velocity(delta)
+	
+	_update_members(delta)
+
 	# --- Movement Logic ---
+	match _current_behavior_pattern.movement_type:
+		EnemyBehaviorPattern.MovementType.LINEAR:
+			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
+
+	# Mettre à jour global_position uniquement si ce n'est pas un mouvement PATH_2D
+	if _current_behavior_pattern.movement_type != EnemyBehaviorPattern.MovementType.PATH_2D:
+		global_position += velocity * delta
+	
+	# --- Rotation Logic: Rotate the controller itself ---
+	_apply_rotation(turn_speed * delta)
+	
+	# --- Logique de transition de segment ---
+	# Si le segment actuel a une durée définie et que cette durée est écoulée
+	if _current_behavior_pattern.duration > 0 and _current_segment_age >= _current_behavior_pattern.duration:
+		_current_behavior_index += 1 # Passer au segment suivant
+		_current_segment_age = 0.0 # Réinitialiser l'âge du segment
+		if _current_behavior_index < sequential_behavior_patterns.size():
+			_apply_current_segment_pattern() # Appliquer les paramètres du prochain segment
+		else:
+			_reclaim() # Tous les segments sont terminés, récupérer le contrôleur
+
+func _calculate_velocity(delta: float) -> void:
+	"""Calculates the squadron's velocity based on the current behavior pattern."""
+	if not _current_behavior_pattern: return
+	
 	match _current_behavior_pattern.movement_type:
 		EnemyBehaviorPattern.MovementType.LINEAR:
 			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
@@ -144,10 +192,6 @@ func _physics_process(delta: float) -> void:
 			
 			velocity = direction * speed
 			velocity += direction.orthogonal() * cos(_sinusoidal_time * frequency) * amplitude
-
-		EnemyBehaviorPattern.MovementType.STATIONARY:
-			velocity = Vector2.ZERO
-			# Si STATIONARY est le dernier segment et n'a pas de durée, il restera indéfiniment.
 
 		EnemyBehaviorPattern.MovementType.HOMING:
 			# Pour le homing, le contrôleur lui-même peut avoir un mouvement de base (ex: linéaire)
@@ -176,50 +220,32 @@ func _physics_process(delta: float) -> void:
 			else:
 				# Si pas de durée définie, le PathFollower avance à une vitesse par défaut
 				_path_follower.progress_ratio = min(1.0, _path_follower.progress_ratio + delta / 10.0) # Exemple de vitesse par défaut
-			pass # PathFollower gère le mouvement, donc on saute la mise à jour de global_position ci-dessous
-
-	# Mettre à jour global_position uniquement si ce n'est pas un mouvement PATH_2D
-	if _current_behavior_pattern.movement_type != EnemyBehaviorPattern.MovementType.PATH_2D:
-		global_position += velocity * delta
-	
-	# --- Rotation Logic: Rotate the controller itself ---
-	if _current_behavior_pattern.rotate_to_movement and velocity.length_squared() > 0:
-		# We rotate the controller itself. This is the single source of truth for rotation.
-		# Calculate the target angle based on velocity.
-		var target_angle = velocity.angle() + PI / 2
 		
-		# Instead of jumping to the target angle, we interpolate the current angle towards it.
-		self.rotation = lerp_angle(self.rotation, target_angle, turn_speed * delta)
+		EnemyBehaviorPattern.MovementType.STATIONARY:
+			velocity = Vector2.ZERO
+
+func _apply_rotation(weight: float) -> void:
+	"""Applies rotation to the controller based on its velocity."""
+	if not _current_behavior_pattern: return
 	
-	# --- Member Positioning ---
-	if formation_pattern:
-		for i in range(members.size()):
-			var member = members[i]
-			if is_instance_valid(member):
-				# The member's local position is its fixed formation offset.
-				# The controller's movement and rotation will handle the rest.
-				var offset = formation_pattern.member_offsets[i]
-				member.position = offset
-				
-				# The member's local rotation should be zero. It inherits rotation from the controller.
-				member.rotation = 0
+	if _current_behavior_pattern.rotate_to_movement and velocity.length_squared() > 0:
+		var target_angle = velocity.angle() + PI / 2
+		self.rotation = lerp_angle(self.rotation, target_angle, weight)
 
-				if debug_mode and Engine.get_physics_frames() % 60 == 0: # Print once per second
-					print(
-						"[CONTROLLER DEBUG] Member %d position set to (%d, %d)" % [
-							i, member.global_position.x, member.global_position.y
-						]
-					)
-
-	# --- Logique de transition de segment ---
-	# Si le segment actuel a une durée définie et que cette durée est écoulée
-	if _current_behavior_pattern.duration > 0 and _current_segment_age >= _current_behavior_pattern.duration:
-		_current_behavior_index += 1 # Passer au segment suivant
-		_current_segment_age = 0.0 # Réinitialiser l'âge du segment
-		if _current_behavior_index < sequential_behavior_patterns.size():
-			_apply_current_segment_pattern() # Appliquer les paramètres du prochain segment
-		else:
-			_reclaim() # Tous les segments sont terminés, récupérer le contrôleur
+func _update_members(delta: float) -> void:
+	"""Updates the position and logic of all squadron members."""
+	if not formation_pattern: return
+	
+	for i in range(members.size()):
+		var member = members[i]
+		if is_instance_valid(member):
+			# 1. Update position based on formation offset.
+			member.position = formation_pattern.member_offsets[i]
+			member.rotation = 0 # Members always face forward relative to the controller.
+			
+			# 2. Manually update the member's shooting logic.
+			if delta > 0:
+				member.update_shooting_only(delta)
 
 
 func _reclaim() -> void:

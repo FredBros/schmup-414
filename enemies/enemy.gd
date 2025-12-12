@@ -19,6 +19,9 @@ var _sinusoidal_time: float = 0.0
 var _bounces_left: int = 0
 var _age: float = 0.0
 var _is_reclaimed := false
+## If true, this enemy is controlled by a SquadronController and should not process its own movement.
+var is_squadron_member := false
+
 # --- End Movement Pattern Variables ---
 
 ## Classe interne pour gérer l'état d'un seul pattern de tir actif.
@@ -63,6 +66,7 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# C'est la garantie que la position est correcte dès le début.
 	self.global_position = new_global_position
 	_is_reclaimed = false
+	is_squadron_member = false # An enemy activated this way is a solo enemy.
 	# --- Reset state variables ---
 	_age = 0.0 # Reset lifetime counter
 	velocity = Vector2.ZERO # Reset velocity on activation
@@ -91,6 +95,36 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# On attend juste un frame pour s'assurer que la position est correcte avant que
 	# le premier _physics_process ne déclenche potentiellement un tir.
 	# await get_tree().physics_frame # On enlève l'await qui complique la logique.
+
+func activate_logic_only() -> void:
+	"""
+	Activates the enemy's internal logic (resets stats, age, etc.)
+	without changing its position. Used when controlled by a squadron.
+	"""
+	_is_reclaimed = false
+	is_squadron_member = true # This enemy is now controlled by a squadron.
+	# --- Reset state variables ---
+	_age = 0.0 # Reset lifetime counter
+	velocity = Vector2.ZERO # Reset velocity on activation
+	set_physics_process(false) # Physics is handled by the SquadronController
+	# Réactiver les collisions
+	var hurtbox = find_child("Hurtbox", true, false)
+	if hurtbox:
+		hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
+		
+	# --- Initialize state based on behavior pattern ---
+	_sinusoidal_time = 0.0
+	if _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE:
+		velocity = _behavior_pattern.bounce_initial_direction.normalized() * _behavior_pattern.bounce_speed
+		_bounces_left = _behavior_pattern.bounce_count
+	# Special case for "fire-and-forget" homing
+	elif _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING and _behavior_pattern.homing_duration == 0:
+		if is_instance_valid(_player):
+			var direction_to_player = global_position.direction_to(_player.global_position)
+			velocity = direction_to_player * _behavior_pattern.homing_speed
+	
+	# Reset health
+	health = max_health
 
 
 func deactivate() -> void:
@@ -122,8 +156,15 @@ func make_visible() -> void:
 	visible = true
 
 
+func update_shooting_only(delta: float) -> void:
+	"""Only processes the shooting logic. Called by SquadronController for its members."""
+	_age += delta
+	_handle_shooting(delta)
+
+
 func _physics_process(delta: float) -> void:
-	if not _behavior_pattern:
+	# If this enemy is part of a squadron, its movement is handled entirely by the SquadronController.
+	if is_squadron_member or not _behavior_pattern:
 		return
 
 	# --- Shooting Logic ---

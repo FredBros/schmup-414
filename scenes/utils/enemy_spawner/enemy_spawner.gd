@@ -56,16 +56,21 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	
 	# Special case for spawning at the start of a path
 	if event_data.spawn_zone == SquadronSpawnEventData.SpawnZone.PATH_START:
-		var path_node = get_node_or_null(event_data.movement_path)
-		if path_node and path_node is Path2D:
-			# Temporarily add a PathFollower to get the start position
-			var temp_follower = PathFollow2D.new()
-			path_node.add_child(temp_follower)
-			temp_follower.progress_ratio = 0.0
-			spawn_pos = temp_follower.global_position
-			temp_follower.queue_free() # Clean up the temporary node
+		if not event_data.sequential_behavior_patterns.is_empty():
+			var first_pattern: EnemyBehaviorPattern = event_data.sequential_behavior_patterns[0]
+			var path_node = get_node_or_null(first_pattern.movement_path)
+			if path_node and path_node is Path2D:
+				# Temporarily add a PathFollower to get the start position
+				var temp_follower = PathFollow2D.new()
+				path_node.add_child(temp_follower)
+				temp_follower.progress_ratio = 0.0
+				spawn_pos = temp_follower.global_position
+				temp_follower.queue_free() # Clean up the temporary node
+			else:
+				push_warning("Spawner: PATH_START spawn zone selected, but Path2D not found at path: %s. Spawning at top." % first_pattern.movement_path)
+				spawn_pos = Vector2(_screen_size.x / 2.0, -spawn_offset) # Fallback
 		else:
-			push_warning("Spawner: PATH_START spawn zone selected for squadron, but Path2D not found at path: %s. Spawning at top." % event_data.movement_path)
+			push_warning("Spawner: PATH_START spawn zone selected, but sequential_behavior_patterns is empty. Spawning at top.")
 			spawn_pos = Vector2(_screen_size.x / 2.0, -spawn_offset) # Fallback
 	else:
 		# Logic for all other spawn zones (copied from _on_spawn_requested)
@@ -171,25 +176,15 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 				]
 			)
 		
-		# Set a basic behavior pattern for the enemy itself (e.g., STATIONARY)
-		# so it doesn't try to move on its own.
-		var stationary_pattern = EnemyBehaviorPattern.new()
-		stationary_pattern.movement_type = EnemyBehaviorPattern.MovementType.STATIONARY
-		stationary_pattern.rotate_to_movement = false # The controller handles rotation.
-		enemy.set_behavior_pattern(stationary_pattern)
-		# Transmettre le shooting pattern de l'événement au membre de l'escadrille.
-		if not event_data.shooting_patterns.is_empty():
-			enemy.set_shooting_patterns(event_data.shooting_patterns)
-		
-		# The SquadronController is solely responsible for positioning its members.
-		# We activate the enemy at a neutral position (0,0), and the controller
-		# will place it correctly in its first _physics_process frame.
-
 		# Reparent the enemy from the pool manager to be a child of the controller.
 		# This simplifies rotation and positioning immensely.
 		enemy.reparent(controller)
 		
-		enemy.activate(Vector2.ZERO)
+		# The controller will be responsible for activating and positioning the member.
+		# We just pass the shooting patterns.
+		if not event_data.shooting_patterns.is_empty():
+			enemy.set_shooting_patterns(event_data.shooting_patterns)
+		
 		members.append(enemy)
 
 	# 4. Assign the members list to the controller and activate it

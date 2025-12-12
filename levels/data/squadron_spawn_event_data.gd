@@ -55,7 +55,3 @@ enum SpawnZone {
 
 ## The formation pattern that defines the shape of the squadron.
 @export var formation_pattern: FormationPattern
-
-@export_group("Path 2D")
-## The NodePath to the Path2D node to follow (only for PATH_2D movement).
-@export var movement_path: NodePath

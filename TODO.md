@@ -4,10 +4,6 @@ Liste des fonctionnalités et améliorations à venir pour le projet.
 
 ## Priorités Actuelles (High Priority)
 
-- [ ] **Phases de Comportement de Mouvement**:
-  - [ ] Créer une ressource `TimedBehaviorPattern` (similaire à `TimedShootingPattern`) qui encapsule un `EnemyBehaviorPattern` avec un `start_time` et `end_time`.
-  - [ ] Mettre à jour `enemy.gd` et `squadron_controller.gd` pour interpréter ces séquences et permettre des changements de mouvement au fil du temps.
-
 - [ ] **Déclencheurs d'Événements (Event Triggers)**:
   - [ ] Permettre à un ennemi d'émettre des signaux à des moments clés (ex: à 50% de sa vie, ou après un certain `_age`).
   - [ ] Le `LevelSequencer` pourrait écouter ces signaux pour déclencher des événements de script (faire apparaître des renforts, changer la musique, etc.).
@@ -31,6 +27,13 @@ Liste des fonctionnalités et améliorations à venir pour le projet.
 ---
 
 ## Terminé (Done)
+
+- [x] **Phases de Comportement de Mouvement**:
+  - [x] Le `SquadronController` interprète une séquence de `EnemyBehaviorPattern`, chacun avec une `duration`, permettant des changements de mouvement au fil du temps.
+
+- [x] **Comportement des Escadrilles (Squadron Behavior)**:
+  - [x] Correction de la logique de rotation pour un comportement de corps rigide.
+  - [x] Implémentation d'une rotation fluide (`lerp_angle`) pour lisser les transitions de mouvement.
 
 - [x] **Pooling des `SquadronController`**:
   - [x] Création du singleton `SquadronControllerPoolManager` pour gérer le cycle de vie des contrôleurs.

@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_n4umv")
+movement_type = 2
 linear_speed = 100.0
 bounce_speed = 300.0
+movement_path = NodePath("../Paths/PathTopLeftLoop")
 metadata/_custom_type_script = "uid://dg83fupxxxrup"
