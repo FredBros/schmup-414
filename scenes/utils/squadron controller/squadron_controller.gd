@@ -159,11 +159,15 @@ func _physics_process(delta: float) -> void:
 			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
 
 	# Mettre à jour global_position uniquement si ce n'est pas un mouvement PATH_2D
-	if _current_behavior_pattern.movement_type != EnemyBehaviorPattern.MovementType.PATH_2D:
+	if _current_behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:
+		# For Path2D, the controller's position is driven by its PathFollower2D child.
+		self.global_position = _path_follower.global_position
+		# We don't use _apply_rotation here because the PathFollower handles rotation.
+		self.rotation = _path_follower.rotation + PI / 2
+	else:
 		global_position += velocity * delta
-	
-	# --- Rotation Logic: Rotate the controller itself ---
-	_apply_rotation(turn_speed * delta)
+		# --- Rotation Logic: Rotate the controller itself ---
+		_apply_rotation(turn_speed * delta)
 	
 	# --- Logique de transition de segment ---
 	# Si le segment actuel a une durée définie et que cette durée est écoulée
@@ -215,11 +219,25 @@ func _calculate_velocity(delta: float) -> void:
 					if _bounces_left > 0: _bounces_left -= 1 # Décrémente si non infini
 
 		EnemyBehaviorPattern.MovementType.PATH_2D:
-			if _current_behavior_pattern.duration > 0:
-				_path_follower.progress_ratio = _current_segment_age / _current_behavior_pattern.duration
+			var path_node = get_node_or_null(_current_behavior_pattern.movement_path)
+			if not (path_node and path_node is Path2D):
+				return # Path not valid, warning is printed elsewhere.
+
+			var total_duration: float = 0.0
+			
+			# New: Use path_speed to calculate duration if available
+			if _current_behavior_pattern.path_speed > 0:
+				var path_length = path_node.curve.get_baked_length()
+				if path_length > 0:
+					total_duration = path_length / _current_behavior_pattern.path_speed
+			# Fallback to the global duration property if path_speed is not set
+			elif _current_behavior_pattern.duration > 0:
+				total_duration = _current_behavior_pattern.duration
 			else:
-				# Si pas de durée définie, le PathFollower avance à une vitesse par défaut
-				_path_follower.progress_ratio = min(1.0, _path_follower.progress_ratio + delta / 10.0) # Exemple de vitesse par défaut
+				total_duration = 10.0 # Default duration if nothing is set
+			
+			if total_duration > 0:
+				_path_follower.progress_ratio = min(1.0, _current_segment_age / total_duration)
 		
 		EnemyBehaviorPattern.MovementType.STATIONARY:
 			velocity = Vector2.ZERO

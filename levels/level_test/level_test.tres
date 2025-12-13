@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bpxj68qbgjjoi" path="res://levels/data/level_data.gd" id="1_w2byd"]
 [ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="2_n8821"]
-[ext_resource type="Resource" uid="uid://c6hm2ahgjvabw" path="res://scenes/test/test_wave.tres" id="3_n8821"]
+[ext_resource type="Resource" uid="uid://dx5mnxigni1jl" path="res://levels/level1/waves/wave_1.tres" id="3_c4iqp"]
 
 [resource]
 script = ExtResource("1_w2byd")
-waves = Array[ExtResource("2_n8821")]([ExtResource("3_n8821")])
+waves = Array[ExtResource("2_n8821")]([ExtResource("3_c4iqp")])
 metadata/_custom_type_script = "uid://bpxj68qbgjjoi"

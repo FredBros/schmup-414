@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bwsv5nsff62qk" path="res://levels/data/wave_data.gd" id="1_kwdsd"]
 [ext_resource type="Script" uid="uid://b4t8yg7sbek6x" path="res://levels/data/spawn_event_data.gd" id="2_u14c2"]
 [ext_resource type="Script" uid="uid://dusuo5uyypl2l" path="res://levels/data/squadron_spawn_event_data.gd" id="3_tvklf"]
-[ext_resource type="Resource" uid="uid://ceamu5anhybmf" path="res://levels/level1/paths/path_behavior.tres" id="4_u14c2"]
+[ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="5_nwvlb"]
 [ext_resource type="Resource" uid="uid://chefmfwb833fy" path="res://levels/patterns/squadron data/formation_line_5.tres" id="5_tvklf"]
 [ext_resource type="Script" uid="uid://dg42twmvuei5p" path="res://enemies/patterns/shooting/timed_shooting_pattern.gd" id="6_tvklf"]
 
@@ -11,7 +11,6 @@
 script = ExtResource("3_tvklf")
 spawn_zone = 4
 enemy_type_id = "basic_enemy"
-behavior_pattern = ExtResource("4_u14c2")
 formation_pattern = ExtResource("5_tvklf")
 metadata/_custom_type_script = "uid://dusuo5uyypl2l"
 

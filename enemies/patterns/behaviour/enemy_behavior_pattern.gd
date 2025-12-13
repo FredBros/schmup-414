@@ -53,3 +53,5 @@ enum MovementType {
 @export_group("Path 2D")
 ## The NodePath to the Path2D node to follow (only for PATH_2D movement).
 @export var movement_path: NodePath
+## The speed in pixels/second to travel along the path. If > 0, this is used instead of the global 'duration'.
+@export var path_speed: float = 0.0
