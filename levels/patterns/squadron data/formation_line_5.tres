@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_qiyrg")
-member_offsets = Array[Vector2]([Vector2(-100, 0), Vector2(-50, 0), Vector2(0, 0), Vector2(50, 0), Vector2(100, 0)])
 metadata/_custom_type_script = "uid://dx2ut3fqdsor8"

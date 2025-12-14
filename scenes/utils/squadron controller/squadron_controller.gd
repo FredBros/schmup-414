@@ -16,6 +16,7 @@ var _is_reclaimed := false
 
 @onready var _path_follower: PathFollow2D = $PathFollower
 var level_sequencer: LevelSequencer # Référence au LevelSequencer pour obtenir les cibles (Homing)
+var _player: Node2D # Target for homing
 
 # State variables for specific movement patterns
 var velocity: Vector2 = Vector2.ZERO
@@ -44,12 +45,6 @@ func activate() -> void:
 	
 	# Apply the first pattern and immediately update positions once.
 	_apply_current_segment_pattern()
-	
-	# Pre-calculate the initial velocity and set the rotation instantly.
-	# This ensures the squadron is correctly oriented BEFORE the first frame is rendered,
-	# preventing a visual "snap" or "maneuver" on spawn.
-	_calculate_velocity(0.0) # Calculate velocity without advancing time.
-	_apply_rotation(1.0) # Apply rotation instantly (weight = 1.0).
 	
 	_update_members(0.0) # Initial placement without advancing time.
 	
@@ -116,6 +111,7 @@ func _activate_and_show_members() -> void:
 
 func set_target(target: Node2D) -> void:
 	"""Sets the target for the entire squadron (e.g., for Homing)."""
+	_player = target
 	for member in members:
 		if is_instance_valid(member):
 			member.set_target(target)
@@ -153,21 +149,14 @@ func _physics_process(delta: float) -> void:
 	
 	_update_members(delta)
 
-	# --- Movement Logic ---
-	match _current_behavior_pattern.movement_type:
-		EnemyBehaviorPattern.MovementType.LINEAR:
-			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
-
 	# Mettre à jour global_position uniquement si ce n'est pas un mouvement PATH_2D
 	if _current_behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.PATH_2D:
 		# For Path2D, the controller's position is driven by its PathFollower2D child.
 		self.global_position = _path_follower.global_position
-		# We don't use _apply_rotation here because the PathFollower handles rotation.
-		self.rotation = _path_follower.rotation + PI / 2
+		# The controller itself does not rotate. Members will orient themselves.
 	else:
 		global_position += velocity * delta
-		# --- Rotation Logic: Rotate the controller itself ---
-		_apply_rotation(turn_speed * delta)
+		# Rotation is now handled by individual members.
 	
 	# --- Logique de transition de segment ---
 	# Si le segment actuel a une durée définie et que cette durée est écoulée
@@ -198,18 +187,23 @@ func _calculate_velocity(delta: float) -> void:
 			velocity += direction.orthogonal() * cos(_sinusoidal_time * frequency) * amplitude
 
 		EnemyBehaviorPattern.MovementType.HOMING:
-			# Pour le homing, le contrôleur lui-même peut avoir un mouvement de base (ex: linéaire)
-			# ou rester stationnaire, tandis que les membres ciblent le joueur.
-			# Ici, nous allons simplement le faire descendre si aucun autre mouvement n'est défini.
-			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
-			if _current_behavior_pattern.linear_speed == 0:
-				velocity = Vector2.DOWN * 50 # Fallback si pas de vitesse linéaire définie
-			
-			# Assurez-vous que les membres ont une cible si ce segment est HOMING
-			if is_instance_valid(level_sequencer) and level_sequencer.has_method("get_player_targets"):
+			# Acquire a random target only if we don't have a valid one already.
+			# This prevents the squadron from switching targets every frame.
+			if not is_instance_valid(_player) and is_instance_valid(level_sequencer) and level_sequencer.has_method("get_player_targets"):
 				var potential_targets: Array[Node2D] = level_sequencer.get_player_targets()
 				if not potential_targets.is_empty():
-					set_target(potential_targets[0]) # Cible le premier joueur pour l'escadron
+					set_target(potential_targets.pick_random()) # Target a random player from the list
+			
+			var homing_active = true
+			if _current_behavior_pattern.homing_duration >= 0 and _current_segment_age >= _current_behavior_pattern.homing_duration:
+				homing_active = false
+			
+			if homing_active and is_instance_valid(_player):
+				var direction_to_player = global_position.direction_to(_player.global_position)
+				var target_velocity = direction_to_player * _current_behavior_pattern.homing_speed
+				# Rotate current velocity towards the player direction using slerp for smooth turning.
+				velocity = velocity.slerp(target_velocity, _current_behavior_pattern.homing_turn_rate * delta)
+			# If homing is not active or player is invalid, the squadron continues in its last direction.
 
 		EnemyBehaviorPattern.MovementType.BOUNCE:
 			if _bounces_left != 0:
@@ -238,17 +232,18 @@ func _calculate_velocity(delta: float) -> void:
 			
 			if total_duration > 0:
 				_path_follower.progress_ratio = min(1.0, _current_segment_age / total_duration)
+			
+			# Also calculate a velocity vector for member rotation
+			if path_node.curve.get_point_count() > 1:
+				# To get a reliable direction vector, we can compare the position between two close points on the path.
+				var current_progress = _path_follower.progress
+				var next_progress = current_progress + 1.0 # a small step forward
+				var current_pos = path_node.curve.sample_baked(current_progress)
+				var next_pos = path_node.curve.sample_baked(next_progress)
+				velocity = (next_pos - current_pos).normalized() * (_current_behavior_pattern.path_speed if _current_behavior_pattern.path_speed > 0 else 150.0)
 		
 		EnemyBehaviorPattern.MovementType.STATIONARY:
 			velocity = Vector2.ZERO
-
-func _apply_rotation(weight: float) -> void:
-	"""Applies rotation to the controller based on its velocity."""
-	if not _current_behavior_pattern: return
-	
-	if _current_behavior_pattern.rotate_to_movement and velocity.length_squared() > 0:
-		var target_angle = velocity.angle() + PI / 2
-		self.rotation = lerp_angle(self.rotation, target_angle, weight)
 
 func _update_members(delta: float) -> void:
 	"""Updates the position and logic of all squadron members."""
@@ -258,8 +253,34 @@ func _update_members(delta: float) -> void:
 		var member = members[i]
 		if is_instance_valid(member):
 			# 1. Update position based on formation offset.
-			member.position = formation_pattern.member_offsets[i]
-			member.rotation = 0 # Members always face forward relative to the controller.
+			var offset = formation_pattern.member_offsets[i]
+			var final_offset = offset
+			var final_member_rotation = 0.0
+			
+			# 2. Calculate rotation if any rotation is enabled and there's movement.
+			if _current_behavior_pattern and (_current_behavior_pattern.rotate_formation or _current_behavior_pattern.rotate_members):
+				var rotation_target_direction = velocity
+				
+				if rotation_target_direction.length_squared() > 0.001:
+					var target_angle = rotation_target_direction.angle()
+					
+					# --- Formation Rotation ---
+					# The V-formation points down (90 deg). We want to align this "front" with the target_angle.
+					# The rotation to apply is the difference between the target and the base orientation.
+					var formation_base_angle = PI / 2 # Formation points down by default.
+					var formation_rotation = target_angle - formation_base_angle
+					if _current_behavior_pattern.rotate_formation:
+						final_offset = offset.rotated(formation_rotation)
+					
+					# --- Member Sprite Rotation ---
+					# The sprite points up (-90 deg). We want to align this "front" with the target_angle.
+					var sprite_base_angle = - PI / 2 # Sprite points up by default.
+					if _current_behavior_pattern.rotate_members:
+						final_member_rotation = target_angle - sprite_base_angle
+			
+			# Apply final calculated position and rotation
+			member.global_position = self.global_position + final_offset
+			member.rotation = final_member_rotation
 			
 			# 2. Manually update the member's shooting logic.
 			if delta > 0:

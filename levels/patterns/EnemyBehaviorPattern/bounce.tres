@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyBehaviorPattern" load_steps=2 format=3 uid="uid://ca3k1is2v7420"]
+
+[ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="1_6tsqv"]
+
+[resource]
+script = ExtResource("1_6tsqv")
+movement_type = 5
+metadata/_custom_type_script = "uid://dg83fupxxxrup"

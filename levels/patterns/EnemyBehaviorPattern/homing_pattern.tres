@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_rkx60")
 movement_type = 4
+homing_duration = 5.0
 metadata/_custom_type_script = "uid://dg83fupxxxrup"

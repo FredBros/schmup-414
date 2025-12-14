@@ -14,10 +14,14 @@ enum MovementType {
 @export_group("General")
 ## The type of movement the enemy will perform.
 @export var movement_type: MovementType = MovementType.LINEAR
-## Duration of this behavior segment in seconds. If 0, it's considered indefinite (or until the squadron is reclaimed).
+## Duration of this behavior segment in seconds. If 0, it's indefinite (or until the squadron is reclaimed).
 @export var duration: float = 0.0
-## If true, the entity will automatically rotate to face its direction of movement.
-@export var rotate_to_movement: bool = true
+
+@export_group("Rotation")
+## If true, the entire formation shape will rotate to face the direction of movement.
+@export var rotate_formation: bool = true
+## If true, individual member sprites will rotate to align with the movement direction.
+@export var rotate_members: bool = true
 
 @export_group("Linear")
 ## The constant velocity for the LINEAR movement type.

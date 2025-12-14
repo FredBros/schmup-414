@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ksmu5")
 movement_type = 1
+rotate_formation = false
 homing_speed = 200.0
 bounce_speed = 800.0
 metadata/_custom_type_script = "uid://dg83fupxxxrup"
