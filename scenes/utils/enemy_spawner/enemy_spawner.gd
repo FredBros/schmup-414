@@ -50,6 +50,11 @@ func _on_squadron_spawn_requested(event_data: SquadronSpawnEventData) -> void:
 	controller.debug_mode = self.debug_mode # Pass the debug flag
 	controller.level_sequencer = _level_sequencer # Passer la référence au LevelSequencer pour le homing
 	
+	# Apply custom turn speed if defined in the event data.
+	# If turn_speed is < 0, the controller will use its own default value.
+	if event_data.turn_speed >= 0:
+		controller.turn_speed = event_data.turn_speed
+	
 	# 3. Determine the spawn position for the controller (the center of the squadron)
 	var spawn_pos := Vector2.ZERO
 	var spawn_offset = 50.0 # Default distance outside the screen

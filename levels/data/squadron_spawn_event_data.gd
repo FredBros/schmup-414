@@ -44,14 +44,19 @@ enum SpawnZone {
 ## The delay in seconds after the wave starts before this squadron is spawned.
 @export var spawn_delay: float = 0.0
 
+@export_group("Squadron Composition")
 ## The type of enemy to use for the squadron members.
 @export var enemy_type_id: String
 
+## The formation pattern that defines the shape of the squadron.
+@export var formation_pattern: FormationPattern
+
+@export_group("Squadron Behavior")
 ## A sequence of movement patterns for the squadron. The controller will execute them one after another.
 @export var sequential_behavior_patterns: Array[EnemyBehaviorPattern]
 
 ## A list of timed shooting patterns to assign to all squadron members.
 @export var shooting_patterns: Array[TimedShootingPattern]
 
-## The formation pattern that defines the shape of the squadron.
-@export var formation_pattern: FormationPattern
+## The base turn speed for the squadron. If < 0, uses the controller's default value.
+@export var turn_speed: float = -1.0

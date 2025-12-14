@@ -6,9 +6,9 @@
 [ext_resource type="Resource" uid="uid://8u5ih6yi6fke" path="res://levels/patterns/squadron data/formation_v_5.tres" id="4_sxa7n"]
 [ext_resource type="Script" uid="uid://dg83fupxxxrup" path="res://enemies/patterns/behaviour/enemy_behavior_pattern.gd" id="5_ss4cu"]
 [ext_resource type="Script" uid="uid://dg42twmvuei5p" path="res://enemies/patterns/shooting/timed_shooting_pattern.gd" id="6_qg7tq"]
+[ext_resource type="Resource" uid="uid://ca3k1is2v7420" path="res://levels/patterns/EnemyBehaviorPattern/bounce.tres" id="6_spoo4"]
 [ext_resource type="Resource" uid="uid://cwninvk47hsfd" path="res://enemies/patterns/shooting/timed_shoot_wave1_.tres" id="7_ss4cu"]
 [ext_resource type="Resource" uid="uid://j40n4l6710gu" path="res://enemies/patterns/shooting/basic_3_spread.tres" id="8_spoo4"]
-[ext_resource type="Resource" uid="uid://uq4vcew8crlj" path="res://levels/patterns/EnemyBehaviorPattern/homing_pattern.tres" id="8_sxa7n"]
 
 [sub_resource type="Resource" id="Resource_cinsb"]
 script = ExtResource("6_qg7tq")
@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://dg42twmvuei5p"
 [sub_resource type="Resource" id="Resource_s1vgr"]
 script = ExtResource("3_vtn2y")
 enemy_type_id = "basic_enemy"
-sequential_behavior_patterns = Array[ExtResource("5_ss4cu")]([ExtResource("8_sxa7n")])
+sequential_behavior_patterns = Array[ExtResource("5_ss4cu")]([ExtResource("6_spoo4")])
 shooting_patterns = Array[ExtResource("6_qg7tq")]([ExtResource("7_ss4cu"), SubResource("Resource_cinsb")])
 formation_pattern = ExtResource("4_sxa7n")
 metadata/_custom_type_script = "uid://dusuo5uyypl2l"

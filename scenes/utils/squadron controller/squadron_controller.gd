@@ -26,12 +26,18 @@ var _current_segment_age: float = 0.0 # L'âge (durée) du segment de comporteme
 var _sinusoidal_time: float = 0.0
 var _bounces_left: int = 0
 var _age: float = 0.0
+## The current, smoothly interpolated rotation of the formation itself.
+var _current_formation_rotation: float = 0.0
+
 
 # This will be set by the spawner.
 var debug_mode := false
 
 ## Speed at which the squadron turns to align with its direction (in radians/sec).
-@export var turn_speed: float = 4.0
+@export var turn_speed: float = 1.5
+
+## The movement speed at which `turn_speed` is applied at a 1:1 ratio.
+const REFERENCE_SPEED_FOR_TURNING = 150.0
 
 func activate() -> void:
 	"""Activates the controller, resetting its state and making it process."""
@@ -40,6 +46,7 @@ func activate() -> void:
 	_current_behavior_index = 0
 	_current_segment_age = 0.0
 	_sinusoidal_time = 0.0
+	_current_formation_rotation = 0.0
 	
 	set_physics_process(true)
 	
@@ -71,7 +78,7 @@ func _apply_current_segment_pattern() -> void:
 	_bounces_left = 0 # Réinitialiser pour un nouveau segment de rebond
 
 	if _current_behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE:
-		velocity = _current_behavior_pattern.bounce_initial_direction.normalized() * _current_behavior_pattern.bounce_speed
+		velocity = _current_behavior_pattern.bounce_initial_direction.normalized() * _current_behavior_pattern.speed
 		_bounces_left = _current_behavior_pattern.bounce_count
 	else:
 		velocity = Vector2.ZERO # Réinitialiser la vélocité pour les autres types, elle sera calculée dans _physics_process
@@ -174,16 +181,15 @@ func _calculate_velocity(delta: float) -> void:
 	
 	match _current_behavior_pattern.movement_type:
 		EnemyBehaviorPattern.MovementType.LINEAR:
-			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.linear_speed
+			velocity = _current_behavior_pattern.linear_direction.normalized() * _current_behavior_pattern.speed
 
 		EnemyBehaviorPattern.MovementType.SINUSOIDAL:
 			_sinusoidal_time += delta
 			var direction = _current_behavior_pattern.sinusoidal_direction.normalized()
-			var speed = _current_behavior_pattern.sinusoidal_speed
 			var frequency = _current_behavior_pattern.sinusoidal_frequency
 			var amplitude = _current_behavior_pattern.sinusoidal_amplitude
 			
-			velocity = direction * speed
+			velocity = direction * _current_behavior_pattern.speed
 			velocity += direction.orthogonal() * cos(_sinusoidal_time * frequency) * amplitude
 
 		EnemyBehaviorPattern.MovementType.HOMING:
@@ -200,17 +206,34 @@ func _calculate_velocity(delta: float) -> void:
 			
 			if homing_active and is_instance_valid(_player):
 				var direction_to_player = global_position.direction_to(_player.global_position)
-				var target_velocity = direction_to_player * _current_behavior_pattern.homing_speed
+				var target_velocity = direction_to_player * _current_behavior_pattern.speed
 				# Rotate current velocity towards the player direction using slerp for smooth turning.
 				velocity = velocity.slerp(target_velocity, _current_behavior_pattern.homing_turn_rate * delta)
 			# If homing is not active or player is invalid, the squadron continues in its last direction.
 
 		EnemyBehaviorPattern.MovementType.BOUNCE:
+			# For squadrons, we need to check the bounds of each member, not just the controller's center.
 			if _bounces_left != 0:
-				if (global_position.x <= GameArea.RECT.position.x and velocity.x < 0) or \
-				   (global_position.x >= GameArea.RECT.end.x and velocity.x > 0):
-					velocity.x *= -1
-					if _bounces_left > 0: _bounces_left -= 1 # Décrémente si non infini
+				var bounced_x = false
+				var bounced_y = false
+				for member in members:
+					if not is_instance_valid(member): continue
+					
+					# Check horizontal bounce
+					if not bounced_x and ((member.global_position.x <= GameArea.RECT.position.x and velocity.x < 0) or \
+					   (member.global_position.x >= GameArea.RECT.end.x and velocity.x > 0)):
+						velocity.x *= -1
+						bounced_x = true
+						if _bounces_left > 0: _bounces_left -= 1
+						if _bounces_left == 0: break # Stop checking if we are out of bounces
+
+					# Check vertical bounce
+					if not bounced_y and ((member.global_position.y <= GameArea.RECT.position.y and velocity.y < 0) or \
+					   (member.global_position.y >= GameArea.RECT.end.y and velocity.y > 0)):
+						velocity.y *= -1
+						bounced_y = true
+						if _bounces_left > 0: _bounces_left -= 1
+						if _bounces_left == 0 and (bounced_x or bounced_y): break
 
 		EnemyBehaviorPattern.MovementType.PATH_2D:
 			var path_node = get_node_or_null(_current_behavior_pattern.movement_path)
@@ -220,10 +243,10 @@ func _calculate_velocity(delta: float) -> void:
 			var total_duration: float = 0.0
 			
 			# New: Use path_speed to calculate duration if available
-			if _current_behavior_pattern.path_speed > 0:
+			if _current_behavior_pattern.speed > 0:
 				var path_length = path_node.curve.get_baked_length()
 				if path_length > 0:
-					total_duration = path_length / _current_behavior_pattern.path_speed
+					total_duration = path_length / _current_behavior_pattern.speed
 			# Fallback to the global duration property if path_speed is not set
 			elif _current_behavior_pattern.duration > 0:
 				total_duration = _current_behavior_pattern.duration
@@ -240,7 +263,7 @@ func _calculate_velocity(delta: float) -> void:
 				var next_progress = current_progress + 1.0 # a small step forward
 				var current_pos = path_node.curve.sample_baked(current_progress)
 				var next_pos = path_node.curve.sample_baked(next_progress)
-				velocity = (next_pos - current_pos).normalized() * (_current_behavior_pattern.path_speed if _current_behavior_pattern.path_speed > 0 else 150.0)
+				velocity = (next_pos - current_pos).normalized() * _current_behavior_pattern.speed
 		
 		EnemyBehaviorPattern.MovementType.STATIONARY:
 			velocity = Vector2.ZERO
@@ -255,28 +278,42 @@ func _update_members(delta: float) -> void:
 			# 1. Update position based on formation offset.
 			var offset = formation_pattern.member_offsets[i]
 			var final_offset = offset
-			var final_member_rotation = 0.0
+			var final_member_rotation = member.rotation # Start with current rotation
 			
 			# 2. Calculate rotation if any rotation is enabled and there's movement.
 			if _current_behavior_pattern and (_current_behavior_pattern.rotate_formation or _current_behavior_pattern.rotate_members):
 				var rotation_target_direction = velocity
 				
 				if rotation_target_direction.length_squared() > 0.001:
-					var target_angle = rotation_target_direction.angle()
+					# Determine the base turn speed, allowing for overrides like for bouncing.
+					var base_turn_speed = turn_speed
+					if _current_behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE and _current_behavior_pattern.bounce_turn_speed > 0:
+						base_turn_speed = _current_behavior_pattern.bounce_turn_speed
+					
+					# Modulate turn speed by the current movement speed.
+					var speed_ratio = 1.0
+					if REFERENCE_SPEED_FOR_TURNING > 0:
+						# We clamp the ratio to prevent excessively fast turns at very high speeds.
+						speed_ratio = clampf(_current_behavior_pattern.speed / REFERENCE_SPEED_FOR_TURNING, 0.0, 4.0)
+					var effective_turn_speed = base_turn_speed * speed_ratio
+
+					var target_direction_angle = rotation_target_direction.angle()
 					
 					# --- Formation Rotation ---
-					# The V-formation points down (90 deg). We want to align this "front" with the target_angle.
-					# The rotation to apply is the difference between the target and the base orientation.
 					var formation_base_angle = PI / 2 # Formation points down by default.
-					var formation_rotation = target_angle - formation_base_angle
+					var formation_target_rotation = target_direction_angle - formation_base_angle
 					if _current_behavior_pattern.rotate_formation:
-						final_offset = offset.rotated(formation_rotation)
+						# Smoothly interpolate the formation's rotation
+						_current_formation_rotation = lerp_angle(_current_formation_rotation, formation_target_rotation, effective_turn_speed * delta)
+						final_offset = offset.rotated(_current_formation_rotation)
 					
 					# --- Member Sprite Rotation ---
-					# The sprite points up (-90 deg). We want to align this "front" with the target_angle.
 					var sprite_base_angle = - PI / 2 # Sprite points up by default.
+					var member_target_rotation = target_direction_angle - sprite_base_angle
 					if _current_behavior_pattern.rotate_members:
-						final_member_rotation = target_angle - sprite_base_angle
+						# Smoothly interpolate the member's own rotation
+						# We want members to orient faster than the formation turns. We apply a multiplier.
+						final_member_rotation = lerp_angle(member.rotation, member_target_rotation, (effective_turn_speed * 4.0) * delta)
 			
 			# Apply final calculated position and rotation
 			member.global_position = self.global_position + final_offset
@@ -285,6 +322,28 @@ func _update_members(delta: float) -> void:
 			# 2. Manually update the member's shooting logic.
 			if delta > 0:
 				member.update_shooting_only(delta)
+	
+	# After all members have been updated, perform a boundary check if bouncing.
+	# This prevents members from leaving the screen during the turn maneuver.
+	if _current_behavior_pattern and _current_behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE:
+		_correct_bounce_position()
+
+
+func _correct_bounce_position() -> void:
+	"""Checks if any member is out of bounds and corrects the squadron's position."""
+	var correction = Vector2.ZERO
+	for member in members:
+		if not is_instance_valid(member): continue
+		
+		if member.global_position.x < GameArea.RECT.position.x:
+			correction.x = max(correction.x, GameArea.RECT.position.x - member.global_position.x)
+		elif member.global_position.x > GameArea.RECT.end.x:
+			correction.x = min(correction.x, GameArea.RECT.end.x - member.global_position.x)
+		
+		# Note: Vertical correction can be added here following the same logic.
+	
+	if correction != Vector2.ZERO:
+		global_position += correction
 
 
 func _reclaim() -> void:

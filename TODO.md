@@ -4,6 +4,9 @@ Liste des fonctionnalités et améliorations à venir pour le projet.
 
 ## Priorités Actuelles (High Priority)
 
+- [ ] **Correction du pattern `BOUNCE` pour les escadrilles**:
+  - [ ] La détection de collision avec les bords de l'écran doit se baser sur les membres de l'escadrille, et non sur le point central du `SquadronController`.
+
 - [ ] **Déclencheurs d'Événements (Event Triggers)**:
   - [ ] Permettre à un ennemi d'émettre des signaux à des moments clés (ex: à 50% de sa vie, ou après un certain `_age`).
   - [ ] Le `LevelSequencer` pourrait écouter ces signaux pour déclencher des événements de script (faire apparaître des renforts, changer la musique, etc.).
@@ -28,12 +31,17 @@ Liste des fonctionnalités et améliorations à venir pour le projet.
 
 ## Terminé (Done)
 
+- [x] **Système de Rotation des Escadrilles**:
+  - [x] Refonte complète de la logique de rotation pour corriger les problèmes d'orientation (V inversé).
+  - [x] Séparation de la rotation de la formation (`rotate_formation`) et de la rotation des membres (`rotate_members`).
+  - [x] Correction de l'orientation pour les patterns `LINEAR`, `PATH_2D`, `SINUSOIDAL`.
+
+- [x] **Pattern `HOMING` pour les Escadrilles**:
+  - [x] Implémentation de la logique de poursuite dans le `SquadronController`.
+  - [x] Le ciblage choisit un joueur au hasard si plusieurs sont disponibles, en prévision du multijoueur.
+
 - [x] **Phases de Comportement de Mouvement**:
   - [x] Le `SquadronController` interprète une séquence de `EnemyBehaviorPattern`, chacun avec une `duration`, permettant des changements de mouvement au fil du temps.
-
-- [x] **Comportement des Escadrilles (Squadron Behavior)**:
-  - [x] Correction de la logique de rotation pour un comportement de corps rigide.
-  - [x] Implémentation d'une rotation fluide (`lerp_angle`) pour lisser les transitions de mouvement.
 
 - [x] **Pooling des `SquadronController`**:
   - [x] Création du singleton `SquadronControllerPoolManager` pour gérer le cycle de vie des contrôleurs.

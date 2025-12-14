@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_6tsqv")
 movement_type = 5
+bounce_initial_direction = Vector2(1, 0.5)
 metadata/_custom_type_script = "uid://dg83fupxxxrup"

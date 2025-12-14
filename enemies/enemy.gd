@@ -80,13 +80,13 @@ func activate(new_global_position: Vector2) -> void: # Note: cette fonction devi
 	# --- Initialize state based on behavior pattern ---
 	_sinusoidal_time = 0.0
 	if _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE:
-		velocity = _behavior_pattern.bounce_initial_direction.normalized() * _behavior_pattern.bounce_speed
+		velocity = _behavior_pattern.bounce_initial_direction.normalized() * _behavior_pattern.speed
 		_bounces_left = _behavior_pattern.bounce_count
 	# Special case for "fire-and-forget" homing
 	elif _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING and _behavior_pattern.homing_duration == 0:
 		if is_instance_valid(_player):
 			var direction_to_player = global_position.direction_to(_player.global_position)
-			velocity = direction_to_player * _behavior_pattern.homing_speed
+			velocity = direction_to_player * _behavior_pattern.speed
 	
 	# Reset health
 	health = max_health
@@ -115,13 +115,13 @@ func activate_logic_only() -> void:
 	# --- Initialize state based on behavior pattern ---
 	_sinusoidal_time = 0.0
 	if _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.BOUNCE:
-		velocity = _behavior_pattern.bounce_initial_direction.normalized() * _behavior_pattern.bounce_speed
+		velocity = _behavior_pattern.bounce_initial_direction.normalized() * _behavior_pattern.speed
 		_bounces_left = _behavior_pattern.bounce_count
 	# Special case for "fire-and-forget" homing
 	elif _behavior_pattern and _behavior_pattern.movement_type == EnemyBehaviorPattern.MovementType.HOMING and _behavior_pattern.homing_duration == 0:
 		if is_instance_valid(_player):
 			var direction_to_player = global_position.direction_to(_player.global_position)
-			velocity = direction_to_player * _behavior_pattern.homing_speed
+			velocity = direction_to_player * _behavior_pattern.speed
 	
 	# Reset health
 	health = max_health
@@ -172,16 +172,15 @@ func _physics_process(delta: float) -> void:
 	# --- Movement Logic ---
 	match _behavior_pattern.movement_type:
 		EnemyBehaviorPattern.MovementType.LINEAR:
-			velocity = _behavior_pattern.linear_direction.normalized() * _behavior_pattern.linear_speed
+			velocity = _behavior_pattern.linear_direction.normalized() * _behavior_pattern.speed
 
 		EnemyBehaviorPattern.MovementType.SINUSOIDAL:
 			_sinusoidal_time += delta
 			var direction = _behavior_pattern.sinusoidal_direction.normalized()
-			var speed = _behavior_pattern.sinusoidal_speed
 			var frequency = _behavior_pattern.sinusoidal_frequency
 			var amplitude = _behavior_pattern.sinusoidal_amplitude
 			
-			velocity = direction * speed
+			velocity = direction * _behavior_pattern.speed
 			# We use the perpendicular of the velocity direction for the sine wave axis
 			velocity += direction.orthogonal() * cos(_sinusoidal_time * frequency) * amplitude
 
@@ -199,14 +198,14 @@ func _physics_process(delta: float) -> void:
 			if homing_active:
 				if is_instance_valid(_player):
 					var direction_to_player = global_position.direction_to(_player.global_position)
-					var target_velocity = direction_to_player * _behavior_pattern.homing_speed
+					var target_velocity = direction_to_player * _behavior_pattern.speed
 					# Rotate current velocity towards the player direction
 					velocity = velocity.slerp(target_velocity, _behavior_pattern.homing_turn_rate * delta)
 				else:
 					print("[HOMING DEBUG] Target `_player` is NOT valid. Using fallback.")
 					# Si la cible devient invalide (ex: joueur détruit), on continue tout droit.
 					# Le slerp vers le bas est un fallback si la vélocité initiale était nulle.
-					velocity = velocity.slerp(Vector2.DOWN * _behavior_pattern.homing_speed, _behavior_pattern.homing_turn_rate * delta)
+					velocity = velocity.slerp(Vector2.DOWN * _behavior_pattern.speed, _behavior_pattern.homing_turn_rate * delta)
 			# --- HOMING DEBUG END ---
 		
 		EnemyBehaviorPattern.MovementType.BOUNCE:
