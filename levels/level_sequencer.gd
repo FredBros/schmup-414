@@ -1,8 +1,6 @@
 extends Node
 class_name LevelSequencer
 
-## Emitted to request the spawn of an enemy group.
-signal request_spawn(event_data: SpawnEventData)
 ## Emitted to request the spawn of a squadron.
 signal request_squadron_spawn(event_data: SquadronSpawnEventData)
 
@@ -62,13 +60,8 @@ func _process(delta: float) -> void:
 		var event_info: Dictionary = _active_events[i]
 		if _level_time >= event_info.absolute_spawn_time:
 			var event_data = event_info.data
-			if event_data is SpawnEventData:
-				#print("SEQUENCER: Emitting spawn request for event.")
-				request_spawn.emit(event_data)
-			elif event_data is SquadronSpawnEventData:
-				#print("SEQUENCER: Emitting spawn request for SQUADRON.")
-				request_squadron_spawn.emit(event_data)
-			
+			# All events are now SquadronSpawnEventData
+			request_squadron_spawn.emit(event_data)
 			_active_events.remove_at(i)
 	
 	# 3. Check for level completion
@@ -82,7 +75,7 @@ func _trigger_wave(wave_index: int):
 	var wave_data = _sorted_waves[wave_index]
 	print("SEQUENCER: Triggering Wave %d at level time %.2f" % [wave_index, _level_time])
 	
-	var all_events = wave_data.spawn_events + wave_data.squadron_spawn_events
+	var all_events = wave_data.squadron_spawn_events
 	for event_data in all_events:
 		var event_info = {
 			"absolute_spawn_time": wave_data.start_time + event_data.spawn_delay,
